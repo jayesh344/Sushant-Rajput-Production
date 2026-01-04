@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SR Production | Professional Photography</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+/* HERO SECTION */
+.hero{
+    min-height:100vh;
+    background:url("https://images.unsplash.com/photo-1492691527719-9d1e07e534b4") center/cover no-repeat;
+    position:relative;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.85));
+    backdrop-filter: blur(2px);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:900px;
+    padding:40px 20px;
+}
+
+/* BRAND – CINEMATIC LETTER STYLE */
+#brand-text{
+    font-size:4rem;
+    font-weight:500;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    margin-bottom:14px;
+    line-height:1.3;
+    text-shadow:
+        0 0 20px rgba(0,0,0,0.6),
+        0 0 40px rgba(0,0,0,0.4);
+}
+
+/* Individual letter animation */
+#brand-text .letter {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(-60px);
+    animation: drop 0.6s forwards;
+}
+
+#brand-text .subtext {
+    display:block;
+    font-size:1.7rem;
+    letter-spacing:12px;
+    margin-top:8px;
+    color:#f5c542; /* gold accent */
+    font-weight:300;
+    opacity:0;
+    transform: translateY(-20px);
+    animation: drop 0.6s forwards;
+    animation-delay:1.5s;
+}
+
+/* Drop keyframes */
+@keyframes drop{
+    0%{opacity:0; transform:translateY(-60px);}
+    100%{opacity:1; transform:translateY(0);}
+}
+
+/* SUBLINE */
+.brand-sub{
+    font-size:0.8rem;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    opacity:0.6;
+    margin-bottom:45px;
+    animation-delay:1.8s;
+    animation-fill-mode:both;
+}
+
+/* TAGLINE */
+.hero p{
+    font-size:1.05rem;
+    opacity:0.85;
+    letter-spacing:1.5px;
+    font-weight:300;
+    line-height:1.8;
+    margin-bottom:40px;
+}
+
+/* BUTTONS */
+.hero .btn{
+    padding:14px 34px;
+    border-radius:30px;
+    font-size:1rem;
+    margin:10px;
+    transition:0.4s;
+}
+
+.btn-outline-light:hover{
+    background:rgba(255,255,255,0.1);
+    transform:scale(1.05);
+}
+
+.btn-warning{
+    background:#f5c542;
+    border:none;
+    color:#000;
+}
+
+.btn-warning:hover{
+    box-shadow:0 0 15px #f5c542;
+    transform:scale(1.05);
+}
+
+/* SMOOTH LUXURY ANIMATIONS */
+.fade-in{
+    animation:fadeIn 1.8s ease forwards;
+}
+
+.slide-up{
+    animation:slideUp 1.4s ease forwards;
+}
+
+.hero .btn, .social{
+    animation-delay:2.2s;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(-20px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+@keyframes slideUp{
+    from{opacity:0; transform:translateY(40px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* SOCIAL LINKS */
+.social{
+    margin-top:40px;
+}
+
+.social a{
+    color:#ddd;
+    margin:0 14px;
+    font-size:0.85rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    position:relative;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.social a::after{
+    content:"";
+    position:absolute;
+    left:0;
+    bottom:-6px;
+    width:0%;
+    height:1px;
+    background:#f5c542;
+    transition:0.4s;
+}
+
+.social a:hover{
+    color:#f5c542;
+}
+
+.social a:hover::after{
+    width:100%;
+}
+
+/* RESPONSIVE */
+@media(max-width:992px){
+    #brand-text{
+        font-size:3rem;
+        letter-spacing:5px;
+    }
+    #brand-text .subtext{
+        font-size:1.4rem;
+        letter-spacing:10px;
+    }
+    .hero p{
+        font-size:1rem;
+    }
+    .hero .btn{
+        padding:12px 28px;
+        font-size:0.95rem;
+    }
+}
+
+@media(max-width:768px){
+    #brand-text{
+        font-size:2.4rem;
+        letter-spacing:4px;
+    }
+    #brand-text .subtext{
+        font-size:1.2rem;
+        letter-spacing:6px;
+    }
+    .hero p{
+        font-size:0.95rem;
+    }
+    .hero .btn{
+        padding:10px 22px;
+        font-size:0.9rem;
+    }
+}
+
+@media(max-width:480px){
+    #brand-text{
+        font-size:2rem;
+        letter-spacing:3px;
+    }
+    #brand-text .subtext{
+        font-size:1rem;
+        letter-spacing:4px;
+    }
+    .hero p{
+        font-size:0.85rem;
+    }
+    .hero .btn{
+        padding:8px 18px;
+        font-size:0.85rem;
+    }
+    .social a{
+        font-size:0.75rem;
+        margin:0 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero d-flex align-items-center justify-content-center text-center">
+    <div class="hero-content">
+
+        <!-- BRAND -->
+        <h1 id="brand-text">
+            <!-- Letters added by JS -->
+        </h1>
+
+        <!-- SUBLINE -->
+        <div class="brand-sub slide-up">
+            Photography & Cinematography Studio
+        </div>
+
+        <!-- TAGLINE -->
+        <p class="slide-up">
+            Capturing stories through light, moments and emotions <br>
+            Crafted with patience, precision and passion.
+        </p>
+
+        <!-- CTA -->
+        <div class="slide-up">
+            <a href="#" class="btn btn-outline-light">View Portfolio</a>
+            <a href="#" class="btn btn-warning text-dark">Book a Shoot</a>
+        </div>
+
+        <!-- SOCIAL -->
+        <div class="social slide-up">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+            <a href="#">YouTube</a>
+        </div>
+
+    </div>
+</section>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Letter drop animation -->
+<script>
+const text = "Sushant Rajput";
+const brand = document.getElementById("brand-text");
+
+text.split("").forEach((char, index)=>{
+    const span = document.createElement("span");
+    span.className = "letter";
+
+    if(char === " "){
+        span.innerHTML = "&nbsp";
+        span.style.animationDelay = (index*0.08) + "s";
+    } else {
+        span.textContent = char;
+        span.style.animationDelay = (index*0.08) + "s";
+    }
+    brand.appendChild(span);
+});
+
+// Add subtext
+const sub = document.createElement("span");
+sub.className = "subtext";
+sub.textContent = "Production";
+brand.appendChild(sub);
+</script>
+
+<script>
+console.log("SR Production – Responsive Branding Loaded");
+</script>
+
+</body>
+</html>
