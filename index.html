@@ -23,24 +23,37 @@ body{
     overflow-x:hidden;
 }
 
-/* HERO SECTION */
+/* ================= HERO SECTION ================= */
 .hero{
     min-height:100vh;
-    background:url("https://images.unsplash.com/photo-1492691527719-9d1e07e534b4") center/cover no-repeat;
+    background-image: url("photo1.jpeg");
+    background-position: center center;  /* image center me rahe */
+    background-repeat: no-repeat;
+    background-size: cover;  /* full width, no black sides */
+    background-color:#000;
     position:relative;
     color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
     text-align:center;
+    overflow:hidden;
+
+    /* Optional zoom-out effect on load */
+    animation: zoomOut 2s ease forwards;
 }
+
+
 
 .hero::before{
     content:"";
     position:absolute;
     inset:0;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6), rgba(0,0,0,0.85));
-    backdrop-filter: blur(2px);
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.55)
+    );
 }
 
 .hero-content{
@@ -50,7 +63,7 @@ body{
     padding:40px 20px;
 }
 
-/* BRAND – CINEMATIC LETTER STYLE */
+/* ================= BRAND ================= */
 #brand-text{
     font-size:4rem;
     font-weight:500;
@@ -63,55 +76,71 @@ body{
         0 0 40px rgba(0,0,0,0.4);
 }
 
-/* Individual letter animation */
-#brand-text .letter {
-    display: inline-block;
-    opacity: 0;
-    transform: translateY(-60px);
-    animation: drop 0.6s forwards;
+#brand-text .letter{
+    display:inline-block;
+    opacity:0;
+    transform:translateY(-60px);
+    animation:drop 0.6s forwards;
 }
 
-#brand-text .subtext {
+#brand-text .subtext{
     display:block;
     font-size:1.7rem;
     letter-spacing:12px;
     margin-top:8px;
-    color:#f5c542; /* gold accent */
+    color:#f5c542;
     font-weight:300;
     opacity:0;
-    transform: translateY(-20px);
-    animation: drop 0.6s forwards;
+    transform:translateY(-20px);
+    animation:drop 0.6s forwards;
     animation-delay:1.5s;
 }
 
-/* Drop keyframes */
 @keyframes drop{
     0%{opacity:0; transform:translateY(-60px);}
     100%{opacity:1; transform:translateY(0);}
 }
 
-/* SUBLINE */
+/* ================= STEP 1: PREMIUM SUB HEADING ================= */
 .brand-sub{
-    font-size:0.8rem;
-    letter-spacing:4px;
+    font-size:0.85rem;
+    letter-spacing:5px;
     text-transform:uppercase;
-    opacity:0.6;
-    margin-bottom:45px;
-    animation-delay:1.8s;
-    animation-fill-mode:both;
+    color:rgba(255,255,255,0.75);
+    margin-bottom:35px;
+    position:relative;
 }
 
-/* TAGLINE */
+.brand-sub::after{
+    content:"";
+    display:block;
+    width:60px;
+    height:2px;
+    background:#f5c542;
+    margin:14px auto 0;
+}
+
+/* ================= STEP 2 & 3: HERO TAGLINE ================= */
 .hero p{
-    font-size:1.05rem;
-    opacity:0.85;
-    letter-spacing:1.5px;
+    font-size:1.15rem;
     font-weight:300;
-    line-height:1.8;
-    margin-bottom:40px;
+    letter-spacing:1.8px;
+    line-height:2;
+    color:rgba(255,255,255,0.9);
+    margin-bottom:45px;
 }
 
-/* BUTTONS */
+/* STEP 3: HIGHLIGHT SECOND LINE */
+.tagline-highlight{
+    display:block;
+    margin-top:12px;
+    font-size:0.95rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:#f5c542;
+}
+
+/* ================= BUTTONS ================= */
 .hero .btn{
     padding:14px 34px;
     border-radius:30px;
@@ -136,30 +165,7 @@ body{
     transform:scale(1.05);
 }
 
-/* SMOOTH LUXURY ANIMATIONS */
-.fade-in{
-    animation:fadeIn 1.8s ease forwards;
-}
-
-.slide-up{
-    animation:slideUp 1.4s ease forwards;
-}
-
-.hero .btn, .social{
-    animation-delay:2.2s;
-}
-
-@keyframes fadeIn{
-    from{opacity:0; transform:translateY(-20px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-@keyframes slideUp{
-    from{opacity:0; transform:translateY(40px);}
-    to{opacity:1; transform:translateY(0);}
-}
-
-/* SOCIAL LINKS */
+/* ================= SOCIAL ================= */
 .social{
     margin-top:40px;
 }
@@ -170,8 +176,8 @@ body{
     font-size:0.85rem;
     letter-spacing:2px;
     text-transform:uppercase;
-    position:relative;
     text-decoration:none;
+    position:relative;
     transition:0.3s;
 }
 
@@ -194,96 +200,47 @@ body{
     width:100%;
 }
 
-/* RESPONSIVE */
+/* ================= RESPONSIVE ================= */
 @media(max-width:992px){
-    #brand-text{
-        font-size:3rem;
-        letter-spacing:5px;
-    }
-    #brand-text .subtext{
-        font-size:1.4rem;
-        letter-spacing:10px;
-    }
-    .hero p{
-        font-size:1rem;
-    }
-    .hero .btn{
-        padding:12px 28px;
-        font-size:0.95rem;
-    }
+    #brand-text{font-size:3rem;}
 }
 
 @media(max-width:768px){
-    #brand-text{
-        font-size:2.4rem;
-        letter-spacing:4px;
-    }
-    #brand-text .subtext{
-        font-size:1.2rem;
-        letter-spacing:6px;
-    }
-    .hero p{
-        font-size:0.95rem;
-    }
-    .hero .btn{
-        padding:10px 22px;
-        font-size:0.9rem;
-    }
+    #brand-text{font-size:2.4rem;}
 }
 
 @media(max-width:480px){
-    #brand-text{
-        font-size:2rem;
-        letter-spacing:3px;
-    }
-    #brand-text .subtext{
-        font-size:1rem;
-        letter-spacing:4px;
-    }
-    .hero p{
-        font-size:0.85rem;
-    }
-    .hero .btn{
-        padding:8px 18px;
-        font-size:0.85rem;
-    }
-    .social a{
-        font-size:0.75rem;
-        margin:0 8px;
-    }
+    #brand-text{font-size:2rem;}
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero d-flex align-items-center justify-content-center text-center">
+<section class="hero">
     <div class="hero-content">
 
-        <!-- BRAND -->
-        <h1 id="brand-text">
-            <!-- Letters added by JS -->
-        </h1>
+        <h1 id="brand-text"></h1>
 
-        <!-- SUBLINE -->
-        <div class="brand-sub slide-up">
+        <!-- STEP 1 -->
+        <div class="brand-sub">
             Photography & Cinematography Studio
         </div>
 
-        <!-- TAGLINE -->
-        <p class="slide-up">
-            Capturing stories through light, moments and emotions <br>
-            Crafted with patience, precision and passion.
+        <!-- STEP 2 & 3 -->
+        <p>
+            Capturing stories through light, moments and emotions
+            <span class="tagline-highlight">
+                Crafted with patience, precision and passion.
+            </span>
         </p>
 
-        <!-- CTA -->
-        <div class="slide-up">
+        <div>
             <a href="#" class="btn btn-outline-light">View Portfolio</a>
-            <a href="#" class="btn btn-warning text-dark">Book a Shoot</a>
+            <a href="#" class="btn btn-warning">Book a Shoot</a>
         </div>
 
-        <!-- SOCIAL -->
-        <div class="social slide-up">
+        <div class="social">
             <a href="#">Instagram</a>
             <a href="#">Facebook</a>
             <a href="#">YouTube</a>
@@ -292,10 +249,8 @@ body{
     </div>
 </section>
 
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Letter drop animation -->
 <script>
 const text = "Sushant Rajput";
 const brand = document.getElementById("brand-text");
@@ -303,27 +258,16 @@ const brand = document.getElementById("brand-text");
 text.split("").forEach((char, index)=>{
     const span = document.createElement("span");
     span.className = "letter";
-
-    if(char === " "){
-        span.innerHTML = "&nbsp";
-        span.style.animationDelay = (index*0.08) + "s";
-    } else {
-        span.textContent = char;
-        span.style.animationDelay = (index*0.08) + "s";
-    }
+    span.innerHTML = char === " " ? "&nbsp;" : char;
+    span.style.animationDelay = (index * 0.08) + "s";
     brand.appendChild(span);
 });
 
-// Add subtext
 const sub = document.createElement("span");
 sub.className = "subtext";
 sub.textContent = "Production";
 brand.appendChild(sub);
 </script>
 
-<script>
-console.log("SR Production – Responsive Branding Loaded");
-</script>
-
 </body>
-</html>
+</html> 
