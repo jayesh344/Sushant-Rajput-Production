@@ -65,7 +65,7 @@ body{
     letter-spacing:6px;
     text-transform:uppercase;
     margin-bottom:14px;
-    line-height:1.3;
+    line-height:1.2;
     text-shadow:
         0 0 20px rgba(0,0,0,0.6),
         0 0 40px rgba(0,0,0,0.4);
@@ -101,14 +101,13 @@ body{
     100%{opacity:1; transform:translateY(0);}
 }
 
-/* ================= STEP 1: PREMIUM SUB HEADING ================= */
+/* ================= STEP 1 ================= */
 .brand-sub{
     font-size:0.85rem;
     letter-spacing:5px;
     text-transform:uppercase;
     color:rgba(255,255,255,0.75);
     margin-bottom:35px;
-    position:relative;
 }
 
 .brand-sub::after{
@@ -120,7 +119,7 @@ body{
     margin:14px auto 0;
 }
 
-/* ================= STEP 2 & 3: HERO TAGLINE ================= */
+/* ================= TAGLINE ================= */
 .hero p{
     font-size:1.15rem;
     font-weight:300;
@@ -130,7 +129,6 @@ body{
     margin-bottom:45px;
 }
 
-/* STEP 3: HIGHLIGHT SECOND LINE */
 .tagline-highlight{
     display:block;
     margin-top:12px;
@@ -177,40 +175,29 @@ body{
     letter-spacing:2px;
     text-transform:uppercase;
     text-decoration:none;
-    position:relative;
     transition:0.3s;
-}
-
-.social a::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0%;
-    height:1px;
-    background:#f5c542;
-    transition:0.4s;
 }
 
 .social a:hover{
     color:#f5c542;
 }
 
-.social a:hover::after{
-    width:100%;
-}
-
-/* ================= RESPONSIVE ================= */
-@media(max-width:992px){
-    #brand-text{font-size:3rem;}
-}
-
+/* ================= RESPONSIVE FIX (IMPORTANT) ================= */
 @media(max-width:768px){
-    #brand-text{font-size:2.4rem;}
+    #brand-text{
+        font-size:2.4rem;
+        letter-spacing:3px;   /* 🔥 FIX */
+        line-height:1.1;
+        white-space:normal;
+    }
 }
 
 @media(max-width:480px){
-    #brand-text{font-size:2rem;}
+    #brand-text{
+        font-size:2rem;
+        letter-spacing:2px;   /* 🔥 FIX */
+        line-height:1.1;
+    }
 }
 </style>
 </head>
@@ -222,12 +209,10 @@ body{
 
         <h1 id="brand-text"></h1>
 
-        <!-- STEP 1 -->
         <div class="brand-sub">
             Photography & Cinematography Studio
         </div>
 
-        <!-- STEP 2 & 3 -->
         <p>
             Capturing stories through light, moments and emotions
             <span class="tagline-highlight">
@@ -247,13 +232,10 @@ body{
     </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
 <script>
 const text = "Sushant Rajput";
 const brand = document.getElementById("brand-text");
 
-// Letters animation
 text.split("").forEach((char, index)=>{
     const span = document.createElement("span");
     span.className = "letter";
@@ -262,7 +244,6 @@ text.split("").forEach((char, index)=>{
     brand.appendChild(span);
 });
 
-// Subtext animation
 const sub = document.createElement("span");
 sub.className = "subtext";
 sub.textContent = "Production";
