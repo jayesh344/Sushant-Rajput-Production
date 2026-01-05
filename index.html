@@ -27,9 +27,9 @@ body{
 .hero{
     min-height:100vh;
     background-image: url("photo1.jpeg");
-    background-position: center center;  /* image center me rahe */
+    background-position: center center;
     background-repeat: no-repeat;
-    background-size: cover;  /* full width, no black sides */
+    background-size: cover;
     background-color:#000;
     position:relative;
     color:#fff;
@@ -38,12 +38,7 @@ body{
     justify-content:center;
     text-align:center;
     overflow:hidden;
-
-    /* Optional zoom-out effect on load */
-    animation: zoomOut 2s ease forwards;
 }
-
-
 
 .hero::before{
     content:"";
@@ -92,12 +87,17 @@ body{
     font-weight:300;
     opacity:0;
     transform:translateY(-20px);
-    animation:drop 0.6s forwards;
+    animation:dropSub 0.6s forwards;
     animation-delay:1.5s;
 }
 
 @keyframes drop{
     0%{opacity:0; transform:translateY(-60px);}
+    100%{opacity:1; transform:translateY(0);}
+}
+
+@keyframes dropSub{
+    0%{opacity:0; transform:translateY(-20px);}
     100%{opacity:1; transform:translateY(0);}
 }
 
@@ -241,9 +241,7 @@ body{
         </div>
 
         <div class="social">
-            <a href="#">Instagram</a>
-            <a href="#">Facebook</a>
-            <a href="#">YouTube</a>
+            <a href="https://www.instagram.com/sushant_rajput_production?igsh=MWZhMndqYWNjNWtubw==">Instagram</a>
         </div>
 
     </div>
@@ -255,6 +253,7 @@ body{
 const text = "Sushant Rajput";
 const brand = document.getElementById("brand-text");
 
+// Letters animation
 text.split("").forEach((char, index)=>{
     const span = document.createElement("span");
     span.className = "letter";
@@ -263,6 +262,7 @@ text.split("").forEach((char, index)=>{
     brand.appendChild(span);
 });
 
+// Subtext animation
 const sub = document.createElement("span");
 sub.className = "subtext";
 sub.textContent = "Production";
@@ -270,4 +270,4 @@ brand.appendChild(sub);
 </script>
 
 </body>
-</html> 
+</html>
