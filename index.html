@@ -26,11 +26,6 @@ body{
 /* ================= HERO SECTION ================= */
 .hero{
     min-height:100vh;
-    background-image: url("photo1.jpeg");
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color:#000;
     position:relative;
     color:#fff;
     display:flex;
@@ -38,8 +33,21 @@ body{
     justify-content:center;
     text-align:center;
     overflow:hidden;
+    background:#000;
 }
 
+/* VIDEO BACKGROUND */
+.hero video{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    z-index:0;
+}
+
+/* DARK OVERLAY */
 .hero::before{
     content:"";
     position:absolute;
@@ -49,6 +57,7 @@ body{
         rgba(0,0,0,0.35),
         rgba(0,0,0,0.55)
     );
+    z-index:1;
 }
 
 .hero-content{
@@ -182,20 +191,19 @@ body{
     color:#f5c542;
 }
 
-/* ================= RESPONSIVE FIX (IMPORTANT) ================= */
+/* ================= RESPONSIVE ================= */
 @media(max-width:768px){
     #brand-text{
         font-size:2.4rem;
-        letter-spacing:3px;   /* 🔥 FIX */
+        letter-spacing:3px;
         line-height:1.1;
-        white-space:normal;
     }
 }
 
 @media(max-width:480px){
     #brand-text{
         font-size:2rem;
-        letter-spacing:2px;   /* 🔥 FIX */
+        letter-spacing:2px;
         line-height:1.1;
     }
 }
@@ -205,6 +213,12 @@ body{
 <body>
 
 <section class="hero">
+
+    <!-- 🔥 BACKGROUND VIDEO (NO SOUND) -->
+    <video autoplay muted loop playsinline>
+        <source src="video1.mp4" type="video/mp4">
+    </video>
+
     <div class="hero-content">
 
         <h1 id="brand-text"></h1>
@@ -221,7 +235,7 @@ body{
         </p>
 
         <div>
-            <a href="portfolio.html" class="btn btn-outline-light">View Portfolio</a>
+            <a href="#" class="btn btn-outline-light">View Portfolio</a>
             <a href="#" class="btn btn-warning">Book a Shoot</a>
         </div>
 
@@ -252,4 +266,3 @@ brand.appendChild(sub);
 
 </body>
 </html>
-
