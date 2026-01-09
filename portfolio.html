@@ -16,7 +16,7 @@
 }
 
 body{
-    background: linear-gradient(180deg, #1b2a24, #0f1915);
+    background: #0f1915;
     color:#fff;
 }
 
@@ -30,7 +30,7 @@ nav{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    z-index:50;
+    z-index:100;
     background:rgba(0,0,0,0.35);
     backdrop-filter:blur(10px);
 }
@@ -79,26 +79,78 @@ nav ul li:hover{color:#7c6cf0;}
     background:#fff;
 }
 
-/* ================= HERO ================= */
+/* ================= HERO (FULL BACKGROUND FIXED) ================= */
 .hero{
-    min-height:100vh;
+    height: 100vh;
+    width: 100%;
     display:flex;
+    position: relative;
+    overflow: hidden;
 }
 
+.hero-right{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-right img{
+    position:absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: 1.5s ease-in-out;
+}
+
+.hero-right img.active{
+    opacity: 1;
+}
+
+/* Custom positions for specific images */
+.hero-right img:nth-child(2) {
+    object-position: center 30%;
+}
+.hero-right img:nth-child(3) {
+    object-position: center 50%;
+}
+
+/* Overlay */
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 2;
+}
+
+/* Content Container */
 .hero-left{
-    width:45%;
-    padding:180px 60px;
+    width:100%;
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-left small{
     letter-spacing:8px;
     font-size:11px;
-    opacity:0.5;
+    opacity:0.8;
 }
 
 .hero-left h1{
     font-size:4rem;
     margin:30px 0;
+    line-height: 1.1;
 }
 
 .hero-left h1 span{
@@ -108,7 +160,7 @@ nav ul li:hover{color:#7c6cf0;}
 .hero-left p{
     max-width:480px;
     line-height:2;
-    opacity:0.75;
+    opacity:0.9;
 }
 
 .hero-buttons{
@@ -122,6 +174,7 @@ nav ul li:hover{color:#7c6cf0;}
     padding:15px 42px;
     border-radius:40px;
     text-decoration:none;
+    font-weight: 600;
 }
 
 .btn-primary{
@@ -132,27 +185,7 @@ nav ul li:hover{color:#7c6cf0;}
 .btn-outline{
     border:1px solid rgba(255,255,255,0.6);
     color:#fff;
-}
-
-/* HERO RIGHT */
-.hero-right{
-    width:55%;
-    position:relative;
-    overflow:hidden;
-}
-
-.hero-right img{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    opacity:0;
-    transition:1.5s;
-}
-
-.hero-right img.active{
-    opacity:1;
+    backdrop-filter: blur(5px);
 }
 
 /* ================= PROFILE ================= */
@@ -160,6 +193,8 @@ nav ul li:hover{color:#7c6cf0;}
     background:#fff;
     color:#000;
     padding:140px 100px;
+    position: relative;
+    z-index: 20;
 }
 
 .profile-box{
@@ -232,11 +267,12 @@ nav ul li:hover{color:#7c6cf0;}
 .profile-right img{
     width:100%;
     border-radius:22px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
 /* ================= RESPONSIVE ================= */
 @media(max-width:992px){
-    .hero-left{padding:160px 40px;}
+    .hero-left{padding: 0 40px;}
     .profile{padding:120px 50px;}
 }
 
@@ -245,24 +281,17 @@ nav ul li:hover{color:#7c6cf0;}
     nav ul{display:none;}
     .hamburger{display:flex;}
 
-    .hero{
-        flex-direction:column;
-        min-height:auto;
-    }
-
     .hero-left{
         width:100%;
-        padding:140px 30px;
+        padding: 0 30px;
         text-align:center;
+        align-items: center;
     }
+
+    .hero-left h1{ font-size: 3rem; }
 
     .hero-buttons{
         justify-content:center;
-    }
-
-    .hero-right{
-        width:100%;
-        height:60vh;
     }
 
     .profile{
@@ -282,6 +311,12 @@ nav ul li:hover{color:#7c6cf0;}
 
     .profile-left p{
         margin:auto;
+        margin-bottom: 30px;
+    }
+    
+    .profile-list {
+        display: inline-block;
+        text-align: left;
     }
 }
 
@@ -294,20 +329,23 @@ nav ul li:hover{color:#7c6cf0;}
         width:100%;
         text-align:center;
     }
-}
 
-@media(max-width:360px){
-    .hero-left h1{
-        font-size:2.1rem;
+    /* Images responsive vertical adjustments */
+    .hero-right img:nth-child(2) {
+        object-position: center 35%;
+    }
+    .hero-right img:nth-child(3) {
+        object-position: center 60%;
     }
 }
+
 </style>
 </head>
 
 <body>
 
 <nav>
-    <div class="logo"><img src="logo.png"></div>
+    <div class="logo"><img src="logo.png" alt="Logo"></div>
     <ul>
         <li>Home</li>
         <li>Portfolio</li>
@@ -319,6 +357,18 @@ nav ul li:hover{color:#7c6cf0;}
 </nav>
 
 <section class="hero">
+    <div class="hero-right">
+        <img src="photono1.jpg" class="active">
+        <img src="photono2.jpg">
+        <img src="photono3.jpg">
+        <img src="photono4.jpg">
+        <img src="photono5.jpg">
+        <img src="photono6.jpg">
+        <img src="photono7.jpg">
+        <img src="photono8.jpg">
+        <img src="photono9.jpg">
+    </div>
+
     <div class="hero-left">
         <small>CAPTURING TIMELESS MOMENTS</small>
         <h1>Sushant<span><br>Rajput</span><br>Photography</h1>
@@ -327,12 +377,6 @@ nav ul li:hover{color:#7c6cf0;}
             <a href="#" class="btn-primary">View Portfolio</a>
             <a href="#" class="btn-outline">Contact Me</a>
         </div>
-    </div>
-
-    <div class="hero-right">
-        <img src="photo2.jpeg" class="active">
-        <img src="photo3.jpeg">
-        <img src="photo4.jpeg">
     </div>
 </section>
 
@@ -350,19 +394,19 @@ nav ul li:hover{color:#7c6cf0;}
         </div>
 
         <div class="profile-right">
-            <img src="profile-photo.jpg">
+            <img src="profile-photo.jpg" alt="Profile">
         </div>
     </div>
 </section>
 
 <script>
-const slides=document.querySelectorAll(".hero-right img");
-let index=0;
-setInterval(()=>{
-    slides.forEach(s=>s.classList.remove("active"));
-    index=(index+1)%slides.length;
+const slides = document.querySelectorAll(".hero-right img");
+let index = 0;
+setInterval(() => {
+    slides.forEach(s => s.classList.remove("active"));
+    index = (index + 1) % slides.length;
     slides[index].classList.add("active");
-},5000);
+}, 5000);
 </script>
 
 </body>
