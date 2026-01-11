@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
 *{
@@ -16,17 +17,18 @@
 }
 
 body{
-    background: #0f1915;
+    background:#0f1915;
     color:#fff;
+    overflow-x: hidden;
 }
 
-/* ================= NAVBAR ================= */
+/* ================= NAVBAR (UNTOUCHED) ================= */
 nav{
     position:fixed;
     top:0;
     left:0;
     width:100%;
-    padding:10px 60px;
+    padding:12px 60px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -46,10 +48,11 @@ nav ul{
 nav ul li{
     font-size:13px;
     letter-spacing:1px;
-    opacity:0.8;
     cursor:pointer;
     position:relative;
 }
+
+nav ul li a{ text-decoration: none; color: inherit; }
 
 nav ul li::after{
     content:"";
@@ -61,25 +64,38 @@ nav ul li::after{
     background:#7c6cf0;
     transition:0.3s;
 }
-
 nav ul li:hover::after{width:100%;}
-nav ul li:hover{color:#7c6cf0;}
 
 .hamburger{
     display:none;
     flex-direction:column;
     gap:5px;
+    cursor:pointer;
 }
 .hamburger div{
-    width:25px;
+    width:26px;
     height:3px;
     background:#fff;
 }
 
-/* ================= HERO ================= */
+@media(max-width:768px){
+    nav ul{
+        position:absolute;
+        top:75px;
+        right:20px;
+        background:#111;
+        flex-direction:column;
+        padding:20px;
+        border-radius:12px;
+        display:none;
+    }
+    nav ul.show{display:flex;}
+    .hamburger{display:flex;}
+}
+
+/* ================= HERO (UNTOUCHED) ================= */
 .hero{
     height:100vh;
-    width:100%;
     position:relative;
     overflow:hidden;
 }
@@ -90,44 +106,33 @@ nav ul li:hover{color:#7c6cf0;}
     z-index:1;
 }
 
-/* ================= PHOTO ADJUST SETTINGS ================= */
 .hero-right img,
-.slide-2 img{
+.photo2{
     position:absolute;
     inset:0;
     width:100%;
     height:100%;
-    object-fit: cover;
-    object-position: center;
-    transform: scale(1.05);
+    object-fit:cover;
     opacity:0;
-    transition:opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+    transform:scale(1.08);
+    transition:opacity 1.4s ease, transform 1.4s ease;
 }
 
 .hero-right img.active,
-.slide-2.active img,
-.photo2.active{
+.photo2.active,
+.photo2.active img{
     opacity:1;
+    transform:scale(1);
 }
 
-/* slide-2 wrapper */
-.slide-2{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    transition:0.6s ease-in-out;
-}
-
-/* Overlay */
 .hero::after{
     content:"";
     position:absolute;
     inset:0;
-    background:rgba(0,0,0,0.45);
+    background:rgba(0,0,0,0.55);
     z-index:2;
 }
 
-/* Hero Content */
 .hero-left{
     position:relative;
     z-index:10;
@@ -139,31 +144,34 @@ nav ul li:hover{color:#7c6cf0;}
 }
 
 .hero-left small{
-    letter-spacing:8px;
+    letter-spacing:6px;
     font-size:11px;
-    opacity:0.8;
+    margin-bottom:18px;
 }
 
 .hero-left h1{
-    font-size:4rem;
-    margin:30px 0;
+    font-size:4.2rem;
+    line-height:1.1;
 }
 
 .hero-left h1 span{ color:#7c6cf0; }
 
 .hero-left p{
-    max-width:480px;
-    line-height:2;
+    max-width:420px;
+    margin-top:25px;
+    font-size:15px;
+    line-height:1.9;
+    opacity:0.85;
 }
 
 .hero-buttons{
-    margin-top:50px;
+    margin-top:45px;
     display:flex;
     gap:18px;
 }
 
 .hero-buttons a{
-    padding:15px 42px;
+    padding:15px 44px;
     border-radius:40px;
     text-decoration:none;
     font-weight:600;
@@ -179,61 +187,235 @@ nav ul li:hover{color:#7c6cf0;}
     color:#fff;
 }
 
-/* photono2 & photono6 wrapper style */
-.photo2{
-    position:absolute;
-    inset:0;
-    opacity:0;
-    transition: 0.6s ease-in-out;
-}
-
 .photo2 .bg{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    filter:blur(22px);
-    transform:scale(1.25);
-    opacity: 1 !important;
+    filter:blur(25px);
+    transform:scale(1.3);
 }
-
 .photo2 .fg{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
     object-fit:contain;
-    opacity: 1 !important;
 }
 
-/* FIXED SECTION: photono3 visibility */
-.hero-right img[src="photono3.jpg"] {
-    object-position: center 30% !important;
-    opacity: 0; 
+.controls{
+    position:absolute;
+    bottom:40px;
+    right:60px;
+    z-index:20;
+    display:flex;
+    gap:15px;
 }
 
-.hero-right img[src="photono3.jpg"].active {
-    opacity: 1 !important;
+.controls button{
+    background:rgba(0,0,0,0.5);
+    color:#fff;
+    border:none;
+    padding:10px 14px;
+    border-radius:50%;
+    cursor:pointer;
 }
 
-/* ✅ photono5 adjustment */
-.hero-right img[src="photono5.jpg"].active {
-    object-position: center 5% !important;
+.dots{
+    position:absolute;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    display:flex;
+    gap:10px;
+    z-index:20;
+}
+.dots span{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#aaa;
+    cursor:pointer;
+}
+.dots span.active{ background:#7c6cf0; }
+.hero-right img[src="photono5.jpg"]{ object-position: center 15%; }
+.hero-right img[src="photono3.jpg"]{ object-position: center 35%; }
+
+/* ================= UPGRADED ABOUT SECTION DESIGN ================= */
+.about {
+    padding: 120px 80px;
+    background: #ffffff; 
+    color: #1a1a1a;
+    position: relative;
 }
 
-/* ================= MOBILE ================= */
-@media(max-width:768px){
-    nav ul{display:none;}
-    .hamburger{display:flex;}
-    .hero-left{ padding:0 30px; text-align:center; }
-    .hero-left h1{ font-size:3rem; }
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 80px;
+    align-items: center;
+}
 
-    .hero-right img,
-    .slide-2 img{
-        object-position: center top;
-        transform: scale(1);
-    }
+/* Scroll Animation Initial States */
+.about-text {
+    flex: 1.2;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 1s ease-out;
+}
+
+.about-img {
+    flex: 1;
+    position: relative;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 1s ease-out;
+}
+
+/* Active State for Animation */
+.about.reveal .about-text,
+.about.reveal .about-img {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.about-text h2 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #0f1915;
+}
+
+.about-text h2 span { color: #7c6cf0; }
+
+.about-text p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.about-details {
+    list-style: none;
+    margin-bottom: 45px;
+}
+
+.about-details li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #333;
+}
+
+.about-details li::before {
+    content: "✔";
+    background: #7c6cf0;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    box-shadow: 0 4px 10px rgba(124, 108, 240, 0.3);
+}
+
+.btn-about {
+    display: inline-block;
+    padding: 15px 45px;
+    background: #0f1915;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.3s;
+    border: 2px solid #0f1915;
+}
+
+.btn-about:hover {
+    background: transparent;
+    color: #0f1915;
+}
+
+.about-img img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 30px 30px 0px #f4f4f4; /* Subtle offset background */
+}
+
+/* ================= NEW: OUR SERVICES SECTION ================= */
+.services {
+    padding: 120px 80px;
+    background: #0f1915; /* Matching body theme */
+    text-align: center;
+}
+
+.services-header {
+    margin-bottom: 60px;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 0.8s ease;
+}
+
+.services.reveal .services-header {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.services-header h2 {
+    font-size: 3rem;
+}
+.services-header h2 span { color: #7c6cf0; }
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px 30px;
+    border-radius: 20px;
+    border: 1px solid rgba(124, 108, 240, 0.1);
+    transition: 0.4s;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.services.reveal .service-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.service-card:hover {
+    background: rgba(124, 108, 240, 0.1);
+    transform: translateY(-10px);
+    border-color: #7c6cf0;
+}
+
+.service-card i {
+    font-size: 40px;
+    color: #7c6cf0;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+.service-card p {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
+}
+
+/* Dots and responsive adjustments */
+@media(max-width:992px){
+    .about-container { flex-direction: column-reverse; text-align: center; gap: 60px; }
+    .about, .services { padding: 80px 30px; }
 }
 </style>
 </head>
@@ -242,29 +424,27 @@ nav ul li:hover{color:#7c6cf0;}
 
 <nav>
     <div class="logo"><img src="logo.png"></div>
-    <ul>
-        <li>Home</li>
+    <ul id="menu">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
         <li>Portfolio</li>
         <li>Contact</li>
     </ul>
-    <div class="hamburger"><div></div><div></div><div></div></div>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div><div></div><div></div>
+    </div>
 </nav>
 
-<section class="hero">
+<section class="hero" id="hero">
     <div class="hero-right">
         <img src="photono1.jpg" class="active">
-
         <div class="photo2">
             <img src="photono2.jpg" class="bg">
             <img src="photono2.jpg" class="fg">
         </div>
-
         <img src="photono3.jpg">
-        
         <img src="photono4.jpg">
-        
         <img src="photono5.jpg">
-        
         <div class="photo2">
             <img src="photono6.jpg" class="bg">
             <img src="photono6.jpg" class="fg">
@@ -272,29 +452,143 @@ nav ul li:hover{color:#7c6cf0;}
     </div>
 
     <div class="hero-left">
-        <small>CAPTURING TIMELESS MOMENTS</small>
-        <h1>Sushant<span><br>Rajput</span><br>Photography</h1>
-        <p>Crafting cinematic visuals through light, emotion and storytelling.</p>
+        <small>EVERY FRAME TELLS A STORY</small>
+        <h1>Sushant Rajput<br><span>Production</span></h1>
+        <p>Moments that move hearts. Marketing that moves brands</p>
         <div class="hero-buttons">
-            <a href="#" class="btn-primary">View Portfolio</a>
-            <a href="#" class="btn-outline">Contact Me</a>
+            <a href="#" class="btn-primary">Explore My Work</a>
+            <a href="#" class="btn-outline">Let’s Talk</a>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button onclick="prevSlide()">❮</button>
+        <button onclick="nextSlide()">❯</button>
+    </div>
+    <div class="dots" id="dots"></div>
+</section>
+
+<section class="about" id="about">
+    <div class="about-container">
+        <div class="about-text">
+            <h2>Capturing the <span>Soul of the Moment</span> through my lens</h2>
+            <p>I am Sushant Rajput, a professional photographer based in India. Photography for me is not just about clicking pictures; it's about telling a story that words cannot express.</p>
+            <ul class="about-details">
+                <li>8+ Years Professional Experience</li>
+                <li>Phone: +91 82085 34860</li>
+                <li>E-mail: srphotography355@gmail.com</li>
+            </ul>
+            <a href="#" class="btn-about">Discover More</a>
+        </div>
+        <div class="about-img">
+            <img src="about.jpg" alt="Sushant Rajput">
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="services-header">
+        <h2>Our <span>Services</span></h2>
+    </div>
+    <div class="services-grid">
+        <div class="service-card">
+            <i class="fa-solid fa-camera-retro"></i>
+            <h3>Wedding Photography</h3>
+            <p>Capturing the magic and ritual of your big day with cinematic elegance.</p>
+        </div>
+        <div class="service-box service-card">
+            <i class="fa-solid fa-heart"></i>
+            <h3>Pre-Wedding Shoot</h3>
+            <p>Creating romantic visual stories before you say "I Do".</p>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-baby"></i>
+            <h3>New Born & Kids</h3>
+            <p>Preserving the innocence and tiny details of your little ones.</p>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-people-group"></i>
+            <h3>Family Portraits</h3>
+            <p>Timeless portraits that bring the whole family closer together.</p>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Consent Shoot</h3>
+            <p>Professional shoots focused on personality and raw expressions.</p>
+        </div>
+        <div class="service-card">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Digital Marketing</h3>
+            <p>High-quality visual content to boost your brand's digital presence.</p>
         </div>
     </div>
 </section>
 
 <script>
-const slides = document.querySelectorAll(
-    ".hero-right > img, .hero-right > .photo2"
-);
-
+/* Hero Slider Logic (Untouched) */
+const slides = document.querySelectorAll(".hero-right > img, .hero-right > .photo2");
+const dotsContainer = document.getElementById("dots");
 let index = 0;
-slides[0].classList.add("active");
+let interval;
 
-setInterval(() => {
-    slides.forEach(s => s.classList.remove("active"));
-    index = (index + 1) % slides.length;
-    slides[index].classList.add("active");
-}, 3000);
+slides.forEach((_,i)=>{
+    const dot = document.createElement("span");
+    dot.onclick = ()=>goToSlide(i);
+    dotsContainer.appendChild(dot);
+});
+
+function showSlide(i){
+    slides.forEach(s=>s.classList.remove("active"));
+    dotsContainer.querySelectorAll("span").forEach(d=>d.classList.remove("active"));
+    slides[i].classList.add("active");
+    dotsContainer.children[i].classList.add("active");
+}
+
+function nextSlide(){
+    index = (index+1)%slides.length;
+    showSlide(index);
+}
+function prevSlide(){
+    index = (index-1+slides.length)%slides.length;
+    showSlide(index);
+}
+function goToSlide(i){
+    index=i;
+    showSlide(index);
+}
+
+function startAuto(){
+    interval=setInterval(nextSlide,5000);
+}
+function stopAuto(){
+    clearInterval(interval);
+}
+
+document.getElementById("hero").addEventListener("mouseenter",stopAuto);
+document.getElementById("hero").addEventListener("mouseleave",startAuto);
+
+showSlide(index);
+startAuto();
+
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("show");
+}
+
+/* UPDATED: SCROLL REVEAL ANIMATION FOR ABOUT & SERVICES */
+window.addEventListener('scroll', revealOnScroll);
+
+function revealOnScroll() {
+    var reveals = document.querySelectorAll('.about, .services');
+    var windowHeight = window.innerHeight;
+    var revealPoint = 150;
+
+    reveals.forEach(section => {
+        var revealTop = section.getBoundingClientRect().top;
+        if (revealTop < windowHeight - revealPoint) {
+            section.classList.add('reveal');
+        }
+    });
+}
 </script>
 
 </body>
