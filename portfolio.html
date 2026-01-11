@@ -22,7 +22,7 @@ body{
     overflow-x: hidden;
 }
 
-/* ================= NAVBAR (UNTOUCHED) ================= */
+/* ================= NAVBAR ================= */
 nav{
     position:fixed;
     top:0;
@@ -35,6 +35,7 @@ nav{
     z-index:100;
     background:rgba(0,0,0,0.35);
     backdrop-filter:blur(10px);
+    transition: 0.3s;
 }
 
 .logo img{ height:55px; }
@@ -78,22 +79,7 @@ nav ul li:hover::after{width:100%;}
     background:#fff;
 }
 
-@media(max-width:768px){
-    nav ul{
-        position:absolute;
-        top:75px;
-        right:20px;
-        background:#111;
-        flex-direction:column;
-        padding:20px;
-        border-radius:12px;
-        display:none;
-    }
-    nav ul.show{display:flex;}
-    .hamburger{display:flex;}
-}
-
-/* ================= HERO (UNTOUCHED) ================= */
+/* ================= HERO ================= */
 .hero{
     height:100vh;
     position:relative;
@@ -168,6 +154,7 @@ nav ul li:hover::after{width:100%;}
     margin-top:45px;
     display:flex;
     gap:18px;
+    flex-wrap: wrap; /* Responsive fix for small screens */
 }
 
 .hero-buttons a{
@@ -175,6 +162,7 @@ nav ul li:hover::after{width:100%;}
     border-radius:40px;
     text-decoration:none;
     font-weight:600;
+    text-align: center;
 }
 
 .btn-primary{
@@ -230,15 +218,14 @@ nav ul li:hover::after{width:100%;}
     cursor:pointer;
 }
 .dots span.active{ background:#7c6cf0; }
-.hero-right img[src="photono5.jpg"]{ object-position: center 15%; }
-.hero-right img[src="photono3.jpg"]{ object-position: center 35%; }
 
-/* ================= UPGRADED ABOUT SECTION DESIGN ================= */
+/* ================= ABOUT SECTION ================= */
 .about {
     padding: 120px 80px;
     background: #ffffff; 
     color: #1a1a1a;
     position: relative;
+    overflow: hidden;
 }
 
 .about-container {
@@ -249,7 +236,6 @@ nav ul li:hover::after{width:100%;}
     align-items: center;
 }
 
-/* Scroll Animation Initial States */
 .about-text {
     flex: 1.2;
     opacity: 0;
@@ -265,7 +251,6 @@ nav ul li:hover::after{width:100%;}
     transition: all 1s ease-out;
 }
 
-/* Active State for Animation */
 .about.reveal .about-text,
 .about.reveal .about-img {
     opacity: 1;
@@ -339,13 +324,13 @@ nav ul li:hover::after{width:100%;}
 .about-img img {
     width: 100%;
     border-radius: 20px;
-    box-shadow: 30px 30px 0px #f4f4f4; /* Subtle offset background */
+    box-shadow: 30px 30px 0px #f4f4f4;
 }
 
-/* ================= NEW: OUR SERVICES SECTION ================= */
+/* ================= SERVICES SECTION ================= */
 .services {
     padding: 120px 80px;
-    background: #0f1915; /* Matching body theme */
+    background: #0f1915;
     text-align: center;
 }
 
@@ -412,23 +397,71 @@ nav ul li:hover::after{width:100%;}
     line-height: 1.6;
 }
 
-/* Dots and responsive adjustments */
-@media(max-width:992px){
-    .about-container { flex-direction: column-reverse; text-align: center; gap: 60px; }
-    .about, .services { padding: 80px 30px; }
+/* ================= RESPONSIVE UPDATES (Full Mobile Compatibility) ================= */
+
+@media(max-width: 1024px) {
+    .hero-left h1 { font-size: 3.5rem; }
+    .about-container { gap: 40px; }
+    nav { padding: 12px 30px; }
 }
+
+@media(max-width: 768px) {
+    /* Navbar Mobile */
+    nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        height: 100vh;
+        width: 70%;
+        background: #111;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        z-index: 99;
+    }
+    nav ul.show { right: 0; }
+    .hamburger { display: flex; z-index: 101; }
+
+    /* Hero Mobile */
+    .hero-left { padding: 0 30px; align-items: center; text-align: center; }
+    .hero-left h1 { font-size: 2.8rem; }
+    .hero-left p { margin: 25px auto 0; }
+    .hero-buttons { justify-content: center; }
+    .controls { right: 50%; transform: translateX(50%); bottom: 80px; }
+
+    /* About Mobile */
+    .about { padding: 80px 30px; }
+    .about-container { flex-direction: column-reverse; text-align: center; }
+    .about-text h2 { font-size: 2.2rem; }
+    .about-details li { justify-content: center; }
+    .about-img img { box-shadow: 15px 15px 0px #f4f4f4; }
+
+    /* Services Mobile */
+    .services { padding: 80px 20px; }
+    .services-header h2 { font-size: 2.2rem; }
+}
+
+@media(max-width: 480px) {
+    .hero-left h1 { font-size: 2.2rem; }
+    .hero-left small { letter-spacing: 3px; }
+    .hero-buttons a { width: 100%; padding: 12px 20px; }
+    .service-card { padding: 30px 20px; }
+}
+
 </style>
 </head>
 
 <body>
 
 <nav>
-    <div class="logo"><img src="logo.png"></div>
+    <div class="logo"><img src="logo.png" alt="Logo"></div>
     <ul id="menu">
         <li><a href="#hero">Home</a></li>
         <li><a href="#about">About</a></li>
-        <li>Portfolio</li>
-        <li>Contact</li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact</a></li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()">
         <div></div><div></div><div></div>
@@ -454,7 +487,7 @@ nav ul li:hover::after{width:100%;}
     <div class="hero-left">
         <small>EVERY FRAME TELLS A STORY</small>
         <h1>Sushant Rajput<br><span>Production</span></h1>
-        <p>Moments that move hearts. Marketing that moves brands</p>
+        <p>Moments that move hearts. Marketing that moves brands.</p>
         <div class="hero-buttons">
             <a href="#" class="btn-primary">Explore My Work</a>
             <a href="#" class="btn-outline">Let’s Talk</a>
@@ -471,7 +504,7 @@ nav ul li:hover::after{width:100%;}
 <section class="about" id="about">
     <div class="about-container">
         <div class="about-text">
-            <h2>Capturing the <span>Soul of the Moment</span> through my lens</h2>
+            <h2>Capturing the <span>Soul of the Moment</span></h2>
             <p>I am Sushant Rajput, a professional photographer based in India. Photography for me is not just about clicking pictures; it's about telling a story that words cannot express.</p>
             <ul class="about-details">
                 <li>8+ Years Professional Experience</li>
@@ -496,7 +529,7 @@ nav ul li:hover::after{width:100%;}
             <h3>Wedding Photography</h3>
             <p>Capturing the magic and ritual of your big day with cinematic elegance.</p>
         </div>
-        <div class="service-box service-card">
+        <div class="service-card">
             <i class="fa-solid fa-heart"></i>
             <h3>Pre-Wedding Shoot</h3>
             <p>Creating romantic visual stories before you say "I Do".</p>
@@ -525,7 +558,7 @@ nav ul li:hover::after{width:100%;}
 </section>
 
 <script>
-/* Hero Slider Logic (Untouched) */
+/* Hero Slider Logic */
 const slides = document.querySelectorAll(".hero-right > img, .hero-right > .photo2");
 const dotsContainer = document.getElementById("dots");
 let index = 0;
@@ -539,9 +572,12 @@ slides.forEach((_,i)=>{
 
 function showSlide(i){
     slides.forEach(s=>s.classList.remove("active"));
-    dotsContainer.querySelectorAll("span").forEach(d=>d.classList.remove("active"));
+    const dots = dotsContainer.querySelectorAll("span");
+    if(dots.length > 0){
+        dots.forEach(d=>d.classList.remove("active"));
+        dots[i].classList.add("active");
+    }
     slides[i].classList.add("active");
-    dotsContainer.children[i].classList.add("active");
 }
 
 function nextSlide(){
@@ -574,13 +610,13 @@ function toggleMenu(){
     document.getElementById("menu").classList.toggle("show");
 }
 
-/* UPDATED: SCROLL REVEAL ANIMATION FOR ABOUT & SERVICES */
+/* Scroll Reveal Animation */
 window.addEventListener('scroll', revealOnScroll);
 
 function revealOnScroll() {
     var reveals = document.querySelectorAll('.about, .services');
     var windowHeight = window.innerHeight;
-    var revealPoint = 150;
+    var revealPoint = 100;
 
     reveals.forEach(section => {
         var revealTop = section.getBoundingClientRect().top;
