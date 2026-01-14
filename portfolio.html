@@ -496,7 +496,7 @@ nav ul li a.active-link::after {
 }
 
 .contact-form {
-    flex: 1.2;
+    flex: 1.5;
     min-width: 300px;
     background: rgba(255,255,255,0.03);
     padding: 40px;
@@ -508,7 +508,33 @@ nav ul li a.active-link::after {
     margin-bottom: 20px;
 }
 
-.form-group input, .form-group textarea {
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+}
+
+.form-group label span {
+    color: #ff4d4d;
+    margin-left: 4px;
+}
+
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-group input, 
+.form-group textarea, 
+.form-group select {
     width: 100%;
     padding: 15px;
     background: rgba(255,255,255,0.05);
@@ -519,9 +545,23 @@ nav ul li a.active-link::after {
     transition: 0.3s;
 }
 
-.form-group input:focus, .form-group textarea:focus {
+.form-group select option {
+    background: #0f1915;
+    color: #fff;
+}
+
+.form-group input:focus, 
+.form-group textarea:focus,
+.form-group select:focus {
     border-color: #7c6cf0;
     background: rgba(255,255,255,0.08);
+}
+
+.form-group small {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
 }
 
 .btn-submit {
@@ -534,6 +574,7 @@ nav ul li a.active-link::after {
     font-weight: 600;
     cursor: pointer;
     transition: 0.3s;
+    margin-top: 10px;
 }
 
 .btn-submit:hover {
@@ -577,6 +618,7 @@ nav ul li a.active-link::after {
     
     .contact { padding: 60px 20px; }
     .contact-form { padding: 25px; }
+    .form-row { flex-direction: column; gap: 20px; }
 }
 </style>
 </head>
@@ -721,18 +763,81 @@ nav ul li a.active-link::after {
         </div>
         <div class="contact-form">
             <form id="whatsappForm">
-                <div class="form-group">
-                    <input type="text" id="name" placeholder="Your Name" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>First Name<span>*</span></label>
+                        <input type="text" id="fname" placeholder="First Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" id="lname" placeholder="Last Name">
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="email" id="email" placeholder="Email Address" required>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Email<span>*</span></label>
+                        <input type="email" id="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone<span>*</span></label>
+                        <input type="tel" id="phone_num" placeholder="Phone Number" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="text" id="date" placeholder="Wedding/Event Date">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Date of the Event<span>*</span></label>
+                        <input type="date" id="event_date" required>
+                        <small>dd-mm-yyyy</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Type<span>*</span></label>
+                        <select id="event_type" required>
+                            <option value="" disabled selected>Select an option</option>
+                            <option value="Wedding">Wedding</option>
+                            <option value="Pre-Wedding">Pre-Wedding</option>
+                            <option value="Kids Shoot">Kids Shoot</option>
+                            <option value="Family Portrait">Family Portrait</option>
+                            <option value="Content Shoot">Content Shoot</option>
+                            <option value="Digital Marketing">Digital Marketing</option>
+                        </select>
+                    </div>
                 </div>
+
                 <div class="form-group">
-                    <textarea id="message" rows="5" placeholder="Tell us more about your event..."></textarea>
+                    <label>Tell us more about your wedding<span>*</span></label>
+                    <textarea id="wedding_details" rows="3" placeholder="All the dates, event flows, venues and any other specific details" required></textarea>
                 </div>
+
+                <div class="form-group">
+                    <label>What style of wedding it is?<span>*</span></label>
+                    <input type="text" id="wedding_style" placeholder="e.g. Traditional, Destination, Minimalist" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Venue City<span>*</span></label>
+                        <input type="text" id="venue_city" placeholder="City Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Guest Count<span>*</span></label>
+                        <input type="number" id="guest_count" placeholder="Approx number" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>How did you find us?<span>*</span></label>
+                    <select id="source" required>
+                        <option value="" disabled selected>Select an option</option>
+                        <option value="Instagram">Instagram</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Google">Google</option>
+                        <option value="Friend/Relative">Friend/Relative</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
                 <button type="button" onclick="sendWhatsApp()" class="btn-submit">Send Message</button>
             </form>
         </div>
@@ -789,24 +894,40 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.about, .contact').forEach(el => observer.observe(el));
 
-// FINAL WHATSAPP FUNCTION
+// UPDATED WHATSAPP FUNCTION
 function sendWhatsApp() {
     let phone = "918999767208"; 
-    let name = document.getElementById("name").value;
+    
+    // Get values
+    let fname = document.getElementById("fname").value;
+    let lname = document.getElementById("lname").value;
     let email = document.getElementById("email").value;
-    let date = document.getElementById("date").value;
-    let msg = document.getElementById("message").value;
+    let pnum = document.getElementById("phone_num").value;
+    let edate = document.getElementById("event_date").value;
+    let etype = document.getElementById("event_type").value;
+    let wdetails = document.getElementById("wedding_details").value;
+    let wstyle = document.getElementById("wedding_style").value;
+    let vcity = document.getElementById("venue_city").value;
+    let gcount = document.getElementById("guest_count").value;
+    let source = document.getElementById("source").value;
 
-    if(name == "" || email == ""){
-        alert("Please fill Name and Email");
+    // Validation
+    if(!fname || !email || !pnum || !edate || !etype || !wdetails || !wstyle || !vcity || !gcount || !source){
+        alert("Please fill all required fields marked with *");
         return;
     }
 
     let finalMsg = "📸 *New Photography Enquiry*\n\n" + 
-                   "👤 *Name:* " + name + "\n" +
-                   "📧 *Email:* " + email + "\n" +
-                   "📅 *Date:* " + date + "\n" +
-                   "📝 *Message:* " + msg;
+                   "*Name:* " + fname + " " + lname + "\n" +
+                   "*Email:* " + email + "\n" +
+                   "*Phone:* " + pnum + "\n" +
+                   "*Event Date:* " + edate + "\n" +
+                   "*Event Type:* " + etype + "\n" +
+                   "*Details:* " + wdetails + "\n" +
+                   "*Wedding Style:* " + wstyle + "\n" +
+                   "*Venue City:* " + vcity + "\n" +
+                   "*Guest Count:* " + gcount + "\n" +
+                   "*Found us via:* " + source;
 
     window.location.href = "whatsapp://send?phone=" + phone + "&text=" + encodeURIComponent(finalMsg);
 }
