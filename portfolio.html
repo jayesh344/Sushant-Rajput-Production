@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Zoomin Photography</title>
+<title>Zoomin Photography | Sushant Rajput Production</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -23,206 +23,228 @@ body{
 }
 
 /* ================= NAVBAR ================= */
-nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    padding:12px 60px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    z-index:100;
-    background:rgba(0,0,0,0.35);
-    backdrop-filter:blur(10px);
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav.scrolled {
+    padding: 15px 80px;
+    background: rgba(15, 25, 21, 0.85);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.logo img { 
+    height: 50px; 
+    filter: drop-shadow(0 0 8px rgba(124, 108, 240, 0.3));
+    transition: 0.4s;
+}
+nav.scrolled .logo img { height: 42px; }
+
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+nav ul li a { 
+    text-decoration: none; 
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     transition: 0.3s;
+    position: relative;
+    padding: 5px 0;
 }
 
-.logo img{ height:55px; }
-
-nav ul{
-    display:flex;
-    gap:35px;
-    list-style:none;
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7c6cf0, #a18cff);
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-nav ul li{
-    font-size:13px;
-    letter-spacing:1px;
-    cursor:pointer;
-    position:relative;
+nav ul li a:hover, 
+nav ul li a.active-link { 
+    color: #fff;
+    text-shadow: 0 0 15px rgba(124, 108, 240, 0.5);
 }
 
-nav ul li a{ text-decoration: none; color: inherit; }
-
-nav ul li::after{
-    content:"";
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0;
-    height:2px;
-    background:#7c6cf0;
-    transition:0.3s;
+nav ul li a:hover::after,
+nav ul li a.active-link::after {
+    width: 100%;
 }
-nav ul li:hover::after{width:100%;}
 
-.hamburger{
-    display:none;
-    flex-direction:column;
-    gap:5px;
-    cursor:pointer;
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
 }
-.hamburger div{
-    width:26px;
-    height:3px;
-    background:#fff;
+.hamburger div {
+    width: 28px;
+    height: 2px;
+    background: #fff;
+    transition: 0.4s;
 }
 
 /* ================= HERO SECTION ================= */
-.hero{
-    height:100vh;
-    position:relative;
-    overflow:hidden;
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
 }
 
-.hero-right{
-    position:absolute;
-    inset:0;
-    z-index:1;
-    transform: translateZ(0); 
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,25,21,0.9) 0%, rgba(15,25,21,0.2) 50%, rgba(15,25,21,0.4) 100%);
+    z-index: 3;
 }
 
-.hero-right img,
-.photo2{
-    position:absolute;
-    inset:0;
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    opacity:0;
-    transform: scale3d(1.15, 1.15, 1);
-    transition: opacity 2.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                transform 3s cubic-bezier(0.1, 1, 0.3, 1);
-    will-change: opacity, transform;
+.hero-right {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
 }
 
-.hero-right .active,
-.photo2.active,
-.photo2.active img{
-    opacity:1;
-    transform: scale3d(1, 1, 1);
+.hero-right img, .photo2 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 6s ease;
+}
+
+.hero-right .active, .photo2.active, .photo2.active img {
+    opacity: 1;
+    transform: scale(1);
     z-index: 2;
 }
 
-.hero::after{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,0.55);
-    z-index:3;
+.photo2 .bg { filter: blur(25px); transform: scale(1.3); }
+.photo2 .fg { object-fit: contain; }
+
+.hero-left {
+    position: relative;
+    z-index: 10;
+    padding: 0 80px 80px 80px; 
+    max-width: 900px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeIn 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards 0.5s;
 }
 
-.hero-left{
-    position:relative;
-    z-index:10;
-    height:100%;
-    padding:0 60px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
+@keyframes heroFadeIn {
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.hero-left small{
-    letter-spacing:6px;
-    font-size:11px;
-    margin-bottom:18px;
+.hero-left small {
+    display: block;
+    letter-spacing: 8px;
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: #7c6cf0;
+    font-weight: 600;
 }
 
-.hero-left h1{
-    font-size:4.2rem;
-    line-height:1.1;
+.hero-left h1 {
+    font-size: 4.8rem;
+    line-height: 1;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
-.hero-left h1 span{ color:#7c6cf0; }
+.hero-left h1 span { color: #7c6cf0; }
 
-.hero-left p{
-    max-width:420px;
-    margin-top:25px;
-    font-size:15px;
-    line-height:1.9;
-    opacity:0.85;
+.hero-left p {
+    max-width: 450px;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-bottom: 40px;
 }
 
-.hero-buttons{
-    margin-top:45px;
-    display:flex;
-    gap:18px;
+.hero-buttons {
+    display: flex;
+    gap: 18px;
     flex-wrap: wrap;
 }
 
-.hero-buttons a{
-    padding:15px 44px;
-    border-radius:40px;
-    text-decoration:none;
-    font-weight:600;
-    text-align: center;
-}
-
-.btn-primary{
-    background:linear-gradient(135deg,#7c6cf0,#a18cff);
-    color:#fff;
-}
-
-.btn-outline{
-    border:1px solid rgba(255,255,255,0.6);
-    color:#fff;
-}
-
-.photo2 .bg{
-    filter:blur(25px);
-    transform:scale(1.3);
-}
-.photo2 .fg{
-    object-fit:contain;
-}
-
-.controls{
-    position:absolute;
-    bottom:40px;
-    right:60px;
-    z-index:20;
-    display:flex;
-    gap:15px;
-}
-
-.controls button{
-    background:rgba(0,0,0,0.5);
-    color:#fff;
-    border:none;
-    padding:10px 14px;
-    border-radius:50%;
-    cursor:pointer;
-}
-
-.dots{
-    position:absolute;
-    bottom:40px;
-    left:50%;
-    transform:translateX(-50%);
-    display:flex;
-    gap:10px;
-    z-index:20;
-}
-.dots span{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:#aaa;
-    cursor:pointer;
+.hero-buttons a {
+    padding: 16px 42px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
     transition: 0.3s;
 }
-.dots span.active{ background:#7c6cf0; transform: scale(1.2); }
+
+.btn-primary { background: #7c6cf0; color: #fff; }
+.btn-outline { border: 1px solid rgba(255,255,255,0.6); color: #fff; }
+
+.controls {
+    position: absolute;
+    bottom: 80px;
+    right: 80px;
+    z-index: 20;
+    display: flex;
+    gap: 15px;
+}
+
+.controls button {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.controls button:hover { background: #fff; color: #000; }
+
+.dots {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+}
+.dots span {
+    width: 25px;
+    height: 3px;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: 0.4s;
+}
+.dots span.active { background: #7c6cf0; width: 50px; }
 
 /* ================= ABOUT SECTION ================= */
 .about {
@@ -332,127 +354,243 @@ nav ul li:hover::after{width:100%;}
 
 /* ================= SERVICES SECTION ================= */
 .services {
-    padding: 100px 40px;
+    padding: 120px 60px;
     background: #0f1915;
+}
+
+.services-header h2 {
+    font-size: 3rem;
+    margin-bottom: 60px;
     text-align: center;
 }
 
-.services-header {
-    margin-bottom: 50px;
-}
+.services-header h2 span { color: #7c6cf0; }
 
 .services-grid {
     display: grid;
-    grid-template-columns: 1fr; 
-    gap: 30px;
-    width: 100%;
-    max-width: 800px; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px;
+    max-width: 1200px; 
     margin: 0 auto;
 }
 
 .service-card {
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 15px;
-    border: 1px solid rgba(124, 108, 240, 0.1);
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    /* YAHAN FIX KIYA: Opacity 1 kar di taaki cards hamesha dikhen */
-    opacity: 1;
-    transform: translateY(0);
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
     text-align: left;
-    display: flex;
-    flex-direction: column;
 }
 
 .service-img {
     width: 100%;
-    height: 600px; /* Aapki pasandida height */
+    height: 550px; 
     overflow: hidden;
+    position: relative;
 }
 
 .service-img img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    background: #000;   /* empty space ko clean look deta hai */
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
-
-.service-card:hover .service-img img {
-    transform: scale(1.1);
+.service-img::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, #0f1915 10%, transparent);
 }
 
 .service-content {
-    padding: 30px;
+    padding: 0 40px 40px 40px;
+    margin-top: -80px; 
+    position: relative;
+    z-index: 5;
 }
 
-.service-card i {
-    font-size: 24px;
-    color: #7c6cf0;
-    margin-bottom: 15px;
-    display: block;
+.service-icon-badge {
+    width: 60px;
+    height: 60px;
+    background: #7c6cf0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(124, 108, 240, 0.3);
+    transition: 0.4s;
 }
+
+.service-icon-badge i { font-size: 24px; color: #fff; }
 
 .service-card h3 {
-    margin-bottom: 10px;
-    font-size: 24px;
+    font-size: 28px;
+    margin-bottom: 12px;
     color: #fff;
+    font-weight: 700;
 }
 
 .service-card p {
-    font-size: 15px;
-    color: #bbb;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.6;
 }
 
 .service-card:hover {
-    background: rgba(124, 108, 240, 0.08);
-    transform: translateY(-8px);
-    border-color: #7c6cf0;
-}
-/* Face focus fix for service images */
-.service-img img{
-    object-position: center top;
+    transform: translateY(-15px);
+    border-color: rgba(124, 108, 240, 0.4);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
-/* ================= RESPONSIVE ================= */
+.service-card:hover .service-img img { transform: scale(1.1); }
+
+.prewedding-blur { position: relative; background: #000; }
+.prewedding-blur .bg {
+    position: absolute;
+    inset: 0; width: 100%; height: 100%;
+    object-fit: cover; filter: blur(20px);
+    transform: scale(1.2); opacity: 0.6;
+}
+.prewedding-blur .fg { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; }
+
+/* ================= CONTACT SECTION ================= */
+.contact {
+    padding: 120px 80px;
+    background: #0f1915;
+    position: relative;
+}
+
+.contact-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 60px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.contact-info h2 span { color: #7c6cf0; }
+
+.contact-info p {
+    font-size: 17px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 30px;
+}
+
+.contact-form {
+    flex: 1.2;
+    min-width: 300px;
+    background: rgba(255,255,255,0.03);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #fff;
+    border-radius: 8px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+    border-color: #7c6cf0;
+    background: rgba(255,255,255,0.08);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 16px;
+    background: #7c6cf0;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    background: #6a59e0;
+    transform: translateY(-3px);
+}
+
+/* STEP 4: MOBILE PRO SETTINGS */
+@media(max-width: 992px) {
+    nav { padding: 15px 40px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .contact { padding: 80px 40px; }
+}
+
 @media(max-width: 768px) {
-    nav{ padding: 12px 25px; }
+    nav { padding: 15px 25px; }
     nav ul {
         position: fixed;
-        top: 0;
-        right: -100%;
-        height: 100vh;
-        width: 70%;
-        background: #111;
+        top: 0; right: -100%;
+        height: 100vh; width: 75%;
+        background: #0f1915;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        transition: 0.4s;
+        transition: 0.5s;
         z-index: 99;
     }
     nav ul.show { right: 0; }
-    .hamburger { display: flex; z-index: 101; }
-    .hero-left { padding: 0 30px; align-items: center; text-align: center; }
+    .hamburger { display: flex; z-index: 1001; }
+    
+    .hero-left { padding: 0 30px 100px 30px; text-align: left; }
     .hero-left h1 { font-size: 2.8rem; }
+    .hero-buttons { flex-direction: column; gap: 12px; }
+    .hero-buttons a { width: 100%; text-align: center; }
+    
+    .controls { right: 20px; bottom: 30px; }
+    .dots { left: 30px; bottom: 40px; }
+    
     .about { padding: 80px 30px; }
     .about-container { flex-direction: column; gap: 40px; }
-    .services { padding: 80px 20px; }
-    .service-img { height: 400px; } /* Mobile par height thodi kam ki hai balance ke liye */
+    
+    .contact { padding: 60px 20px; }
+    .contact-form { padding: 25px; }
 }
 </style>
 </head>
 
 <body>
 
-<nav>
+<nav id="navbar">
     <div class="logo"><img src="logo.png" alt="Logo"></div>
     <ul id="menu">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#">Portfolio</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#hero" class="nav-link active-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()">
         <div></div><div></div><div></div>
@@ -461,26 +599,26 @@ nav ul li:hover::after{width:100%;}
 
 <section class="hero" id="hero">
     <div class="hero-right">
-        <img src="photono1.jpg" class="active">
+        <img src="photono7.webp" class="active">
         <div class="photo2">
-            <img src="photono2.jpg" class="bg" loading="lazy">
-            <img src="photono2.jpg" class="fg" loading="lazy">
+            <img src="photono2.webp" class="bg" loading="lazy">
+            <img src="photono2.webp" class="fg" loading="lazy">
         </div>
-        <img src="photono3.jpg" loading="lazy">
-        <img src="photono4.jpg" loading="lazy">
-        <img src="photono5.jpg" loading="lazy">
+        <img src="photono3.webp" loading="lazy">
+        <img src="photono4.webp" loading="lazy">
+        <img src="photono5.webp" loading="lazy">
         <div class="photo2">
-            <img src="photono6.jpg" class="bg" loading="lazy">
-            <img src="photono6.jpg" class="fg" loading="lazy">
+            <img src="photono6.webp" class="bg" loading="lazy">
+            <img src="photono6.webp" class="fg" loading="lazy">
         </div>
     </div>
 
     <div class="hero-left">
         <small>EVERY FRAME TELLS A STORY</small>
-        <h1>Sushant Rajput<br><span>Production</span></h1>
-        <p>Moments that move hearts. Marketing that moves brands.</p>
+        <h1>Crafting<br><span>Visual Stories</span></h1>
+        <p>Moments that move hearts. Professional photography & cinematic marketing that moves brands.</p>
         <div class="hero-buttons">
-            <a href="#" class="btn-primary">Explore My Work</a>
+            <a href="#" class="btn-primary">Explore Work</a>
             <a href="#" class="btn-outline">Let’s Talk</a>
         </div>
     </div>
@@ -518,118 +656,129 @@ nav ul li:hover::after{width:100%;}
         <div class="service-card">
             <div class="service-img"><img src="wedding.jpg" alt="Wedding"></div>
             <div class="service-content">
-                <i class="fa-solid fa-camera-retro"></i>
+                <div class="service-icon-badge"><i class="fa-solid fa-camera-retro"></i></div>
                 <h3>Wedding</h3>
-                <p>Capturing your day.</p>
+                <p>Capturing the magic of your special day with timeless cinematic frames and emotional storytelling.</p>
             </div>
         </div>
 
         <div class="service-card">
-            <div class="service-img"><img src="pre wedding.jpg" alt="Pre-Wedding"></div>
+            <div class="service-img prewedding-blur">
+                <img src="pre wedding.jpg" class="bg">
+                <img src="pre wedding.jpg" class="fg" alt="Pre-Wedding">
+            </div>
             <div class="service-content">
-                <i class="fa-solid fa-heart"></i>
+                <div class="service-icon-badge"><i class="fa-solid fa-heart"></i></div>
                 <h3>Pre-Wedding</h3>
-                <p>Romantic stories.</p>
+                <p>Romantic stories told through beautiful locations and raw emotions before you say "I Do".</p>
             </div>
         </div>
 
         <div class="service-card">
-            <div class="service-img"><img src="kids.jpg" alt="New Born"></div>
+            <div class="service-img"><img src="baby.jpg" alt="Kids"></div>
             <div class="service-content">
-                <i class="fa-solid fa-baby"></i>
+                <div class="service-icon-badge"><i class="fa-solid fa-baby"></i></div>
                 <h3>Kids</h3>
-                <p>Preserving innocence.</p>
+                <p>Preserving the pure innocence and playful moments of your little ones in creative ways.</p>
             </div>
         </div>
 
         <div class="service-card">
             <div class="service-img"><img src="family.jpg" alt="Family"></div>
             <div class="service-content">
-                <i class="fa-solid fa-people-group"></i>
+                <div class="service-icon-badge"><i class="fa-solid fa-people-group"></i></div>
                 <h3>Family</h3>
-                <p>Timeless portraits.</p>
+                <p>Timeless portraits that bring the whole family together in a single, perfect frame.</p>
             </div>
         </div>
 
         <div class="service-card">
-            <div class="service-img"><img src="portrait.jpg" alt="Consent"></div>
+            <div class="service-img"><img src="content_shoot.jpg" alt="Content Shoot"></div>
             <div class="service-content">
-                <i class="fa-solid fa-bolt"></i>
-                <h3>Consent</h3>
-                <p>Raw expressions.</p>
+                <div class="service-icon-badge"><i class="fa-solid fa-clapperboard"></i></div>
+                <h3>Content Shoot</h3>
+                <p>High-quality professional content creation for influencers and creators to level up their social media.</p>
             </div>
         </div>
 
         <div class="service-card">
-            <div class="service-img"><img src="marketing.jpg" alt="Marketing"></div>
+            <div class="service-img"><img src="marketing.jpg" alt="Digital Marketing"></div>
             <div class="service-content">
-                <i class="fa-solid fa-chart-line"></i>
-                <h3>Marketing</h3>
-                <p>Visual branding.</p>
+                <div class="service-icon-badge"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Digital Marketing</h3>
+                <p>Strategy-driven marketing to grow your online presence and reach the right audience effectively.</p>
             </div>
         </div>
     </div>
 </section>
 
+<section class="contact" id="contact">
+    <div class="contact-container">
+        <div class="contact-info">
+            <h2>Get us to <span>shoot you!</span></h2>
+            <p>Welcome to the first step in getting us on onboard. Fill this form and get one step closer to making the best decision of your life! Not kidding.</p>
+            <p>We would love to schedule a call and know more about your wedding once we have all the details as mentioned below.</p>
+        </div>
+        <div class="contact-form">
+            <form id="whatsappForm">
+                <div class="form-group">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="date" placeholder="Wedding/Event Date">
+                </div>
+                <div class="form-group">
+                    <textarea id="message" rows="5" placeholder="Tell us more about your event..."></textarea>
+                </div>
+                <button type="button" onclick="sendWhatsApp()" class="btn-submit">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
 <script>
+// Navbar Scroll
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Slider Logic
 const slides = document.querySelectorAll(".hero-right > img, .hero-right > .photo2");
 const dotsContainer = document.getElementById("dots");
 let index = 0;
 let interval;
 
-const fragment = document.createDocumentFragment();
 slides.forEach((_, i) => {
     const dot = document.createElement("span");
-    dot.addEventListener('click', () => {
-        stopAuto();
-        goToSlide(i);
-        startAuto();
-    });
-    fragment.appendChild(dot);
+    dot.onclick = () => { stopAuto(); goToSlide(i); startAuto(); };
+    dotsContainer.appendChild(dot);
 });
-dotsContainer.appendChild(fragment);
 const dots = dotsContainer.querySelectorAll("span");
 
 function showSlide(i) {
     slides.forEach((slide, idx) => {
-        if(idx === i) {
-            slide.classList.add("active");
-            dots[idx].classList.add("active");
-        } else {
-            slide.classList.remove("active");
-            dots[idx].classList.remove("active");
-        }
+        slide.classList.toggle("active", idx === i);
+        dots[idx].classList.toggle("active", idx === i);
     });
 }
 
-function nextSlide() {
-    index = (index + 1) % slides.length;
-    showSlide(index);
-}
-function prevSlide() {
-    index = (index - 1 + slides.length) % slides.length;
-    showSlide(index);
-}
-function goToSlide(i) {
-    index = i;
-    showSlide(index);
-}
+function nextSlide() { index = (index + 1) % slides.length; showSlide(index); }
+function prevSlide() { index = (index - 1 + slides.length) % slides.length; showSlide(index); }
+function goToSlide(i) { index = i; showSlide(index); }
 
-function startAuto() {
-    if(!interval) interval = setInterval(nextSlide, 5000); 
-}
-function stopAuto() {
-    clearInterval(interval);
-    interval = null;
-}
+function startAuto() { if(!interval) interval = setInterval(nextSlide, 5000); }
+function stopAuto() { clearInterval(interval); interval = null; }
 
 showSlide(index);
 startAuto();
 
-function toggleMenu() {
-    document.getElementById("menu").classList.toggle("show");
-}
+function toggleMenu() { document.getElementById("menu").classList.toggle("show"); }
 
+// Scroll Reveal
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -638,8 +787,29 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.1 });
+document.querySelectorAll('.about, .contact').forEach(el => observer.observe(el));
 
-document.querySelectorAll('.about').forEach(el => observer.observe(el));
+// FINAL WHATSAPP FUNCTION
+function sendWhatsApp() {
+    let phone = "918999767208"; 
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let date = document.getElementById("date").value;
+    let msg = document.getElementById("message").value;
+
+    if(name == "" || email == ""){
+        alert("Please fill Name and Email");
+        return;
+    }
+
+    let finalMsg = "📸 *New Photography Enquiry*\n\n" + 
+                   "👤 *Name:* " + name + "\n" +
+                   "📧 *Email:* " + email + "\n" +
+                   "📅 *Date:* " + date + "\n" +
+                   "📝 *Message:* " + msg;
+
+    window.location.href = "whatsapp://send?phone=" + phone + "&text=" + encodeURIComponent(finalMsg);
+}
 </script>
 
 </body>
