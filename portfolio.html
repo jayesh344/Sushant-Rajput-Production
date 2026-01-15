@@ -582,6 +582,45 @@ nav ul li a.active-link::after {
     transform: translateY(-3px);
 }
 
+/* ================= FOOTER ADDRESS SECTION ================= */
+.footer-address {
+    padding: 60px 80px;
+    background: #b5a491; 
+    color: #2e2e2e;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-col h4 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700;
+}
+
+.footer-col p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.footer-col .label {
+    font-weight: 700;
+}
+
+/* MOBILE RESPONSIVE FIX FOR FOOTER */
+@media(max-width: 768px) {
+    .footer-address { padding: 40px 25px; }
+    .footer-col { min-width: 100%; }
+}
+
 /* STEP 4: MOBILE PRO SETTINGS */
 @media(max-width: 992px) {
     nav { padding: 15px 40px; }
@@ -616,10 +655,43 @@ nav ul li a.active-link::after {
     .about { padding: 80px 30px; }
     .about-container { flex-direction: column; gap: 40px; }
     
+    .services { padding: 60px 20px; }
+    .service-img { height: 350px; } 
+    .service-content { padding: 0 25px 30px 25px; }
+    .service-card h3 { font-size: 22px; }
+    .service-card p { font-size: 14px; }
+
     .contact { padding: 60px 20px; }
     .contact-form { padding: 25px; }
     .form-row { flex-direction: column; gap: 20px; }
 }
+
+/* ================= NEW RESPONSIVE FIXES (AS REQUESTED) ================= */
+
+/* 1. Hero Fix for small height screens */
+@media(max-height: 600px) {
+    .hero { 
+        height: auto; 
+        min-height: 100vh; 
+        display: block;
+        padding-top: 100px;
+    }
+    .hero-right { position: relative; height: 300px; }
+    .hero-left { padding: 40px 30px; }
+}
+
+/* 2. Controls & Form Fix for small phones */
+@media(max-width: 480px) {
+    .controls button {
+        width: 42px;
+        height: 42px;
+        font-size: 14px;
+    }
+    .form-group textarea {
+        font-size: 13px;
+    }
+}
+
 </style>
 </head>
 
@@ -735,7 +807,7 @@ nav ul li a.active-link::after {
         </div>
 
         <div class="service-card">
-            <div class="service-img"><img src="content_shoot.jpg" alt="Content Shoot"></div>
+            <div class="service-img"><img src="concept.jpg" alt="Content Shoot"></div>
             <div class="service-content">
                 <div class="service-icon-badge"><i class="fa-solid fa-clapperboard"></i></div>
                 <h3>Content Shoot</h3>
@@ -843,6 +915,22 @@ nav ul li a.active-link::after {
         </div>
     </div>
 </section>
+
+<footer class="footer-address">
+    <div class="footer-col">
+       <h4>Head Office, Shirpur</h4>
+<p>Sushant Rajput Production,</p>
+<p>95B, Vyankatesh Nagar, Mandal Shivar,</p>
+<p>Shirpur - 425405, Dist. Dhule, Maharashtra</p>
+    </div>
+    
+    <div class="footer-col">
+        <p><span class="label">Email:</span> srphotography355@gmail.com</p>
+        <p><span class="label">Phone:</span> +91-8208534860</p>
+        <p><span class="label">Business Hours:</span> 11:00 am to 7:00 pm IST</p>
+        <p>(Mon - Sat)</p>
+    </div>
+</footer>
 
 <script>
 // Navbar Scroll
