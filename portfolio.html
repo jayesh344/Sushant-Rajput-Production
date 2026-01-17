@@ -391,7 +391,7 @@ nav ul li a.active-link::after {
     position: relative;
 }
 
-.service-img img {
+.service-img img, .service-img video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -449,7 +449,8 @@ nav ul li a.active-link::after {
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
 }
 
-.service-card:hover .service-img img { transform: scale(1.1); }
+.service-card:hover .service-img img,
+.service-card:hover .service-img video { transform: scale(1.1); }
 
 .prewedding-blur { position: relative; background: #000; }
 .prewedding-blur .bg {
@@ -816,7 +817,12 @@ nav ul li a.active-link::after {
         </div>
 
         <div class="service-card">
-            <div class="service-img"><img src="marketing.jpg" alt="Digital Marketing"></div>
+            <div class="service-img">
+                <video autoplay loop muted playsinline>
+                    <source src="digital_marketing.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
             <div class="service-content">
                 <div class="service-icon-badge"><i class="fa-solid fa-chart-line"></i></div>
                 <h3>Digital Marketing</h3>
