@@ -2,1029 +2,241 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Zoomin Photography | Sushant Rajput Production</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Stories | Stylish Wedding Photography</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
 body{
-    background:#0f1915;
-    color:#fff;
-    overflow-x: hidden;
+  font-family:'Inter',sans-serif;
+  color:#f1f1f1;
+  background: linear-gradient(to bottom, #0b1b2a, #1a3a5a 40%, #0d2a4d 80%);
+  background-attachment: fixed;
 }
 
-/* ================= NAVBAR ================= */
-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 25px 80px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* ===== HEADER ===== */
+.header{
+  padding:120px 20px 80px;
+  text-align:center;
+  position:relative;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), 
+              url('https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1650&q=80') center/cover no-repeat;
 }
 
-nav.scrolled {
-    padding: 15px 80px;
-    background: rgba(15, 25, 21, 0.85);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:3.6rem;
+  font-weight:600;
+  letter-spacing:2px;
+  background: linear-gradient(135deg,#ffd7b5,#f5a623);
+  -webkit-background-clip:text;
+  color:transparent;
+  text-shadow:0 12px 35px rgba(0,0,0,.6);
+  animation:fadeUp 1.5s ease forwards;
+}
+
+.header h1::after{
+  content:'';
+  display:block;
+  width:120px;
+  height:3px;
+  background:linear-gradient(to right, transparent,#f5a623,transparent);
+  margin:28px auto 0;
+}
+
+.header p{
+  margin-top:22px;
+  font-size:1.1rem;
+  color:#f0f0f0;
+  letter-spacing:.5px;
+}
+
+
+/* ===== TESTIMONIALS ===== */
+.wrapper{
+  max-width:1150px;
+  margin:auto;
+  padding:0 20px 140px;
+}
+
+.testimonial{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  margin-top:140px;
+  align-items:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1.2s ease;
+}
+
+.testimonial.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.testimonial .image img{
+  margin-top:-40px;
+}
+
+
+.testimonial.reverse .image{order:2}
+.testimonial.reverse .content{order:1}
+
+/* ===== IMAGE ===== */
+.image{
+  overflow:hidden;
+  border-radius:18px;
+  position:relative;
+  box-shadow: 0 0 40px 15px rgba(255,255,255,0.15);
+}
+
+.image::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.15), transparent 60%);
+  transition:.6s ease;
+  border-radius:18px;
+}
+
+.image img{
+  width:100%;
+  height:520px;
+  object-fit:cover;
+  transition:transform 1s ease;
+  border-radius:16px;
+}
+
+.image:hover img{transform:scale(1.08);}
+
+/* ===== CONTENT ===== */
+.content h2{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;
+  font-weight:500;
+  margin-bottom:22px;
+  background:linear-gradient(90deg,#ffd7b5,#f5a623);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* 🔥 ONLY CHANGE: feedback text background white */
+.content p{
+  font-family:'Playfair Display',serif;
+  font-size:1.12rem;
+  line-height:2;
+  color:#181717;          
+  background:#ffffff;    /* WHITE BACKGROUND */
+  padding:24px 26px;
+  border-radius:14px;
+  box-shadow:0 12px 25px rgba(0,0,0,.15);
+}
+
+/* AMP divider */
+  .amp-divider{
+    text-align:center;
+    margin:50px 0; /* reduced margin */
+    color:#c2a15f;
+    letter-spacing:6px;
+ }
+/* ===== ANIMATION ===== */
+@keyframes fadeUp{
+  0%{opacity:0; transform:translateY(30px);}
+  100%{opacity:1; transform:translateY(0);}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .testimonial{grid-template-columns:1fr; gap:45px;}
+  .image img{height:380px;}
+  .header h1{font-size:2.8rem;}
 }
-
-.logo img { 
-    height: 50px; 
-    filter: drop-shadow(0 0 8px rgba(124, 108, 240, 0.3));
-    transition: 0.4s;
-}
-nav.scrolled .logo img { height: 42px; }
-
-nav ul {
-    display: flex;
-    gap: 40px;
-    list-style: none;
-}
-
-nav ul li a { 
-    text-decoration: none; 
-    color: rgba(255,255,255,0.7);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    transition: 0.3s;
-    position: relative;
-    padding: 5px 0;
-}
-
-nav ul li a::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #7c6cf0, #a18cff);
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-nav ul li a:hover, 
-nav ul li a.active-link { 
-    color: #fff;
-    text-shadow: 0 0 15px rgba(124, 108, 240, 0.5);
-}
-
-nav ul li a:hover::after,
-nav ul li a.active-link::after {
-    width: 100%;
-}
-
-.hamburger {
-    display: none;
-    flex-direction: column;
-    gap: 6px;
-    cursor: pointer;
-}
-.hamburger div {
-    width: 28px;
-    height: 2px;
-    background: #fff;
-    transition: 0.4s;
-}
-
-/* ================= HERO SECTION ================= */
-.hero {
-    height: 100vh;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    align-items: flex-end;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to top, rgba(15,25,21,0.9) 0%, rgba(15,25,21,0.2) 50%, rgba(15,25,21,0.4) 100%);
-    z-index: 3;
-}
-
-.hero-right {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-}
-
-.hero-right img, .photo2 {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transform: scale(1.1);
-    transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 6s ease;
-}
-
-.hero-right .active, .photo2.active, .photo2.active img {
-    opacity: 1;
-    transform: scale(1);
-    z-index: 2;
-}
-
-.photo2 .bg { filter: blur(25px); transform: scale(1.3); }
-.photo2 .fg { object-fit: contain; }
-
-.hero-left {
-    position: relative;
-    z-index: 10;
-    padding: 0 80px 80px 80px; 
-    max-width: 900px;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: heroFadeIn 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards 0.5s;
-}
-
-@keyframes heroFadeIn {
-    to { opacity: 1; transform: translateY(0); }
-}
-
-.hero-left small {
-    display: block;
-    letter-spacing: 8px;
-    font-size: 12px;
-    margin-bottom: 15px;
-    color: #7c6cf0;
-    font-weight: 600;
-}
-
-.hero-left h1 {
-    font-size: 4.8rem;
-    line-height: 1;
-    font-weight: 700;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-}
-
-.hero-left h1 span { color: #7c6cf0; }
-
-.hero-left p {
-    max-width: 450px;
-    font-size: 16px;
-    line-height: 1.6;
-    opacity: 0.8;
-    margin-bottom: 40px;
-}
-
-.hero-buttons {
-    display: flex;
-    gap: 18px;
-    flex-wrap: wrap;
-}
-
-.hero-buttons a {
-    padding: 16px 42px;
-    border-radius: 4px;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.btn-primary { background: #7c6cf0; color: #fff; }
-.btn-outline { border: 1px solid rgba(255,255,255,0.6); color: #fff; }
-
-.controls {
-    position: absolute;
-    bottom: 80px;
-    right: 80px;
-    z-index: 20;
-    display: flex;
-    gap: 15px;
-}
-
-.controls button {
-    background: transparent;
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.3);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s;
-}
-.controls button:hover { background: #fff; color: #000; }
-
-.dots {
-    position: absolute;
-    bottom: 40px;
-    left: 80px;
-    display: flex;
-    gap: 10px;
-    z-index: 20;
-}
-.dots span {
-    width: 25px;
-    height: 3px;
-    background: rgba(255,255,255,0.3);
-    cursor: pointer;
-    transition: 0.4s;
-}
-.dots span.active { background: #7c6cf0; width: 50px; }
-
-/* ================= ABOUT SECTION ================= */
-.about {
-    padding: 120px 80px;
-    background: #ffffff; 
-    color: #1a1a1a;
-    position: relative;
-    overflow: hidden;
-}
-
-.about-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    gap: 80px;
-    align-items: center;
-}
-
-.about-text {
-    flex: 1.2;
-    opacity: 0;
-    transform: translate3d(-50px, 0, 0);
-    transition: all 0.8s ease-out;
-}
-
-.about-img {
-    flex: 1;
-    position: relative;
-    opacity: 0;
-    transform: translate3d(50px, 0, 0);
-    transition: all 0.8s ease-out;
-}
-
-.about.reveal .about-text,
-.about.reveal .about-img {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
-
-.about-text h2 {
-    font-size: 3rem;
-    line-height: 1.2;
-    margin-bottom: 25px;
-    font-weight: 700;
-    color: #0f1915;
-}
-
-.about-text h2 span { color: #7c6cf0; }
-
-.about-text p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.8;
-    margin-bottom: 35px;
-}
-
-.about-details {
-    list-style: none;
-    margin-bottom: 45px;
-}
-
-.about-details li {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 18px;
-    font-weight: 600;
-    font-size: 15px;
-    color: #333;
-}
-
-.about-details li::before {
-    content: "✔";
-    background: #7c6cf0;
-    color: white;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-}
-
-.btn-about {
-    display: inline-block;
-    padding: 15px 45px;
-    background: #0f1915;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: 0.3s;
-    border: 2px solid #0f1915;
-}
-
-.btn-about:hover {
-    background: transparent;
-    color: #0f1915;
-}
-
-.about-img img {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 30px 30px 0px #f4f4f4;
-}
-
-/* ================= SERVICES SECTION ================= */
-.services {
-    padding: 120px 60px;
-    background: #0f1915;
-}
-
-.services-header h2 {
-    font-size: 3rem;
-    margin-bottom: 60px;
-    text-align: center;
-}
-
-.services-header h2 span { color: #7c6cf0; }
-
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); 
-    gap: 40px;
-    max-width: 1200px; 
-    margin: 0 auto;
-}
-
-.service-card {
-    position: relative;
-    background: rgba(255, 255, 255, 0.02);
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    overflow: hidden;
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-    text-align: left;
-}
-
-.service-img {
-    width: 100%;
-    height: 550px; 
-    overflow: hidden;
-    position: relative;
-}
-
-.service-img img, .service-img video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
-}
-
-.service-img::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 60%;
-    background: linear-gradient(to top, #0f1915 10%, transparent);
-}
-
-.service-content {
-    padding: 0 40px 40px 40px;
-    margin-top: -80px; 
-    position: relative;
-    z-index: 5;
-}
-
-.service-icon-badge {
-    width: 60px;
-    height: 60px;
-    background: #7c6cf0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 18px;
-    margin-bottom: 20px;
-    box-shadow: 0 10px 20px rgba(124, 108, 240, 0.3);
-    transition: 0.4s;
-}
-
-.service-icon-badge i { font-size: 24px; color: #fff; }
-
-.service-card h3 {
-    font-size: 28px;
-    margin-bottom: 12px;
-    color: #fff;
-    font-weight: 700;
-}
-
-.service-card p {
-    font-size: 16px;
-    color: rgba(255, 255, 255, 0.7);
-    line-height: 1.6;
-}
-
-.service-card:hover {
-    transform: translateY(-15px);
-    border-color: rgba(124, 108, 240, 0.4);
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-}
-
-.service-card:hover .service-img img,
-.service-card:hover .service-img video { transform: scale(1.1); }
-
-.prewedding-blur { position: relative; background: #000; }
-.prewedding-blur .bg {
-    position: absolute;
-    inset: 0; width: 100%; height: 100%;
-    object-fit: cover; filter: blur(20px);
-    transform: scale(1.2); opacity: 0.6;
-}
-.prewedding-blur .fg { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; }
-
-/* ================= CONTACT SECTION ================= */
-.contact {
-    padding: 120px 80px;
-    background: #0f1915;
-    position: relative;
-}
-
-.contact-container {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 60px;
-}
-
-.contact-info {
-    flex: 1;
-    min-width: 300px;
-}
-
-.contact-info h2 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-.contact-info h2 span { color: #7c6cf0; }
-
-.contact-info p {
-    font-size: 17px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 30px;
-}
-
-.contact-form {
-    flex: 1.5;
-    min-width: 300px;
-    background: rgba(255,255,255,0.03);
-    padding: 40px;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.9);
-}
-
-.form-group label span {
-    color: #ff4d4d;
-    margin-left: 4px;
-}
-
-.form-row {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.form-row .form-group {
-    flex: 1;
-    margin-bottom: 0;
-}
-
-.form-group input, 
-.form-group textarea, 
-.form-group select {
-    width: 100%;
-    padding: 15px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #fff;
-    border-radius: 8px;
-    outline: none;
-    transition: 0.3s;
-}
-
-.form-group select option {
-    background: #0f1915;
-    color: #fff;
-}
-
-.form-group input:focus, 
-.form-group textarea:focus,
-.form-group select:focus {
-    border-color: #7c6cf0;
-    background: rgba(255,255,255,0.08);
-}
-
-.form-group small {
-    display: block;
-    margin-top: 5px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
-}
-
-.btn-submit {
-    width: 100%;
-    padding: 16px;
-    background: #7c6cf0;
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 10px;
-}
-
-.btn-submit:hover {
-    background: #6a59e0;
-    transform: translateY(-3px);
-}
-
-/* ================= FOOTER ADDRESS SECTION ================= */
-.footer-address {
-    padding: 60px 80px;
-    background: #b5a491; 
-    color: #2e2e2e;
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-}
-
-.footer-col {
-    flex: 1;
-    min-width: 250px;
-}
-
-.footer-col h4 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    font-family: 'Playfair Display', serif; 
-    font-weight: 700;
-}
-
-.footer-col p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 5px;
-}
-
-.footer-col .label {
-    font-weight: 700;
-}
-
-/* MOBILE RESPONSIVE FIX FOR FOOTER */
-@media(max-width: 768px) {
-    .footer-address { padding: 40px 25px; }
-    .footer-col { min-width: 100%; }
-}
-
-/* STEP 4: MOBILE PRO SETTINGS */
-@media(max-width: 992px) {
-    nav { padding: 15px 40px; }
-    .services-grid { grid-template-columns: 1fr; }
-    .contact { padding: 80px 40px; }
-}
-
-@media(max-width: 768px) {
-    nav { padding: 15px 25px; }
-    nav ul {
-        position: fixed;
-        top: 0; right: -100%;
-        height: 100vh; width: 75%;
-        background: #0f1915;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        transition: 0.5s;
-        z-index: 99;
-    }
-    nav ul.show { right: 0; }
-    .hamburger { display: flex; z-index: 1001; }
-    
-    .hero-left { padding: 0 30px 100px 30px; text-align: left; }
-    .hero-left h1 { font-size: 2.8rem; }
-    .hero-buttons { flex-direction: column; gap: 12px; }
-    .hero-buttons a { width: 100%; text-align: center; }
-    
-    .controls { right: 20px; bottom: 30px; }
-    .dots { left: 30px; bottom: 40px; }
-    
-    .about { padding: 80px 30px; }
-    .about-container { flex-direction: column; gap: 40px; }
-    
-    .services { padding: 60px 20px; }
-    .service-img { height: 350px; } 
-    .service-content { padding: 0 25px 30px 25px; }
-    .service-card h3 { font-size: 22px; }
-    .service-card p { font-size: 14px; }
-
-    .contact { padding: 60px 20px; }
-    .contact-form { padding: 25px; }
-    .form-row { flex-direction: column; gap: 20px; }
-}
-
-/* ================= NEW RESPONSIVE FIXES (AS REQUESTED) ================= */
-
-/* 1. Hero Fix for small height screens */
-@media(max-height: 600px) {
-    .hero { 
-        height: auto; 
-        min-height: 100vh; 
-        display: block;
-        padding-top: 100px;
-    }
-    .hero-right { position: relative; height: 300px; }
-    .hero-left { padding: 40px 30px; }
-}
-
-/* 2. Controls & Form Fix for small phones */
-@media(max-width: 480px) {
-    .controls button {
-        width: 42px;
-        height: 42px;
-        font-size: 14px;
-    }
-    .form-group textarea {
-        font-size: 13px;
-    }
-}
-
 </style>
 </head>
 
 <body>
 
-<nav id="navbar">
-    <div class="logo"><img src="logo.png" alt="Logo"></div>
-    <ul id="menu">
-        <li><a href="#hero" class="nav-link active-link">Home</a></li>
-        <li><a href="about.html" class="nav-link">About</a></li>
-        <li><a href="#services" class="nav-link">Services</a></li>
-        <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-    <div class="hamburger" onclick="toggleMenu()">
-        <div></div><div></div><div></div>
-    </div>
-</nav>
-
-<section class="hero" id="hero">
-    <div class="hero-right">
-        <img src="photono7.webp" class="active">
-        <div class="photo2">
-            <img src="photono2.webp" class="bg" loading="lazy">
-            <img src="photono2.webp" class="fg" loading="lazy">
-        </div>
-        <img src="photono3.webp" loading="lazy">
-        <img src="photono4.webp" loading="lazy">
-        <img src="photono5.webp" loading="lazy">
-        <div class="photo2">
-            <img src="photono6.webp" class="bg" loading="lazy">
-            <img src="photono6.webp" class="fg" loading="lazy">
-        </div>
-    </div>
-
-    <div class="hero-left">
-        <small>EVERY FRAME TELLS A STORY</small>
-        <h1>Crafting<br><span>Visual Stories</span></h1>
-        <p>Moments that move hearts. Professional photography & cinematic marketing that moves brands.</p>
-        <div class="hero-buttons">
-            <a href="#" class="btn-primary">Explore Work</a>
-            <a href="#" class="btn-outline">Let’s Talk</a>
-        </div>
-    </div>
-
-    <div class="controls">
-        <button onclick="prevSlide()">❮</button>
-        <button onclick="nextSlide()">❯</button>
-    </div>
-    <div class="dots" id="dots"></div>
+<section class="header">
+  <h1>Client Stories</h1>
+  <p>Stylish experiences from couples we had the honor to work with</p>
 </section>
 
-<section class="about" id="about">
-    <div class="about-container">
-        <div class="about-text">
-            <h2>Capturing the <span>Soul of the Moment</span></h2>
-            <p>I am Sushant Rajput, a professional photographer based in India. Photography for me is not just about clicking pictures; it's about telling a story.</p>
-            <ul class="about-details">
-                <li>8+ Years Professional Experience</li>
-                <li>Phone: +91 82085 34860</li>
-                <li>E-mail: srphotography355@gmail.com</li>
-            </ul>
-            <a href="#" class="btn-about">Discover More</a>
-        </div>
-        <div class="about-img">
-            <img src="about.jpg" alt="Sushant Rajput" loading="lazy">
-        </div>
+<section class="wrapper">
+
+  <div class="testimonial fade">
+    <div class="image">
+      <img src="feedback1.jpg">
     </div>
+    <div class="content">
+      <h2>Lavanya & Jayesh</h2>
+      <p>
+        ❝Working with Sushant Rajput Production was truly an amazing experience from start to finish. Their professionalism, creativity, and dedication made the entire process smooth and enjoyable. The team made sure we felt comfortable at every moment, guiding us with patience and expertise. From the pre-shoot planning to the final photos and videos, every detail was handled flawlessly. When we saw the final outputs, we were overwhelmed with emotion — the memories of our special day were perfectly captured. We highly recommend Sushant Rajput Production to anyone looking for exceptional photography that tells a beautiful story.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
+  <div class="testimonial reverse fade">
+    <div class="image">
+      <img src="feedback2.jpg">
+    </div>
+    <div class="content">
+      <h2>Anand & Bhagyashri</h2>
+      <p>
+        ❝We knew from the beginning that Sushant Rajput Production was the right choice, but their work exceeded all our expectations. The team created such a relaxed and friendly environment that we felt completely at ease in front of the camera. Every smile, every candid moment, and every emotion of our wedding day was captured perfectly. Beyond just photography, they shared valuable ideas and suggestions which made our day even more memorable. By the end of the shoot, we felt like we had made friends for life. Their dedication, creativity, and passion truly set them apart.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
+   <div class="testimonial fade">
+    <div class="image">
+      <img src="feedback3.jpg">
+    </div>
+    <div class="content">
+      <h2>Chinmay & Monali</h2>
+      <p>
+        ❝The Sushant Rajput Production team is highly professional, organized, and extremely talented. From the first meeting to the delivery of the final photos and videos, they handled everything with precision and care. They don’t just click pictures — they capture the essence, emotions, and mood of the day. Their creativity and attention to detail transformed our wedding into a visual story we can cherish forever. We are grateful for their incredible work and recommend them wholeheartedly to anyone seeking top-notch wedding photography.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
+  <div class="testimonial reverse fade">
+    <div class="image">
+      <img src="feedback4.jpg">
+    </div>
+    <div class="content">
+      <h2>Prem & Devyani</h2>
+      <p>
+        ❝Choosing Sushant Rajput Production was one of the best decisions we made for our wedding. The team is warm, friendly, and highly skilled at making everyone feel comfortable. They went beyond just taking pictures — they guided us through poses, lighting, and even small details that made our day perfect. The passion they bring to their work is visible in every photo and video, and their professionalism ensured that everything went seamlessly. Our wedding memories have been captured beautifully, and we couldn’t be happier with the results. We strongly recommend them to anyone looking for a creative and reliable photography team.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
+  <div class="testimonial fade">
+    <div class="image">
+      <img src="feedback5.jpg">
+    </div>
+    <div class="content">
+      <h2>Chaitali & Rohit</h2>
+      <p>
+        ❝Sushant Rajput Production is an exceptional team of professionals who are both passionate and highly skilled. From the pre-wedding shoots to the final wedding day, they captured every precious moment with care and creativity. They understand how to use light, location, and angles to create visually stunning images, and they never compromise on quality. Their team is punctual, friendly, and extremely dedicated to ensuring the client’s happiness. Looking back at our photos and videos, we are filled with joy — every emotion, every laugh, every tear has been beautifully preserved. We wholeheartedly recommend Sushant Rajput Production for anyone who wants their special day to be captured in a timeless and memorable way.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
 </section>
-
-<section class="services" id="services">
-    <div class="services-header">
-        <h2>Our <span>Services</span></h2>
-    </div>
-    <div class="services-grid">
-        <div class="service-card">
-            <div class="service-img"><img src="wedding.jpg" alt="Wedding"></div>
-            <div class="service-content">
-                <div class="service-icon-badge"><i class="fa-solid fa-camera-retro"></i></div>
-                <h3>Wedding</h3>
-                <p>Capturing the magic of your special day with timeless cinematic frames and emotional storytelling.</p>
-            </div>
-        </div>
-
-        <div class="service-card">
-            <div class="service-img prewedding-blur">
-                <img src="pre wedding.jpg" class="bg">
-                <img src="pre wedding.jpg" class="fg" alt="Pre-Wedding">
-            </div>
-            <div class="service-content">
-                <div class="service-icon-badge"><i class="fa-solid fa-heart"></i></div>
-                <h3>Pre-Wedding</h3>
-                <p>Romantic stories told through beautiful locations and raw emotions before you say "I Do".</p>
-            </div>
-        </div>
-
-        <div class="service-card">
-            <div class="service-img"><img src="baby.jpg" alt="Kids"></div>
-            <div class="service-content">
-                <div class="service-icon-badge"><i class="fa-solid fa-baby"></i></div>
-                <h3>Kids</h3>
-                <p>Preserving the pure innocence and playful moments of your little ones in creative ways.</p>
-            </div>
-        </div>
-
-        <div class="service-card">
-            <div class="service-img"><img src="family.jpg" alt="Family"></div>
-            <div class="service-content">
-                <div class="service-icon-badge"><i class="fa-solid fa-people-group"></i></div>
-                <h3>Family</h3>
-                <p>Timeless portraits that bring the whole family together in a single, perfect frame.</p>
-            </div>
-        </div>
-
-        <div class="service-card">
-            <div class="service-img"><img src="concept.jpg" alt="Content Shoot"></div>
-            <div class="service-content">
-                <div class="service-icon-badge"><i class="fa-solid fa-clapperboard"></i></div>
-                <h3>Content Shoot</h3>
-                <p>High-quality professional content creation for influencers and creators to level up their social media.</p>
-            </div>
-        </div>
-
-        <div class="service-card">
-            <div class="service-img">
-                <video autoplay loop muted playsinline>
-                    <source src="digital_marketing.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="service-content">
-                <div class="service-icon-badge"><i class="fa-solid fa-chart-line"></i></div>
-                <h3>Digital Marketing</h3>
-                <p>Strategy-driven marketing to grow your online presence and reach the right audience effectively.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section class="contact" id="contact">
-    <div class="contact-container">
-        <div class="contact-info">
-            <h2>Get us to <span>shoot you!</span></h2>
-            <p>Welcome to the first step in getting us on onboard. Fill this form and get one step closer to making the best decision of your life! Not kidding.</p>
-            <p>We would love to schedule a call and know more about your wedding once we have all the details as mentioned below.</p>
-        </div>
-        <div class="contact-form">
-            <form id="whatsappForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>First Name<span>*</span></label>
-                        <input type="text" id="fname" placeholder="First Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" id="lname" placeholder="Last Name">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Email<span>*</span></label>
-                        <input type="email" id="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone<span>*</span></label>
-                        <input type="tel" id="phone_num" placeholder="Phone Number" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Date of the Event<span>*</span></label>
-                        <input type="date" id="event_date" required>
-                        <small>dd-mm-yyyy</small>
-                    </div>
-                    <div class="form-group">
-                        <label>Event Type<span>*</span></label>
-                        <select id="event_type" required>
-                            <option value="" disabled selected>Select an option</option>
-                            <option value="Wedding">Wedding</option>
-                            <option value="Pre-Wedding">Pre-Wedding</option>
-                            <option value="Kids Shoot">Kids Shoot</option>
-                            <option value="Family Portrait">Family Portrait</option>
-                            <option value="Content Shoot">Content Shoot</option>
-                            <option value="Digital Marketing">Digital Marketing</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Tell us more about your wedding<span>*</span></label>
-                    <textarea id="wedding_details" rows="3" placeholder="All the dates, event flows, venues and any other specific details" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>What style of wedding it is?<span>*</span></label>
-                    <input type="text" id="wedding_style" placeholder="e.g. Traditional, Destination, Minimalist" required>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Venue City<span>*</span></label>
-                        <input type="text" id="venue_city" placeholder="City Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Guest Count<span>*</span></label>
-                        <input type="number" id="guest_count" placeholder="Approx number" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>How did you find us?<span>*</span></label>
-                    <select id="source" required>
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="Instagram">Instagram</option>
-                        <option value="Facebook">Facebook</option>
-                        <option value="Google">Google</option>
-                        <option value="Friend/Relative">Friend/Relative</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <button type="button" onclick="sendWhatsApp()" class="btn-submit">Send Message</button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<footer class="footer-address">
-    <div class="footer-col">
-       <h4>Head Office, Shirpur</h4>
-<p>Sushant Rajput Production,</p>
-<p>95B, Vyankatesh Nagar, Mandal Shivar,</p>
-<p>Shirpur - 425405, Dist. Dhule, Maharashtra</p>
-    </div>
-    
-    <div class="footer-col">
-        <p><span class="label">Email:</span> srphotography355@gmail.com</p>
-        <p><span class="label">Phone:</span> +91-8208534860</p>
-        <p><span class="label">Business Hours:</span> 11:00 am to 7:00 pm IST</p>
-        <p>(Mon - Sat)</p>
-    </div>
-</footer>
 
 <script>
-// Navbar Scroll
-window.addEventListener('scroll', () => {
-    const navbar = document.getElementById('navbar');
-    navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
-
-// Slider Logic
-const slides = document.querySelectorAll(".hero-right > img, .hero-right > .photo2");
-const dotsContainer = document.getElementById("dots");
-let index = 0;
-let interval;
-
-slides.forEach((_, i) => {
-    const dot = document.createElement("span");
-    dot.onclick = () => { stopAuto(); goToSlide(i); startAuto(); };
-    dotsContainer.appendChild(dot);
-});
-const dots = dotsContainer.querySelectorAll("span");
-
-function showSlide(i) {
-    slides.forEach((slide, idx) => {
-        slide.classList.toggle("active", idx === i);
-        dots[idx].classList.toggle("active", idx === i);
-    });
-}
-
-function nextSlide() { index = (index + 1) % slides.length; showSlide(index); }
-function prevSlide() { index = (index - 1 + slides.length) % slides.length; showSlide(index); }
-function goToSlide(i) { index = i; showSlide(index); }
-
-function startAuto() { if(!interval) interval = setInterval(nextSlide, 5000); }
-function stopAuto() { clearInterval(interval); interval = null; }
-
-showSlide(index);
-startAuto();
-
-function toggleMenu() { document.getElementById("menu").classList.toggle("show"); }
-
-// Scroll Reveal
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('reveal');
-            observer.unobserve(entry.target);
-        }
-    });
-}, { threshold: 0.1 });
-document.querySelectorAll('.about, .contact').forEach(el => observer.observe(el));
-
-// UPDATED WHATSAPP FUNCTION
-function sendWhatsApp() {
-    let phone = "918999767208"; 
-    
-    // Get values
-    let fname = document.getElementById("fname").value;
-    let lname = document.getElementById("lname").value;
-    let email = document.getElementById("email").value;
-    let pnum = document.getElementById("phone_num").value;
-    let edate = document.getElementById("event_date").value;
-    let etype = document.getElementById("event_type").value;
-    let wdetails = document.getElementById("wedding_details").value;
-    let wstyle = document.getElementById("wedding_style").value;
-    let vcity = document.getElementById("venue_city").value;
-    let gcount = document.getElementById("guest_count").value;
-    let source = document.getElementById("source").value;
-
-    // Validation
-    if(!fname || !email || !pnum || !edate || !etype || !wdetails || !wstyle || !vcity || !gcount || !source){
-        alert("Please fill all required fields marked with *");
-        return;
-    }
-
-    let finalMsg = "📸 *New Photography Enquiry*\n\n" + 
-                   "*Name:* " + fname + " " + lname + "\n" +
-                   "*Email:* " + email + "\n" +
-                   "*Phone:* " + pnum + "\n" +
-                   "*Event Date:* " + edate + "\n" +
-                   "*Event Type:* " + etype + "\n" +
-                   "*Details:* " + wdetails + "\n" +
-                   "*Wedding Style:* " + wstyle + "\n" +
-                   "*Venue City:* " + vcity + "\n" +
-                   "*Guest Count:* " + gcount + "\n" +
-                   "*Found us via:* " + source;
-
-    window.location.href = "whatsapp://send?phone=" + phone + "&text=" + encodeURIComponent(finalMsg);
-}
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>e.isIntersecting&&e.target.classList.add('show'))
+},{threshold:.25});
+document.querySelectorAll('.testimonial').forEach(t=>observer.observe(t));
 </script>
 
 </body>
