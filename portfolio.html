@@ -461,126 +461,112 @@ nav ul li a.active-link::after {
 }
 .prewedding-blur .fg { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; }
 
-/* ================= CONTACT SECTION ================= */
-.contact {
+/* ================= NEW: WHY CHOOSE US & PROCESS ================= */
+.why-choose {
     padding: 120px 80px;
     background: #0f1915;
-    position: relative;
+    text-align: center;
 }
 
-.contact-container {
-    max-width: 1100px;
+.why-choose h2 {
+    font-size: 3rem;
+    margin-bottom: 60px;
+}
+
+.why-choose h2 span { color: #7c6cf0; }
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
     margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 60px;
 }
 
-.contact-info {
-    flex: 1;
-    min-width: 300px;
-}
-
-.contact-info h2 {
-    font-size: 2.8rem;
-    margin-bottom: 20px;
-    font-weight: 700;
-}
-
-.contact-info h2 span { color: #7c6cf0; }
-
-.contact-info p {
-    font-size: 17px;
-    line-height: 1.8;
-    color: rgba(255,255,255,0.7);
-    margin-bottom: 30px;
-}
-
-.contact-form {
-    flex: 1.5;
-    min-width: 300px;
+.why-card {
     background: rgba(255,255,255,0.03);
     padding: 40px;
     border-radius: 20px;
     border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.4s;
 }
 
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 500;
-    color: rgba(255,255,255,0.9);
-}
-
-.form-group label span {
-    color: #ff4d4d;
-    margin-left: 4px;
-}
-
-.form-row {
-    display: flex;
-    gap: 15px;
-    margin-bottom: 20px;
-}
-
-.form-row .form-group {
-    flex: 1;
-    margin-bottom: 0;
-}
-
-.form-group input, 
-.form-group textarea, 
-.form-group select {
-    width: 100%;
-    padding: 15px;
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #fff;
-    border-radius: 8px;
-    outline: none;
-    transition: 0.3s;
-}
-
-.form-group select option {
-    background: #0f1915;
-    color: #fff;
-}
-
-.form-group input:focus, 
-.form-group textarea:focus,
-.form-group select:focus {
+.why-card:hover {
     border-color: #7c6cf0;
-    background: rgba(255,255,255,0.08);
+    transform: translateY(-10px);
 }
 
-.form-group small {
-    display: block;
-    margin-top: 5px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.5);
+.why-card i {
+    font-size: 40px;
+    color: #7c6cf0;
+    margin-bottom: 20px;
 }
 
-.btn-submit {
-    width: 100%;
-    padding: 16px;
+.why-card h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.why-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+}
+
+/* Process Styles */
+.our-process {
+    padding: 100px 80px;
+    background: #fff;
+    color: #0f1915;
+}
+
+.process-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.process-header h2 { font-size: 3rem; }
+.process-header h2 span { color: #7c6cf0; }
+
+.process-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.process-step {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    position: relative;
+}
+
+.step-num {
+    width: 60px;
+    height: 60px;
     background: #7c6cf0;
     color: #fff;
-    border: none;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
-    margin-top: 10px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 auto 20px;
 }
 
-.btn-submit:hover {
-    background: #6a59e0;
-    transform: translateY(-3px);
+.process-step h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.process-step p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
 }
 
 /* ================= FOOTER ADDRESS SECTION ================= */
@@ -620,13 +606,14 @@ nav ul li a.active-link::after {
 @media(max-width: 768px) {
     .footer-address { padding: 40px 25px; }
     .footer-col { min-width: 100%; }
+    .why-choose, .our-process { padding: 60px 20px; }
+    .why-choose h2, .process-header h2 { font-size: 2.2rem; }
 }
 
 /* STEP 4: MOBILE PRO SETTINGS */
 @media(max-width: 992px) {
     nav { padding: 15px 40px; }
     .services-grid { grid-template-columns: 1fr; }
-    .contact { padding: 80px 40px; }
 }
 
 @media(max-width: 768px) {
@@ -661,36 +648,6 @@ nav ul li a.active-link::after {
     .service-content { padding: 0 25px 30px 25px; }
     .service-card h3 { font-size: 22px; }
     .service-card p { font-size: 14px; }
-
-    .contact { padding: 60px 20px; }
-    .contact-form { padding: 25px; }
-    .form-row { flex-direction: column; gap: 20px; }
-}
-
-/* ================= NEW RESPONSIVE FIXES (AS REQUESTED) ================= */
-
-/* 1. Hero Fix for small height screens */
-@media(max-height: 600px) {
-    .hero { 
-        height: auto; 
-        min-height: 100vh; 
-        display: block;
-        padding-top: 100px;
-    }
-    .hero-right { position: relative; height: 300px; }
-    .hero-left { padding: 40px 30px; }
-}
-
-/* 2. Controls & Form Fix for small phones */
-@media(max-width: 480px) {
-    .controls button {
-        width: 42px;
-        height: 42px;
-        font-size: 14px;
-    }
-    .form-group textarea {
-        font-size: 13px;
-    }
 }
 
 </style>
@@ -705,7 +662,7 @@ nav ul li a.active-link::after {
         <li><a href="about.html" class="nav-link">About</a></li>
         <li><a href="#Blog" class="nav-link">Blog</a></li>
         <li><a href="#Films" class="nav-link">Films</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#Contact" class="nav-link">Contact</a></li>
         <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
     </ul>
     <div class="hamburger" onclick="toggleMenu()">
@@ -735,7 +692,7 @@ nav ul li a.active-link::after {
         <p>Moments that move hearts. Professional photography & cinematic marketing that moves brands.</p>
         <div class="hero-buttons">
             <a href="#" class="btn-primary">Explore Work</a>
-            <a href="#" class="btn-outline">Let’s Talk</a>
+            <a href="https://wa.me/918208534860" class="btn-outline">Let’s Talk</a>
         </div>
     </div>
 
@@ -744,6 +701,60 @@ nav ul li a.active-link::after {
         <button onclick="nextSlide()">❯</button>
     </div>
     <div class="dots" id="dots"></div>
+</section>
+
+<section class="why-choose">
+    <h2>Why <span>Choose Us</span></h2>
+    <div class="why-grid">
+        <div class="why-card">
+            <i class="fa-solid fa-clapperboard"></i>
+            <h3>Cinematic Storytelling</h3>
+            <p>We don't just click pictures; we weave your emotions into a cinematic visual story that lasts forever.</p>
+        </div>
+        <div class="why-card">
+            <i class="fa-solid fa-camera-retro"></i>
+            <h3>No Fake Poses</h3>
+            <p>We believe in raw, candid moments. No awkward posing—just you being yourself while we capture the magic.</p>
+        </div>
+        <div class="why-card">
+            <i class="fa-solid fa-gem"></i>
+            <h3>Premium Delivery</h3>
+            <p>High-end color grading and professional post-production to ensure your photos look like a million bucks.</p>
+        </div>
+        <div class="why-card">
+            <i class="fa-solid fa-crown"></i>
+            <h3>Limited Bookings</h3>
+            <p>We accept limited shoots to ensure that every project gets our 100% creative focus and luxury treatment.</p>
+        </div>
+    </div>
+</section>
+
+<section class="our-process">
+    <div class="process-header">
+        <h2>Our <span>Process</span></h2>
+    </div>
+    <div class="process-container">
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <h4>Understand Your Story</h4>
+            <p>We start with a detailed consultation to understand your vision, style, and event flow.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <h4>Planning & Concept</h4>
+            <p>From location scouting to lighting setup, we plan every detail to ensure a smooth shoot day.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <h4>The Shoot Day</h4>
+            <p>Our professional crew handles everything while you enjoy your moments with zero stress.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <h4>Cinematic Delivery</h4>
+            <p>Meticulous editing and cinematic color grading to deliver your memories in premium quality.</p>
+        </div>
+    </div>
 </section>
 
 <section class="about" id="about">
@@ -833,96 +844,6 @@ nav ul li a.active-link::after {
     </div>
 </section>
 
-<section class="contact" id="contact">
-    <div class="contact-container">
-        <div class="contact-info">
-            <h2>Get us to <span>shoot you!</span></h2>
-            <p>Welcome to the first step in getting us on onboard. Fill this form and get one step closer to making the best decision of your life! Not kidding.</p>
-            <p>We would love to schedule a call and know more about your wedding once we have all the details as mentioned below.</p>
-        </div>
-        <div class="contact-form">
-            <form id="whatsappForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>First Name<span>*</span></label>
-                        <input type="text" id="fname" placeholder="First Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Last Name</label>
-                        <input type="text" id="lname" placeholder="Last Name">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Email<span>*</span></label>
-                        <input type="email" id="email" placeholder="Email Address" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Phone<span>*</span></label>
-                        <input type="tel" id="phone_num" placeholder="Phone Number" required>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Date of the Event<span>*</span></label>
-                        <input type="date" id="event_date" required>
-                        <small>dd-mm-yyyy</small>
-                    </div>
-                    <div class="form-group">
-                        <label>Event Type<span>*</span></label>
-                        <select id="event_type" required>
-                            <option value="" disabled selected>Select an option</option>
-                            <option value="Wedding">Wedding</option>
-                            <option value="Pre-Wedding">Pre-Wedding</option>
-                            <option value="Kids Shoot">Kids Shoot</option>
-                            <option value="Family Portrait">Family Portrait</option>
-                            <option value="Content Shoot">Content Shoot</option>
-                            <option value="Digital Marketing">Digital Marketing</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>Tell us more about your wedding<span>*</span></label>
-                    <textarea id="wedding_details" rows="3" placeholder="All the dates, event flows, venues and any other specific details" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label>What style of wedding it is?<span>*</span></label>
-                    <input type="text" id="wedding_style" placeholder="e.g. Traditional, Destination, Minimalist" required>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Venue City<span>*</span></label>
-                        <input type="text" id="venue_city" placeholder="City Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Guest Count<span>*</span></label>
-                        <input type="number" id="guest_count" placeholder="Approx number" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label>How did you find us?<span>*</span></label>
-                    <select id="source" required>
-                        <option value="" disabled selected>Select an option</option>
-                        <option value="Instagram">Instagram</option>
-                        <option value="Facebook">Facebook</option>
-                        <option value="Google">Google</option>
-                        <option value="Friend/Relative">Friend/Relative</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-
-                <button type="button" onclick="sendWhatsApp()" class="btn-submit">Send Message</button>
-            </form>
-        </div>
-    </div>
-</section>
-
 <footer class="footer-address">
     <div class="footer-col">
        <h4>Head Office, Shirpur</h4>
@@ -987,45 +908,7 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, { threshold: 0.1 });
-document.querySelectorAll('.about, .contact').forEach(el => observer.observe(el));
-
-// UPDATED WHATSAPP FUNCTION
-function sendWhatsApp() {
-    let phone = "918999767208"; 
-    
-    // Get values
-    let fname = document.getElementById("fname").value;
-    let lname = document.getElementById("lname").value;
-    let email = document.getElementById("email").value;
-    let pnum = document.getElementById("phone_num").value;
-    let edate = document.getElementById("event_date").value;
-    let etype = document.getElementById("event_type").value;
-    let wdetails = document.getElementById("wedding_details").value;
-    let wstyle = document.getElementById("wedding_style").value;
-    let vcity = document.getElementById("venue_city").value;
-    let gcount = document.getElementById("guest_count").value;
-    let source = document.getElementById("source").value;
-
-    // Validation
-    if(!fname || !email || !pnum || !edate || !etype || !wdetails || !wstyle || !vcity || !gcount || !source){
-        alert("Please fill all required fields marked with *");
-        return;
-    }
-
-    let finalMsg = "📸 *New Photography Enquiry*\n\n" + 
-                   "*Name:* " + fname + " " + lname + "\n" +
-                   "*Email:* " + email + "\n" +
-                   "*Phone:* " + pnum + "\n" +
-                   "*Event Date:* " + edate + "\n" +
-                   "*Event Type:* " + etype + "\n" +
-                   "*Details:* " + wdetails + "\n" +
-                   "*Wedding Style:* " + wstyle + "\n" +
-                   "*Venue City:* " + vcity + "\n" +
-                   "*Guest Count:* " + gcount + "\n" +
-                   "*Found us via:* " + source;
-
-    window.location.href = "whatsapp://send?phone=" + phone + "&text=" + encodeURIComponent(finalMsg);
-}
+document.querySelectorAll('.about, .why-choose, .our-process').forEach(el => observer.observe(el));
 </script>
 
 </body>
