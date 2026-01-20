@@ -14,6 +14,7 @@ body{
   color:#f1f1f1;
   background: linear-gradient(to bottom, #0b1b2a, #1a3a5a 40%, #0d2a4d 80%);
   background-attachment: fixed;
+  overflow-x: hidden; /* Prevent horizontal scroll on mobile */
 }
 
 /* ===== HEADER ===== */
@@ -76,10 +77,6 @@ body{
   opacity:1;
   transform:translateY(0);
 }
-.testimonial .image img{
-  margin-top:-40px;
-}
-
 
 .testimonial.reverse .image{order:2}
 .testimonial.reverse .content{order:1}
@@ -90,6 +87,7 @@ body{
   border-radius:18px;
   position:relative;
   box-shadow: 0 0 40px 15px rgba(255,255,255,0.15);
+  width: 100%;
 }
 
 .image::after{
@@ -99,6 +97,7 @@ body{
   background:linear-gradient(to top, rgba(0,0,0,.15), transparent 60%);
   transition:.6s ease;
   border-radius:18px;
+  z-index: 1;
 }
 
 .image img{
@@ -107,6 +106,7 @@ body{
   object-fit:cover;
   transition:transform 1s ease;
   border-radius:16px;
+  display: block;
 }
 
 .image:hover img{transform:scale(1.08);}
@@ -122,7 +122,6 @@ body{
   color:transparent;
 }
 
-/* 🔥 ONLY CHANGE: feedback text background white */
 .content p{
   font-family:'Playfair Display',serif;
   font-size:1.12rem;
@@ -135,24 +134,68 @@ body{
 }
 
 /* AMP divider */
-  .amp-divider{
+ .amp-divider{
     text-align:center;
-    margin:50px 0; /* reduced margin */
+    margin:50px 0; 
     color:#c2a15f;
     letter-spacing:6px;
  }
+
 /* ===== ANIMATION ===== */
 @keyframes fadeUp{
   0%{opacity:0; transform:translateY(30px);}
   100%{opacity:1; transform:translateY(0);}
 }
 
-/* ===== RESPONSIVE ===== */
-@media(max-width:900px){
-  .testimonial{grid-template-columns:1fr; gap:45px;}
-  .image img{height:380px;}
-  .header h1{font-size:2.8rem;}
+/* ===== FULL RESPONSIVE QUERIES ===== */
+
+/* For Tablets and Small Laptops (under 1024px) */
+@media(max-width:1024px){
+  .wrapper { padding-bottom: 80px; }
+  .testimonial { gap: 40px; margin-top: 100px; }
+  .image img { height: 450px; }
+  .header h1 { font-size: 3rem; }
 }
+
+/* For Mobile Devices (under 768px) */
+@media(max-width:768px){
+  .header { padding: 80px 15px 60px; }
+  .header h1 { font-size: 2.4rem; }
+  .header p { font-size: 1rem; }
+
+  .testimonial {
+    grid-template-columns: 1fr; /* Single Column */
+    gap: 30px;
+    margin-top: 80px;
+    text-align: center; /* Center text for mobile feel */
+  }
+
+  /* Reset order for reverse layout on mobile so image stays on top */
+  .testimonial.reverse .image { order: 0; }
+  .testimonial.reverse .content { order: 1; }
+
+  .image img { 
+    height: 350px; /* Reduced height for small screens */
+  }
+
+  .content h2 { font-size: 1.8rem; margin-bottom: 15px; }
+  
+  .content p { 
+    font-size: 1rem; 
+    line-height: 1.8; 
+    padding: 20px; 
+  }
+
+  .amp-divider { margin: 30px 0; }
+}
+
+/* For Extra Small Mobile (under 480px) */
+@media(max-width:480px){
+  .header h1 { font-size: 2rem; }
+  .image img { height: 280px; }
+  .wrapper { padding: 0 15px 80px; }
+}
+
 </style>
 </head>
 
@@ -167,7 +210,7 @@ body{
 
   <div class="testimonial fade">
     <div class="image">
-      <img src="feedback1.jpg">
+      <img src="feedback1.jpg" alt="Wedding Couple">
     </div>
     <div class="content">
       <h2>Lavanya & Jayesh</h2>
@@ -180,7 +223,7 @@ body{
 
   <div class="testimonial reverse fade">
     <div class="image">
-      <img src="feedback2.jpg">
+      <img src="feedback2.jpg" alt="Wedding Couple">
     </div>
     <div class="content">
       <h2>Anand & Bhagyashri</h2>
@@ -193,7 +236,7 @@ body{
 
    <div class="testimonial fade">
     <div class="image">
-      <img src="feedback3.jpg">
+      <img src="feedback3.jpg" alt="Wedding Couple">
     </div>
     <div class="content">
       <h2>Chinmay & Monali</h2>
@@ -206,7 +249,7 @@ body{
 
   <div class="testimonial reverse fade">
     <div class="image">
-      <img src="feedback4.jpg">
+      <img src="feedback4.jpg" alt="Wedding Couple">
     </div>
     <div class="content">
       <h2>Prem & Devyani</h2>
@@ -219,7 +262,7 @@ body{
 
   <div class="testimonial fade">
     <div class="image">
-      <img src="feedback5.jpg">
+      <img src="feedback5.jpg" alt="Wedding Couple">
     </div>
     <div class="content">
       <h2>Chaitali & Rohit</h2>
@@ -235,7 +278,7 @@ body{
 <script>
 const observer=new IntersectionObserver(entries=>{
   entries.forEach(e=>e.isIntersecting&&e.target.classList.add('show'))
-},{threshold:.25});
+},{threshold:.15}); // Slightly lower threshold for better mobile triggering
 document.querySelectorAll('.testimonial').forEach(t=>observer.observe(t));
 </script>
 
