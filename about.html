@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>The Whole Story | Cinematic Photography</title>
+    <title>About | The Whole Story - Cinematic Legacies</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
             padding:0;
             box-sizing:border-box;
             font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
         }
 
         body{
@@ -36,33 +37,17 @@
             letter-spacing: 2px;
         }
 
-        /* --- 1. HERO SECTION --- */
+        /* --- HERO SECTION --- */
         .hero{
             height:100vh;
             position: relative;
-            background: linear-gradient(rgba(11,11,11,0.6), rgba(11,11,11,0.9)),
-            url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1950&q=80") center/cover no-repeat;
+            background: linear-gradient(rgba(11,11,11,0.7), rgba(11,11,11,0.9)),
+            url("https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop") center/cover no-repeat;
             display:flex;
             align-items:center;
             justify-content:center;
             text-align:center;
             overflow: hidden;
-            animation: slowZoom 20s infinite alternate;
-        }
-
-        @keyframes slowZoom {
-            from { transform: scale(1); }
-            to { transform: scale(1.1); }
-        }
-
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Grain_Texture.png');
-            opacity: 0.04;
-            pointer-events: none;
-            z-index: 1;
         }
 
         .hero-content {
@@ -79,11 +64,11 @@
         .hero-content h1 span { color: var(--gold-accent); }
 
         .hero-content p {
-            font-size: 1.2rem;
-            letter-spacing: 4px;
+            font-size: 1.1rem;
+            letter-spacing: 5px;
             text-transform: uppercase;
             color: var(--gold-accent);
-            opacity: 0.8;
+            opacity: 0.9;
         }
 
         @keyframes textFocusFade {
@@ -91,7 +76,7 @@
             100% { filter: blur(0px); opacity: 1; letter-spacing: 2px; }
         }
 
-        /* --- 2. SECTION DEPTH --- */
+        /* --- SECTION DEPTH --- */
         section {
             padding: 120px 10%;
             position: relative;
@@ -106,7 +91,7 @@
 
         .title span { color: var(--gold-accent); }
 
-        /* --- 3. STORY SECTION --- */
+        /* --- STORY SECTION (Thought Process) --- */
         .story-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -114,15 +99,30 @@
             align-items: center;
         }
 
-        .story-image img {
-            width: 100%;
-            border-radius: 4px;
-            filter: sepia(20%) contrast(1.1);
-            transition: 1s ease;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        .quote-box {
+            border-left: 3px solid var(--gold-accent);
+            padding-left: 20px;
+            margin: 25px 0;
+            font-style: italic;
+            font-size: 1.3rem;
+            color: var(--gold-accent);
+            line-height: 1.4;
         }
 
-        /* --- 4. FLOATING CARDS --- */
+        .story-image {
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .story-image img {
+            width: 100%;
+            filter: sepia(15%) contrast(1.1);
+            transition: transform 0.8s ease-out;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            display: block;
+        }
+
+        /* --- CRAFT SECTION (Style/Mindset) --- */
         .grid-layout {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -137,29 +137,21 @@
             backdrop-filter: blur(10px);
             transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
             position: relative;
-            overflow: hidden;
         }
 
         .floating-card:hover {
             transform: translateY(-15px);
-            background: rgba(245, 193, 108, 0.05);
             border-color: var(--gold-accent);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            box-shadow: 0 10px 30px rgba(245, 193, 108, 0.1);
         }
 
         .floating-card i {
             font-size: 2.5rem;
             color: var(--gold-accent);
             margin-bottom: 20px;
-            transition: 0.5s;
         }
 
-        .floating-card:hover i {
-            transform: scale(1.1) rotate(5deg);
-            text-shadow: 0 0 15px var(--gold-accent);
-        }
-
-        /* --- 5. STATS SECTION --- */
+        /* --- STATS SECTION (Credibility) --- */
         .experience-row {
             display: flex;
             justify-content: space-around;
@@ -167,6 +159,15 @@
             padding: 80px 40px;
             border-top: 1px solid rgba(245, 193, 108, 0.1);
             border-bottom: 1px solid rgba(245, 193, 108, 0.1);
+            text-align: center;
+        }
+
+        .stat-divider {
+            width: 50px;
+            height: 1px;
+            background: var(--gold-accent);
+            margin: 15px auto;
+            opacity: 0.6;
         }
 
         .stat-item h2 {
@@ -174,12 +175,45 @@
             color: var(--gold-accent);
         }
 
-        /* --- 6. LUXURY CTA --- */
+        /* --- DELIVERABLES --- */
+        .deliverables {
+            margin-top: 60px;
+            padding: 40px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            text-align: center;
+        }
+
+        .deliverables h3 {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+        }
+
+        .deliverables ul {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .deliverables li {
+            font-size: 0.95rem;
+            color: var(--gold-accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* --- LUXURY CTA --- */
         .cta {
             text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2071&auto=format&fit=crop');
+            background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=2071&auto=format&fit=crop');
             background-attachment: fixed;
             background-size: cover;
+            padding: 100px 10%;
         }
 
         .cta-btn {
@@ -199,7 +233,6 @@
 
         .cta-btn:hover {
             color: var(--cinematic-black);
-            box-shadow: 0 0 30px rgba(245, 193, 108, 0.4);
         }
 
         .cta-btn::before {
@@ -217,6 +250,7 @@
             .hero-content h1{font-size:2.5rem;}
             .story-container { grid-template-columns: 1fr; }
             .experience-row { flex-direction: column; gap: 40px; }
+            .deliverables ul { flex-direction: column; gap: 15px; align-items: flex-start; }
         }
     </style>
 </head>
@@ -225,61 +259,58 @@
 
 <div class="hero">
     <div class="hero-content">
-        <h1>THE <span>WHOLE</span> STORY</h1>
-        <p>Real Emotions • Timeless Frames • Cinematic Legacy</p>
+        <h1>THE <span>VISION</span></h1>
+        <p>Before the Camera, We Think with the Heart</p>
     </div>
 </div>
 
-<section>
+<section id="about-vision">
     <div class="story-container">
         <div class="story-text">
-            <h2 class="title">The <span>Vision</span></h2>
-            <h3>Beyond the Lens...</h3>
+            <h2 class="title">Our <span>Philosophy</span></h2>
+            <h3>Beyond the Frame...</h3>
+
+            <div class="quote-box">
+                "We don’t shoot weddings. <br> We preserve the heartbeat of a moment."
+            </div>
 
             <p>
-                I am a solo photographer driven by stories, not poses. With over <b>8+ years of experience</b>,
-                my journey has taken me through every style of photography—but my heart has always followed one thing: <b>emotion</b>.
+                At <b>The Whole Story</b>, we believe that true art isn't manufactured—it is observed. 
+                Our approach rejects the sterile world of forced poses and artificial smiles. Instead, we let your story breathe in its <b>natural flow</b>.
             </p>
 
             <p style="margin-top: 15px;">
-                Photography, for me, began as a curiosity and slowly became a calling. What I love most is observing people
-                as they truly are—unfiltered, vulnerable, and real. The quiet rituals, fleeting glances, the grandeur of luxury
-                moments, and the raw emotions that often go unnoticed.
+                Whether it's the quiet anticipation before a ritual or the loud, uninhibited joy of a celebration, 
+                our lens focuses on the <b>unseen whispers</b>. We are here to document the soul of the event, not just the attendance.
             </p>
 
-            <p style="margin-top: 15px;">
-                I don’t believe in forcing moments. I believe in letting them breathe.
-            </p>
-
-            <p style="margin-top: 15px;">
-                Whether it’s an intimate ritual, a burst of laughter, or a luxurious celebration, my approach remains the same—
-                to capture real moments as they naturally unfold and turn them into timeless stories.
-            </p>
-
-            <p style="margin-top: 20px;">
-                <b>We freeze emotions that time cannot steal.</b>
+            <p style="margin-top: 25px; font-size: 1.1rem; color: var(--gold-accent);">
+                <b>"We freeze emotions that time cannot steal."</b>
             </p>
         </div>
         <div class="story-image">
-            <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2070&auto=format&fit=crop" alt="Legacy">
+            <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=2069&auto=format&fit=crop" alt="Cinematic Moment" id="parallax-img">
         </div>
     </div>
 </section>
 
 <section>
-    <h2 class="title">The <span>Craft</span></h2>
+    <h2 class="title" style="text-align: center;">The <span>Craft</span></h2>
     <div class="grid-layout">
         <div class="floating-card">
-            <h3>Pure Documentary</h3>
-            <p>No forced smiles. We blend into your celebration to capture the "unseen" whispers and loud laughter.</p>
+            <i class="fa-solid fa-masks-theater"></i>
+            <h3>Documentary Soul</h3>
+            <p>We blend into the background, capturing raw, candid moments as they unfold without interference.</p>
         </div>
         <div class="floating-card">
-            <h3>Editorial Fine-Art</h3>
-            <p>We ensure every frame is curated with the precision of a high-end film, making you the protagonist of your own movie.</p>
+            <i class="fa-solid fa-clapperboard"></i>
+            <h3>Editorial Framing</h3>
+            <p>Every shot is composed with the precision of a high-end film, ensuring you are the protagonist of a masterpiece.</p>
         </div>
         <div class="floating-card">
-            <h3>The Narrative</h3>
-            <p>Our work is a cohesive photo-story, designed to transport you back to that exact heartbeat, years from now.</p>
+            <i class="fa-solid fa-pen-nib"></i>
+            <h3>Storytelling Mindset</h3>
+            <p>We don't just deliver photos; we curate a cohesive narrative that transports you back to that exact heartbeat.</p>
         </div>
     </div>
 </section>
@@ -287,47 +318,67 @@
 <section class="experience-row">
     <div class="stat-item">
         <h2 class="count" data-target="8">0</h2>
+        <div class="stat-divider"></div>
         <p>Years of Artistry</p>
     </div>
     <div class="stat-item">
         <h2 class="count" data-target="500">0</h2>
-        <p>Legacies Preserved</p>
+        <div class="stat-divider"></div>
+        <p>Stories Preserved</p>
     </div>
     <div class="stat-item">
         <h2 class="count" data-target="100">0</h2>
-        <p>% Heart in Every Frame</p>
+        <div class="stat-divider"></div>
+        <p>% Passion in Every Frame</p>
     </div>
 </section>
 
 <section>
-    <h2 class="title">Our <span>Services</span></h2>
+    <h2 class="title">Our <span>Expertise</span></h2>
     <div class="grid-layout">
         <div class="floating-card">
             <i class="fa-solid fa-camera-retro"></i>
             <h3>Wedding Stories</h3>
-            <p>End-to-end cinematic documentation of your love's greatest milestone.</p>
+            <p>Comprehensive cinematic documentation of your love's greatest milestone.</p>
         </div>
         <div class="floating-card">
             <i class="fa-solid fa-film"></i>
             <h3>Cinematic Films</h3>
-            <p>Visual poetry that feels like a masterpiece on the big screen.</p>
+            <p>Visual poetry shot in high-definition, designed for the big screen experience.</p>
         </div>
         <div class="floating-card">
-            <i class="fa-solid fa-location-dot"></i>
+            <i class="fa-solid fa-earth-americas"></i>
             <h3>Global Shoots</h3>
-            <p>Breathtaking concepts at the world's most iconic destinations.</p>
+            <p>Breathtaking concepts executed at the world's most iconic and intimate destinations.</p>
         </div>
+    </div>
+
+    <div class="deliverables">
+        <h3>The Luxury Experience</h3>
+        <ul>
+            <li><i class="fa-solid fa-award"></i> Handcrafted Fine-Art Album</li>
+            <li><i class="fa-solid fa-gem"></i> 4K Ultra HD Cinematic Film</li>
+            <li><i class="fa-solid fa-box-open"></i> Premium USB Collector's Packaging</li>
+        </ul>
     </div>
 </section>
 
 <section class="cta">
     <h2 class="title" style="margin-bottom: 10px;">Ready to create <span>Art</span>?</h2>
-    <p>Currently accepting a limited number of stories for the upcoming season.</p><br><br>
-    <a href="#" class="cta-btn">Secure Your Date</a>
+    <p>Currently accepting a limited number of stories for the upcoming season to ensure absolute focus on every frame.</p><br><br>
+    <a href="#" class="cta-btn">Secure Your Legacy</a>
 </section>
 
 <script>
-    ScrollReveal().reveal('.title, .story-text, .story-image, .floating-card', {
+    // Parallax Effect for Story Image
+    window.addEventListener('scroll', function() {
+        const image = document.getElementById('parallax-img');
+        let scrollValue = window.scrollY * 0.05;
+        image.style.transform = `translateY(${scrollValue}px)`;
+    });
+
+    // Reveal Animations
+    ScrollReveal().reveal('.title, .story-text, .story-image, .floating-card, .deliverables', {
         duration: 1500,
         origin: 'bottom',
         distance: '30px',
@@ -335,6 +386,7 @@
         easing: 'cubic-bezier(0.5, 0, 0, 1)'
     });
 
+    // Experience Counters
     const counters = document.querySelectorAll('.count');
     const speed = 200;
 
@@ -355,6 +407,7 @@
         });
     }
 
+    // Trigger counters when visible
     let observer = new IntersectionObserver((entries) => {
         if(entries[0].isIntersecting) {
             startCounters();
