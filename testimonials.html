@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Stories | Stylish Wedding Photography</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+body{
+  font-family:'Inter',sans-serif;
+  color:#f1f1f1;
+  background: linear-gradient(to bottom, #0b1b2a, #1a3a5a 40%, #0d2a4d 80%);
+  background-attachment: fixed;
+}
+
+/* ===== HEADER ===== */
+.header{
+  padding:120px 20px 80px;
+  text-align:center;
+  position:relative;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.3)), 
+              url('https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1650&q=80') center/cover no-repeat;
+}
+
+.header h1{
+  font-family:'Playfair Display',serif;
+  font-size:3.6rem;
+  font-weight:600;
+  letter-spacing:2px;
+  background: linear-gradient(135deg,#ffd7b5,#f5a623);
+  -webkit-background-clip:text;
+  color:transparent;
+  text-shadow:0 12px 35px rgba(0,0,0,.6);
+  animation:fadeUp 1.5s ease forwards;
+}
+
+.header h1::after{
+  content:'';
+  display:block;
+  width:120px;
+  height:3px;
+  background:linear-gradient(to right, transparent,#f5a623,transparent);
+  margin:28px auto 0;
+}
+
+.header p{
+  margin-top:22px;
+  font-size:1.1rem;
+  color:#f0f0f0;
+  letter-spacing:.5px;
+}
+
+
+/* ===== TESTIMONIALS ===== */
+.wrapper{
+  max-width:1150px;
+  margin:auto;
+  padding:0 20px 140px;
+}
+
+.testimonial{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:70px;
+  margin-top:140px;
+  align-items:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1.2s ease;
+}
+
+.testimonial.show{
+  opacity:1;
+  transform:translateY(0);
+}
+.testimonial .image img{
+  margin-top:-40px;
+}
+
+
+.testimonial.reverse .image{order:2}
+.testimonial.reverse .content{order:1}
+
+/* ===== IMAGE ===== */
+.image{
+  overflow:hidden;
+  border-radius:18px;
+  position:relative;
+  box-shadow: 0 0 40px 15px rgba(255,255,255,0.15);
+}
+
+.image::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.15), transparent 60%);
+  transition:.6s ease;
+  border-radius:18px;
+}
+
+.image img{
+  width:100%;
+  height:520px;
+  object-fit:cover;
+  transition:transform 1s ease;
+  border-radius:16px;
+}
+
+.image:hover img{transform:scale(1.08);}
+
+/* ===== CONTENT ===== */
+.content h2{
+  font-family:'Playfair Display',serif;
+  font-size:2.2rem;
+  font-weight:500;
+  margin-bottom:22px;
+  background:linear-gradient(90deg,#ffd7b5,#f5a623);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+/* 🔥 ONLY CHANGE: feedback text background white */
+.content p{
+  font-family:'Playfair Display',serif;
+  font-size:1.12rem;
+  line-height:2;
+  color:#181717;          
+  background:#ffffff;    /* WHITE BACKGROUND */
+  padding:24px 26px;
+  border-radius:14px;
+  box-shadow:0 12px 25px rgba(0,0,0,.15);
+}
+
+/* AMP divider */
+  .amp-divider{
+    text-align:center;
+    margin:50px 0; /* reduced margin */
+    color:#c2a15f;
+    letter-spacing:6px;
+ }
+/* ===== ANIMATION ===== */
+@keyframes fadeUp{
+  0%{opacity:0; transform:translateY(30px);}
+  100%{opacity:1; transform:translateY(0);}
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:900px){
+  .testimonial{grid-template-columns:1fr; gap:45px;}
+  .image img{height:380px;}
+  .header h1{font-size:2.8rem;}
+}
+</style>
+</head>
+
+<body>
+
+<section class="header">
+  <h1>Client Stories</h1>
+  <p>Stylish experiences from couples we had the honor to work with</p>
+</section>
+
+<section class="wrapper">
+
+  <div class="testimonial fade">
+    <div class="image">
+      <img src="feedback1.jpg">
+    </div>
+    <div class="content">
+      <h2>Lavanya & Jayesh</h2>
+      <p>
+        ❝Working with Sushant Rajput Production was truly an amazing experience from start to finish. Their professionalism, creativity, and dedication made the entire process smooth and enjoyable. The team made sure we felt comfortable at every moment, guiding us with patience and expertise. From the pre-shoot planning to the final photos and videos, every detail was handled flawlessly. When we saw the final outputs, we were overwhelmed with emotion — the memories of our special day were perfectly captured. We highly recommend Sushant Rajput Production to anyone looking for exceptional photography that tells a beautiful story.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
+  <div class="testimonial reverse fade">
+    <div class="image">
+      <img src="feedback2.jpg">
+    </div>
+    <div class="content">
+      <h2>Anand & Bhagyashri</h2>
+      <p>
+        ❝We knew from the beginning that Sushant Rajput Production was the right choice, but their work exceeded all our expectations. The team created such a relaxed and friendly environment that we felt completely at ease in front of the camera. Every smile, every candid moment, and every emotion of our wedding day was captured perfectly. Beyond just photography, they shared valuable ideas and suggestions which made our day even more memorable. By the end of the shoot, we felt like we had made friends for life. Their dedication, creativity, and passion truly set them apart.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
+   <div class="testimonial fade">
+    <div class="image">
+      <img src="feedback3.jpg">
+    </div>
+    <div class="content">
+      <h2>Chinmay & Monali</h2>
+      <p>
+        ❝The Sushant Rajput Production team is highly professional, organized, and extremely talented. From the first meeting to the delivery of the final photos and videos, they handled everything with precision and care. They don’t just click pictures — they capture the essence, emotions, and mood of the day. Their creativity and attention to detail transformed our wedding into a visual story we can cherish forever. We are grateful for their incredible work and recommend them wholeheartedly to anyone seeking top-notch wedding photography.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
+  <div class="testimonial reverse fade">
+    <div class="image">
+      <img src="feedback4.jpg">
+    </div>
+    <div class="content">
+      <h2>Prem & Devyani</h2>
+      <p>
+        ❝Choosing Sushant Rajput Production was one of the best decisions we made for our wedding. The team is warm, friendly, and highly skilled at making everyone feel comfortable. They went beyond just taking pictures — they guided us through poses, lighting, and even small details that made our day perfect. The passion they bring to their work is visible in every photo and video, and their professionalism ensured that everything went seamlessly. Our wedding memories have been captured beautifully, and we couldn’t be happier with the results. We strongly recommend them to anyone looking for a creative and reliable photography team.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
+  <div class="testimonial fade">
+    <div class="image">
+      <img src="feedback5.jpg">
+    </div>
+    <div class="content">
+      <h2>Chaitali & Rohit</h2>
+      <p>
+        ❝Sushant Rajput Production is an exceptional team of professionals who are both passionate and highly skilled. From the pre-wedding shoots to the final wedding day, they captured every precious moment with care and creativity. They understand how to use light, location, and angles to create visually stunning images, and they never compromise on quality. Their team is punctual, friendly, and extremely dedicated to ensuring the client’s happiness. Looking back at our photos and videos, we are filled with joy — every emotion, every laugh, every tear has been beautifully preserved. We wholeheartedly recommend Sushant Rajput Production for anyone who wants their special day to be captured in a timeless and memorable way.❞
+      </p>
+      <div class="amp-divider">——— ✦ ———</div>
+    </div>
+  </div>
+
+</section>
+
+<script>
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>e.isIntersecting&&e.target.classList.add('show'))
+},{threshold:.25});
+document.querySelectorAll('.testimonial').forEach(t=>observer.observe(t));
+</script>
+
+</body>
+</html>
