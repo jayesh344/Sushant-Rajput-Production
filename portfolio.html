@@ -461,7 +461,7 @@ nav ul li a.active-link::after {
 }
 .prewedding-blur .fg { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; }
 
-/* ================= NEW: WHY CHOOSE US & PROCESS ================= */
+/* ================= WHY CHOOSE US & PROCESS ================= */
 .why-choose {
     padding: 120px 80px;
     background: #0f1915;
@@ -602,15 +602,141 @@ nav ul li a.active-link::after {
     font-weight: 700;
 }
 
+/* ================= MAIN BLACK FOOTER (UPGRADED) ================= */
+.main-footer {
+    background: radial-gradient(circle at top, rgba(124,108,240,0.12), transparent 40%), #0a0e0c;
+    padding: 80px 80px 30px 80px;
+    color: #fff;
+    position: relative;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+}
+
+.footer-about img {
+    height: 60px;
+    margin-bottom: 25px;
+}
+
+.footer-about p {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.footer-tagline {
+    font-style: italic;
+    color: #7c6cf0;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.footer-cta {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #7c6cf0;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.4s;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.footer-cta:hover {
+    background: #7c6cf0;
+    box-shadow: 0 0 20px rgba(124, 108, 240, 0.4);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.footer-socials a {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.4s;
+    box-shadow: 0 0 0 rgba(124,108,240,0.0);
+}
+
+.footer-socials a:hover {
+    background: #7c6cf0;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(124,108,240,0.6);
+}
+
+.footer-links h4 {
+    font-size: 18px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.footer-links h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 30px;
+    height: 2px;
+    background: #7c6cf0;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #fff;
+    padding-left: 8px;
+    letter-spacing: 0.5px;
+}
+
+.footer-copyright {
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+}
+
 /* MOBILE RESPONSIVE FIX FOR FOOTER */
 @media(max-width: 768px) {
     .footer-address { padding: 40px 25px; }
     .footer-col { min-width: 100%; }
-    .why-choose, .our-process { padding: 60px 20px; }
-    .why-choose h2, .process-header h2 { font-size: 2.2rem; }
+    .main-footer { padding: 60px 25px 20px 25px; }
+    .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .footer-links h4::after { left: 50%; transform: translateX(-50%); }
+    .footer-socials { justify-content: center; }
 }
 
-/* STEP 4: MOBILE PRO SETTINGS */
+/* Navbar/Hero Responsive remains same */
 @media(max-width: 992px) {
     nav { padding: 15px 40px; }
     .services-grid { grid-template-columns: 1fr; }
@@ -636,18 +762,6 @@ nav ul li a.active-link::after {
     .hero-left h1 { font-size: 2.8rem; }
     .hero-buttons { flex-direction: column; gap: 12px; }
     .hero-buttons a { width: 100%; text-align: center; }
-    
-    .controls { right: 20px; bottom: 30px; }
-    .dots { left: 30px; bottom: 40px; }
-    
-    .about { padding: 80px 30px; }
-    .about-container { flex-direction: column; gap: 40px; }
-    
-    .services { padding: 60px 20px; }
-    .service-img { height: 350px; } 
-    .service-content { padding: 0 25px 30px 25px; }
-    .service-card h3 { font-size: 22px; }
-    .service-card p { font-size: 14px; }
 }
 
 </style>
@@ -692,7 +806,7 @@ nav ul li a.active-link::after {
         <p>Moments that move hearts. Professional photography & cinematic marketing that moves brands.</p>
         <div class="hero-buttons">
             <a href="#" class="btn-primary">Explore Work</a>
-            <a href="https://wa.me/918208534860" class="btn-outline">Let’s Talk</a>
+            <a href="#" class="btn-outline">Let’s Talk</a>
         </div>
     </div>
 
@@ -847,9 +961,9 @@ nav ul li a.active-link::after {
 <footer class="footer-address">
     <div class="footer-col">
        <h4>Head Office, Shirpur</h4>
-<p>Sushant Rajput Production,</p>
-<p>95B, Vyankatesh Nagar, Mandal Shivar,</p>
-<p>Shirpur - 425405, Dist. Dhule, Maharashtra</p>
+       <p>Sushant Rajput Production,</p>
+       <p>95B, Vyankatesh Nagar, Mandal Shivar,</p>
+       <p>Shirpur - 425405, Dist. Dhule, Maharashtra</p>
     </div>
     
     <div class="footer-col">
@@ -860,14 +974,49 @@ nav ul li a.active-link::after {
     </div>
 </footer>
 
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <img src="logo.png" alt="Logo">
+            <p>Creating visual masterpieces through the lens of passion. We specialize in cinematic storytelling and premium production.</p>
+            <p class="footer-tagline">“Every frame is crafted with intention.”</p>
+            
+            <a href="https://wa.me/918208534860" class="footer-cta">Book Your Shoot</a>
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/sushant_rajput_production?igsh=MWZhMndqYWNjNWtubw==" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#Blog">Blog</a></li>
+                <li><a href="#Films">Films</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#Contact">Contact Us</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <p>&copy; 2026 Sushant Rajput Production. All Rights Reserved.</p>
+    </div>
+</footer>
+
 <script>
-// Navbar Scroll
 window.addEventListener('scroll', () => {
     const navbar = document.getElementById('navbar');
     navbar.classList.toggle('scrolled', window.scrollY > 50);
 });
 
-// Slider Logic
 const slides = document.querySelectorAll(".hero-right > img, .hero-right > .photo2");
 const dotsContainer = document.getElementById("dots");
 let index = 0;
@@ -899,7 +1048,6 @@ startAuto();
 
 function toggleMenu() { document.getElementById("menu").classList.toggle("show"); }
 
-// Scroll Reveal
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
