@@ -452,15 +452,6 @@ nav ul li a.active-link::after {
 .service-card:hover .service-img img,
 .service-card:hover .service-img video { transform: scale(1.1); }
 
-.prewedding-blur { position: relative; background: #000; }
-.prewedding-blur .bg {
-    position: absolute;
-    inset: 0; width: 100%; height: 100%;
-    object-fit: cover; filter: blur(20px);
-    transform: scale(1.2); opacity: 0.6;
-}
-.prewedding-blur .fg { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; }
-
 /* ================= WHY CHOOSE US & PROCESS ================= */
 .why-choose {
     padding: 120px 80px;
@@ -569,7 +560,7 @@ nav ul li a.active-link::after {
     line-height: 1.6;
 }
 
-/* ================= FOOTER ADDRESS SECTION ================= */
+/* ================= FOOTER SECTIONS ================= */
 .footer-address {
     padding: 60px 80px;
     background: #b5a491; 
@@ -585,29 +576,14 @@ nav ul li a.active-link::after {
     min-width: 250px;
 }
 
-.footer-col h4 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    font-family: 'Playfair Display', serif; 
-    font-weight: 700;
-}
+.footer-col h4 { font-size: 24px; margin-bottom: 15px; font-weight: 700; }
+.footer-col p { font-size: 14px; line-height: 1.6; margin-bottom: 5px; }
+.footer-col .label { font-weight: 700; }
 
-.footer-col p {
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 5px;
-}
-
-.footer-col .label {
-    font-weight: 700;
-}
-
-/* ================= MAIN BLACK FOOTER (UPGRADED) ================= */
 .main-footer {
     background: radial-gradient(circle at top, rgba(124,108,240,0.12), transparent 40%), #0a0e0c;
     padding: 80px 80px 30px 80px;
     color: #fff;
-    position: relative;
 }
 
 .footer-container {
@@ -618,24 +594,9 @@ nav ul li a.active-link::after {
     gap: 60px;
 }
 
-.footer-about img {
-    height: 60px;
-    margin-bottom: 25px;
-}
-
-.footer-about p {
-    color: rgba(255,255,255,0.6);
-    font-size: 14px;
-    line-height: 1.8;
-    margin-bottom: 15px;
-}
-
-.footer-tagline {
-    font-style: italic;
-    color: #7c6cf0;
-    font-size: 15px;
-    margin-bottom: 25px;
-}
+.footer-about img { height: 60px; margin-bottom: 25px; }
+.footer-about p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.8; margin-bottom: 15px; }
+.footer-tagline { font-style: italic; color: #7c6cf0; font-size: 15px; margin-bottom: 25px; }
 
 .footer-cta {
     display: inline-block;
@@ -646,108 +607,48 @@ nav ul li a.active-link::after {
     border-radius: 30px;
     transition: 0.4s;
     font-weight: 600;
-    font-size: 14px;
 }
 
-.footer-cta:hover {
-    background: #7c6cf0;
-    box-shadow: 0 0 20px rgba(124, 108, 240, 0.4);
-}
-
-.footer-socials {
-    display: flex;
-    gap: 15px;
-    margin-top: 25px;
-}
-
+.footer-socials { display: flex; gap: 15px; margin-top: 25px; }
 .footer-socials a {
-    width: 45px;
-    height: 45px;
-    background: rgba(255,255,255,0.05);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    color: #fff;
-    text-decoration: none;
-    transition: 0.4s;
-    box-shadow: 0 0 0 rgba(124,108,240,0.0);
+    width: 45px; height: 45px; background: rgba(255,255,255,0.05);
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 50%; color: #fff; transition: 0.4s;
+}
+.footer-socials a:hover { background: #7c6cf0; transform: translateY(-5px); }
+
+.footer-links h4 { font-size: 18px; margin-bottom: 25px; position: relative; }
+.footer-links h4::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 30px; height: 2px; background: #7c6cf0; }
+.footer-links ul { list-style: none; }
+.footer-links ul li { margin-bottom: 12px; }
+.footer-links ul li a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 14px; transition: 0.3s; }
+.footer-links ul li a:hover { color: #fff; padding-left: 8px; }
+
+.footer-copyright { margin-top: 60px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; font-size: 13px; color: rgba(255,255,255,0.4); }
+
+/* ================= RESPONSIVE MEDIA QUERIES ================= */
+
+@media (max-width: 1200px) {
+    nav, .hero-left, .about, .services, .why-choose, .our-process, .footer-address, .main-footer {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
 }
 
-.footer-socials a:hover {
-    background: #7c6cf0;
-    transform: translateY(-5px);
-    box-shadow: 0 0 20px rgba(124,108,240,0.6);
-}
-
-.footer-links h4 {
-    font-size: 18px;
-    margin-bottom: 25px;
-    position: relative;
-}
-
-.footer-links h4::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -8px;
-    width: 30px;
-    height: 2px;
-    background: #7c6cf0;
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links ul li {
-    margin-bottom: 12px;
-}
-
-.footer-links ul li a {
-    color: rgba(255,255,255,0.6);
-    text-decoration: none;
-    font-size: 14px;
-    transition: 0.3s;
-}
-
-.footer-links ul li a:hover {
-    color: #fff;
-    padding-left: 8px;
-    letter-spacing: 0.5px;
-}
-
-.footer-copyright {
-    margin-top: 60px;
-    padding-top: 25px;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    text-align: center;
-    font-size: 13px;
-    color: rgba(255,255,255,0.4);
-}
-
-/* MOBILE RESPONSIVE FIX FOR FOOTER */
-@media(max-width: 768px) {
-    .footer-address { padding: 40px 25px; }
-    .footer-col { min-width: 100%; }
-    .main-footer { padding: 60px 25px 20px 25px; }
-    .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
-    .footer-links h4::after { left: 50%; transform: translateX(-50%); }
-    .footer-socials { justify-content: center; }
-}
-
-/* Navbar/Hero Responsive remains same */
-@media(max-width: 992px) {
-    nav { padding: 15px 40px; }
+@media (max-width: 992px) {
+    .about-container { flex-direction: column; gap: 50px; }
+    .about-text, .about-img { transform: none; opacity: 1; }
+    .about-img img { box-shadow: 15px 15px 0px #f4f4f4; }
     .services-grid { grid-template-columns: 1fr; }
+    .footer-container { grid-template-columns: 1fr 1fr; }
 }
 
-@media(max-width: 768px) {
+@media (max-width: 768px) {
     nav { padding: 15px 25px; }
     nav ul {
         position: fixed;
         top: 0; right: -100%;
-        height: 100vh; width: 75%;
+        height: 100vh; width: 80%;
         background: #0f1915;
         flex-direction: column;
         justify-content: center;
@@ -758,10 +659,32 @@ nav ul li a.active-link::after {
     nav ul.show { right: 0; }
     .hamburger { display: flex; z-index: 1001; }
     
-    .hero-left { padding: 0 30px 100px 30px; text-align: left; }
-    .hero-left h1 { font-size: 2.8rem; }
-    .hero-buttons { flex-direction: column; gap: 12px; }
+    .hero-left { padding: 0 25px 100px 25px; }
+    .hero-left h1 { font-size: 3rem; }
+    .hero-left p { font-size: 14px; }
+    .hero-buttons a { padding: 12px 30px; font-size: 13px; }
+    
+    .controls { right: 25px; bottom: 40px; }
+    .dots { left: 25px; }
+    
+    .about, .services, .why-choose, .our-process { padding: 80px 25px; }
+    .about-text h2, .services-header h2, .why-choose h2, .process-header h2 { font-size: 2.2rem; }
+    
+    .footer-address { padding: 40px 25px; }
+    .main-footer { padding: 60px 25px 20px 25px; }
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
+    .footer-links h4::after { left: 50%; transform: translateX(-50%); }
+    .footer-socials { justify-content: center; }
+    
+    .service-img { height: 400px; }
+}
+
+@media (max-width: 480px) {
+    .hero-left h1 { font-size: 2.4rem; }
+    .hero-buttons { flex-direction: column; width: 100%; }
     .hero-buttons a { width: 100%; text-align: center; }
+    .about-details li { font-size: 13px; }
+    .service-content { padding: 0 20px 30px 20px; }
 }
 
 </style>
@@ -904,9 +827,8 @@ nav ul li a.active-link::after {
         </div>
 
         <div class="service-card">
-            <div class="service-img prewedding-blur">
-                <img src="pre wedding.jpg" class="bg">
-                <img src="pre wedding.jpg" class="fg" alt="Pre-Wedding">
+            <div class="service-img">
+                <img src="pre wedding.jpg" alt="Pre-Wedding">
             </div>
             <div class="service-content">
                 <div class="service-icon-badge"><i class="fa-solid fa-heart"></i></div>
@@ -932,29 +854,6 @@ nav ul li a.active-link::after {
                 <p>Timeless portraits that bring the whole family together in a single, perfect frame.</p>
             </div>
         </div>
-
-        <div class="service-card">
-            <div class="service-img"><img src="concept.jpg" alt="Content Shoot"></div>
-            <div class="service-content">
-                <div class="service-icon-badge"><i class="fa-solid fa-clapperboard"></i></div>
-                <h3>Content Shoot</h3>
-                <p>High-quality professional content creation for influencers and creators to level up their social media.</p>
-            </div>
-        </div>
-
-        <div class="service-card">
-            <div class="service-img">
-                <video autoplay loop muted playsinline>
-                    <source src="digital_marketing.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div class="service-content">
-                <div class="service-icon-badge"><i class="fa-solid fa-chart-line"></i></div>
-                <h3>Digital Marketing</h3>
-                <p>Strategy-driven marketing to grow your online presence and reach the right audience effectively.</p>
-            </div>
-        </div>
     </div>
 </section>
 
@@ -969,8 +868,7 @@ nav ul li a.active-link::after {
     <div class="footer-col">
         <p><span class="label">Email:</span> srphotography355@gmail.com</p>
         <p><span class="label">Phone:</span> +91-8208534860</p>
-        <p><span class="label">Business Hours:</span> 11:00 am to 7:00 pm IST</p>
-        <p>(Mon - Sat)</p>
+        <p><span class="label">Business Hours:</span> 11:00 am to 7:00 pm IST (Mon-Sat)</p>
     </div>
 </footer>
 
@@ -980,11 +878,9 @@ nav ul li a.active-link::after {
             <img src="logo.png" alt="Logo">
             <p>Creating visual masterpieces through the lens of passion. We specialize in cinematic storytelling and premium production.</p>
             <p class="footer-tagline">“Every frame is crafted with intention.”</p>
-            
             <a href="https://wa.me/918208534860" class="footer-cta">Book Your Shoot</a>
-            
             <div class="footer-socials">
-                <a href="https://www.instagram.com/sushant_rajput_production?igsh=MWZhMndqYWNjNWtubw==" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.instagram.com/sushant_rajput_production" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
         
