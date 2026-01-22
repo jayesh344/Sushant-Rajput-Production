@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | Photography Portfolio</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body{
+      margin:0;
+      font-family:'Inter', sans-serif;
+      background: linear-gradient(135deg, #9f56ad 0%, #ffffff 100%);
+      color:#2b2b2b;
+      overflow-x: hidden; /* Prevent horizontal scroll */
+    }
+
+    .contact-section{ padding:60px 0 100px; }
+    .contact-row{ align-items:flex-start; column-gap: 60px; }
+
+    /* IMAGE WRAPPER */
+    .image-wrapper{
+        position:relative;
+        display:flex;
+        flex-direction:column;
+        justify-content:flex-start;
+        height:100%;
+        gap:10px;
+    }
+
+    .img-cinematic, .img-square {
+      position: relative;
+      object-fit: cover;
+      transition: transform 0.45s ease, box-shadow 0.45s ease, filter 0.45s ease;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    /* CIRCLE IMAGE */
+    .img-cinematic {
+      width:130%;
+      height:auto;
+      border-radius:50%;
+      margin-left:-40px;
+      margin-top:30px;
+      animation: floatAnimation 6s ease-in-out infinite;
+      border: 4px solid transparent;
+      background: 
+        linear-gradient(#fff, #fff) padding-box, 
+        linear-gradient(135deg, #b89cf7, #e4d8f1) border-box;
+      box-shadow: 0 8px 18px rgba(111,45,189,0.18), 0 18px 40px rgba(0,0,0,0.25);
+    }
+
+    /* SQUARE IMAGE */
+    .img-square {
+      width:120%;
+      height:auto;
+      border-radius:18px;
+      margin-left:-20px;
+      margin-top:40px;
+      animation: floatAnimation 6s ease-in-out infinite reverse;
+      border: 4px solid transparent;
+      background: 
+        linear-gradient(#fff, #fff) padding-box, 
+        linear-gradient(135deg, #b89cf7, #e4d8f1) border-box;
+      box-shadow: 0 6px 15px rgba(208, 201, 216, 0.15), 0 16px 35px rgba(233, 221, 221, 0.22);
+    }
+
+    .img-cinematic:hover, .img-square:hover {
+      transform: scale(1.06);
+    }
+
+    @keyframes floatAnimation {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* HEADING */
+    .contact-title {
+      font-family:'Playfair Display', serif;
+      font-size:2.5rem;
+      font-weight:700;
+      color:#490852;
+      display:inline-block;
+      padding:15px 30px;
+      position:relative;
+      margin-bottom:30px;
+      z-index:1;
+    }
+
+    .contact-title::before, .contact-title::after {
+      content:"";
+      position:absolute;
+      top:-6px; left:-12px; right:-12px; bottom:-6px;
+      border:2px solid #6f2dbd;
+      border-radius:12px;
+      transform: rotate(-1deg);
+      z-index:-1;
+    }
+
+    .contact-desc{
+      max-width:620px;
+      color:#ffffff;
+      line-height:1.7;
+      margin-bottom:30px;
+      font-size:1.1rem;
+    }
+
+    /* FORM STYLISH */
+    .contact-form{
+      background:#ffffff;
+      padding:35px;
+      border-radius:28px;
+      max-width:100%;
+      margin-right: -60px; /* Kept for desktop */
+      border: 2px solid #d799f7;
+      box-shadow: 0 20px 50px rgba(175,50,192,0.25);
+    }
+
+    label{
+      font-size:0.95rem;
+      font-weight:600;
+      color:#222120;
+      margin-bottom:6px;
+    }
+
+    .form-control, .form-select{
+      background:#f4ebff;
+      border:2px solid transparent;
+      border-radius:30px;
+      padding:12px 18px;
+      transition: 0.3s;
+    }
+
+    .form-control:focus{
+      background:#fff;
+      border-color:#6f2dbd;
+      box-shadow: none;
+    }
+
+    .btn-submit{
+      background: linear-gradient(135deg, #d999f7, #c463eb);
+      color: #fff;
+      border:none;
+      border-radius: 16px;
+      padding: 14px 28px;
+      font-weight: 600;
+      width: 100%;
+    }
+
+    /* RESPONSIVE MEDIA QUERIES */
+    @media(max-width:1200px){
+      .contact-form { margin-right: 0; }
+    }
+
+    @media(max-width:992px){
+      .image-wrapper{
+        flex-direction:row;
+        justify-content:center;
+        gap:15px;
+        margin-bottom:50px;
+      }
+      .img-cinematic, .img-square{
+        width:45%;
+        margin:0;
+      }
+      .contact-title { font-size: 2rem; width: 100%; text-align: center; }
+      .contact-desc { text-align: center; margin: 0 auto 30px; }
+    }
+
+    @media(max-width:576px){
+      .contact-section { padding: 40px 0; }
+      .contact-form { padding: 25px 20px; }
+      .contact-title { font-size: 1.6rem; padding: 10px; }
+      .contact-title::before, .contact-title::after { display: none; } /* Simplified for very small screens */
+    }
+
+    .contact-info-section{
+      background:#c3b19f;
+      padding:60px 0;
+    }
+    .info-title{ font-family:'Playfair Display', serif; font-size:1.4rem; margin-bottom:12px; }
+    .info-text{ font-size:0.95rem; line-height:1.7; }
+  </style>
+</head>
+
+<body>
+
+<section class="contact-section">
+  <div class="container">
+    <div class="row contact-row">
+
+      <div class="col-lg-4" data-aos="fade-right">
+        <div class="image-wrapper">
+          <img src="img/contact1.jpeg" class="img-cinematic">
+          <img src="img/contact2.jpeg" class="img-square">
+        </div>
+      </div>
+
+      <div class="col-lg-8" data-aos="fade-left">
+        <div class="text-center text-lg-start">
+            <h1 class="contact-title">Get us to shoot you!</h1>
+            <p class="contact-desc">
+                  Welcome to the first step in getting us onboard. Fill this form and get one step closer to making the best decision of your life! Not kidding.<br><br>
+                  We would love to schedule a call and know more about your wedding.
+            </p>
+        </div>
+        
+        <div class="contact-form">
+          <form onsubmit="sendToWhatsApp(event)">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label>First Name <span class="text-muted">(required)</span></label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label>Last Name <span class="text-muted">(required)</span></label>
+                <input type="text" class="form-control" required>
+              </div>
+              <div class="col-12">
+                <label>Email <span class="text-muted">(required)</span></label>
+                <input type="email" class="form-control" required>
+              </div>
+              <div class="col-12">
+                <label>Phone <span class="text-muted">(required)</span></label>
+                <input type="tel" class="form-control" pattern="[0-9]{10}" maxlength="10" required>
+              </div>
+              <div class="col-md-6">
+                <label>Event Date <span class="text-muted">(required)</span></label>
+                <input type="date" class="form-control" required>
+              </div>
+              <div class="col-md-6">
+                <label>Event Style <span class="text-muted">(required)</span></label>
+                <select class="form-select" required>
+                  <option selected disabled>Select event style</option>
+                  <option>Wedding</option>
+                  <option>Pre-Wedding</option>
+                  <option>Family shoot</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label>Tell us more about your wedding</label>
+                <textarea rows="4" class="form-control" placeholder="Venues, flow, details..." required></textarea>
+              </div>
+              <div class="col-md-6">
+                <label>Venue City</label>
+                <input type="text" class="form-control">
+              </div>
+              <div class="col-md-6">
+                <label>Guest Count</label>
+                <input type="number" class="form-control">
+              </div>
+              <div class="col-12 text-center mt-4">
+                <button type="submit" class="btn-submit">Send details on WhatsApp</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-info-section">
+  <div class="container">
+    <div class="row gy-4 text-center text-md-start">
+      <div class="col-md-6">
+        <h5 class="info-title">Head Office, Shirpur</h5>
+        <p class="info-text">
+          Sushant Rajput Production,<br>
+          95B, Vyankatesh Nagar, Mandal Shivar,<br>
+          Shirpur - 425405, Dist.Dhule, Maharashtra
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h5 class="info-title">Get in touch</h5>
+        <p class="info-text">
+          Email: srphotography355@gmail.com<br>
+          Phone: +91-8208534860<br>
+          Working Hours: 11:00 AM – 7:00 PM (Mon–Sat)
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({duration:1000,once:true});</script>
+
+<script>
+function sendToWhatsApp(e){
+  e.preventDefault();
+  // Get values
+  const firstName = document.querySelectorAll('input[type="text"]')[0].value;
+  const lastName = document.querySelectorAll('input[type="text"]')[1].value;
+  const email = document.querySelector('input[type="email"]').value;
+  const phone = document.querySelector('input[type="tel"]').value;
+  const eventDate = document.querySelector('input[type="date"]').value;
+  const eventStyle = document.querySelector('select').value;
+  const message = document.querySelector('textarea').value;
+  const city = document.querySelectorAll('input[type="text"]')[2]?.value || "";
+  const guests = document.querySelector('input[type="number"]').value;
+  
+  // WhatsApp number (without +)
+  const whatsappNumber = "918999767208";
+  
+  const text = 
+`📸 *New Photography Inquiry* 📸
+👤 Name: ${firstName} ${lastName}
+📧 Email: ${email}
+📞 Phone: ${phone}
+📅 Event Date: ${eventDate}
+🎉 Event Style: ${eventStyle}
+🏙️ City: ${city}
+👥 Guest Count: ${guests}
+📝 Details:
+${message}
+`;
+  const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
