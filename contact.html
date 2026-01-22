@@ -1,410 +1,307 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact | Photography Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Sushant Rajput Production</title>
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 
-  <style>
-    body{
-      margin:0;
-      font-family:'Inter', sans-serif;
-      background: linear-gradient(135deg, #3125d1 0%, #ffffff 100%);
-      color:#2b2b2b;
-      overflow-x: hidden; /* Screen se bahar kuch nahi jayega */
-    }
+<style>
+/* ================= BASE (SAME AS ORIGINAL) ================= */
+body{
+  margin:0;
+  font-family:'Inter',sans-serif;
+  background:
+    radial-gradient(1200px 600px at top left, #eef1f6 0%, transparent 60%),
+    linear-gradient(135deg, #c9ced8 0%, #8e96a8 40%, #2a2f3a 100%);
+  color:#e5e7eb;
+  overflow-x:hidden;
+}
 
-    .contact-section{ padding:60px 0 100px; }
-    .contact-row{ align-items:flex-start; column-gap: 60px; }
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:url("https://www.transparenttextures.com/patterns/grain.png");
+  opacity:.12;
+  pointer-events:none;
+  z-index:-1;
+}
 
-    /* IMAGE WRAPPER */
-    .image-wrapper{
-        position:relative;
-        display:flex;
-        flex-direction:column;
-        justify-content:flex-start;
-        height:100%;
-        gap:10px;
-    }
+.contact-section{ padding:120px 0 130px; }
 
-    /* CINEMATIC LAVENDER + WHITE OUTLINE */
-    .img-cinematic, .img-square {
-      position: relative;
-      object-fit: cover;
-      transition: transform 0.45s ease, box-shadow 0.45s ease, filter 0.45s ease;
-      z-index: 1;
-      overflow: hidden;
-    }
+/* ================= IMAGES ================= */
+.image-wrapper{ display:flex; flex-direction:column; gap:26px; }
 
-    /* CIRCLE IMAGE */
-    .img-cinematic {
-      width:150%;
-      height:auto;
-      border-radius:50%;
-      margin-left:-80px;
-      margin-top:30px;
-      animation: floatAnimation 6s ease-in-out infinite;
-      border: 4px solid transparent;
-      background: 
-        linear-gradient(#fff, #fff) padding-box, 
-        linear-gradient(135deg, #b89cf7, #e4d8f1) border-box;
-      box-shadow: 0 8px 18px rgba(111,45,189,0.18), 0 18px 40px rgba(0,0,0,0.25);
-      filter: drop-shadow(0 4px 12px rgba(111,45,189,0.15));
-    }
+.img-cinematic, .img-square{
+  width:145%;
+  object-fit:cover;
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,.25);
+  background:linear-gradient(145deg,rgba(255,255,255,.15),rgba(255,255,255,0));
+  box-shadow: 0 40px 90px rgba(0,0,0,.45), inset 0 0 0 1px rgba(255,255,255,.08);
+  transition:all .9s cubic-bezier(.19,1,.22,1);
+}
 
-    /* SQUARE IMAGE */
-    .img-square {
-      width:140%;
-      height:auto;
-      border-radius:18px;
-      margin-left:-60px;
-      margin-top:40px;
-      animation: floatAnimation 6s ease-in-out infinite reverse;
-      border: 4px solid transparent;
-      background: 
-        linear-gradient(#fff, #fff) padding-box, 
-        linear-gradient(135deg, #b89cf7, #e4d8f1) border-box;
-      box-shadow: 0 6px 15px rgba(208, 201, 216, 0.15), 0 16px 35px rgba(233, 221, 221, 0.22);
-      filter: drop-shadow(0 3px 10px rgba(111,45,189,0.12));
-    }
+.img-cinematic{ border-radius:50%; margin-left:-90px; }
+.img-square{ margin-left:-60px; }
 
-    .img-cinematic:hover,
-    .img-square:hover {
-      transform: scale(1.06);
-      box-shadow: 0 12px 30px rgba(205, 198, 212, 0.22), 0 25px 50px rgba(240, 234, 234, 0.28);
-      filter: drop-shadow(0 6px 18px rgba(111,45,189,0.18));
-    }
+.img-cinematic:hover, .img-square:hover{ transform:scale(1.06) translateY(-10px); }
 
-    @keyframes floatAnimation {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-6px); }
-      100% { transform: translateY(0px); }
-    }
+/* ================= CONTENT ================= */
+.contact-title{
+  font-family:'Playfair Display',serif;
+  font-size:3.6rem;
+  font-weight:600;
+  color:#f9fafb;
+  letter-spacing:.6px;
+  line-height:1.1;
+  max-width:600px;
+  position:relative;
+  margin-bottom:30px;
+}
+.contact-title em{ font-style:italic; color:#c7cdd8; }
+.contact-title::after{
+  content:""; position:absolute; left:0; bottom:-22px; width:160px; height:2px;
+  background:linear-gradient(90deg, #f9fafb, rgba(255,255,255,.45), transparent);
+}
 
-    /* CINEMATIC & PREMIUM HEADING */
-    .contact-title {
-      font-family:'Playfair Display', serif;
-      font-size:2.8rem;
-      font-weight:700;
-      color:#490852;
-      letter-spacing:1px;
-      display:inline-block;
-      padding:18px 36px;
-      position:relative;
-      margin-bottom:40px;
-      z-index:1;
-    }
+.contact-desc{ max-width:640px; font-size:1.05rem; line-height:1.9; color:#e5e7eb; margin-bottom:52px; }
 
-    .contact-title::before,
-    .contact-title::after {
-      content:"";
-      position:absolute;
-      top:-6px; left:-12px; right:-12px; bottom:-6px;
-      border:2px solid #6f2dbd;
-      border-radius:12px;
-      transform: rotate(-1deg);
-      z-index:-1;
-    }
+/* ================= FORM ================= */
+.contact-form{
+  background:rgba(22,26,34,.65);
+  backdrop-filter:blur(28px);
+  border-radius:34px;
+  padding:55px;
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow: 0 60px 140px rgba(0,0,0,.6), inset 0 0 0 1px rgba(255,255,255,.06);
+  animation:formFloat 8s ease-in-out infinite;
+}
 
-    .contact-title::after {
-      top:-10px; left:-18px; right:-18px; bottom:-10px;
-      border:2px solid rgba(111,45,189,0.5);
-      transform: rotate(1deg);
-      filter: blur(1px);
-    }
+@keyframes formFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-10px); } }
 
-    .contact-desc{
-      max-width:620px;
-      color:#ffffff;
-      line-height:1.8;
-      margin-bottom:30px;
-      font-size:1.2rem;
-      letter-spacing:0.5px;
-      text-shadow: 0 1px 2px rgba(0,0,0,0.05);
-    }
+label{ font-weight:500; color:#f9fafb; }
+label span.required{ font-size:.8rem; color:#9ca3af; }
 
-    /* FORM STYLISH */
-    .contact-form{
-      position: relative;
-      background:#ffffff;
-      padding:40px 48px;
-      border-radius:28px;
-      max-width:960px;
-      overflow: hidden;
-      border: 2px solid #d799f7;
-      box-shadow: 0 20px 50px rgba(175,50,192,0.25), inset 0 0 0 1px rgba(215,153,247,0.3);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+.form-control, .form-select{
+  background:#f2f4f8; border:none; border-radius:26px; padding:15px 22px; font-size:.95rem;
+  transition:all .45s cubic-bezier(.19,1,.22,1);
+}
+.form-control:hover, .form-select:hover{ transform:translateY(-2px); box-shadow:0 18px 45px rgba(0,0,0,.25); }
+.form-control:focus, .form-select:focus{
+  background:#fff; transform:translateY(-3px) scale(1.015);
+  box-shadow: 0 0 0 2px rgba(255,255,255,.6), 0 25px 55px rgba(0,0,0,.35);
+}
 
-    /* Desktop only margin */
-    @media(min-width: 993px) {
-      .contact-form { margin-right: -60px; }
-    }
+.btn-submit{
+  position:relative; overflow:hidden; background:linear-gradient(135deg,#0f1218,#3b4252);
+  border:1px solid rgba(255,255,255,.25); color:#fff; padding:16px 42px; border-radius:22px;
+  font-weight:500; letter-spacing:.4px; transition:.45s; box-shadow:0 30px 70px rgba(0,0,0,.6);
+  cursor: pointer; width: 100%;
+}
+.btn-submit::after{
+  content:""; position:absolute; top:0; left:-120%; width:120%; height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,.35), transparent); transition:.8s;
+}
+.btn-submit:hover::after{ left:120%; }
+.btn-submit:hover{ transform:translateY(-6px) scale(1.06); box-shadow:0 50px 120px rgba(0,0,0,.8); }
 
-    .contact-form:hover{
-      transform: translateY(-3px);
-      box-shadow: 0 25px 55px rgba(175,50,192,0.35), inset 0 0 15px rgba(215,153,247,0.2);
-    }
+.contact-info-section{ background:#eef1f6; padding:90px 0; }
+.info-title{ font-family:'Playfair Display',serif; font-size:1.5rem; color:#111827; }
+.info-text{ color:#374151; line-height:1.8; }
 
-    label{
-      font-size:1rem;
-      font-weight:600;
-      font-family:'Inter', sans-serif;
-      color:#222120;
-      display:flex;
-      align-items:center;
-      gap:6px;
-      margin-bottom:6px;
-    }
-
-    label span.required {
-      color:#807a7a;
-      font-weight:500;
-      font-size:0.85rem;
-      font-family:'Inter', sans-serif;
-    }
-
-    .form-control, .form-select{
-      background:#f4ebff;
-      border:none;
-      border-radius:30px;
-      padding:14px 18px;
-      font-size:0.95rem;
-      transition: 0.3s;
-    }
-
-    textarea.form-control{
-      border-radius:22px;
-      resize:none;
-    }
-
-    .btn-submit{
-      background: linear-gradient(135deg, #d999f7, #c463eb);
-      color: #fff;
-      border-radius: 16px;
-      padding: 14px 28px;
-      font-weight: 600;
-      transition: 0.35s;
-      box-shadow: 0 5px 20px rgba(111,45,189,0.3);
-      border:none;
-      width: 100%;
-    }
-
-    /* --- RESPONSIVE FIXES --- */
-    @media(max-width:992px){
-      .contact-section { padding: 40px 0; }
-      .image-wrapper{
-        flex-direction:row;
-        justify-content:center;
-        gap:15px;
-        height:auto;
-        margin-bottom:50px;
-      }
-      .img-cinematic {
-        width:45%;
-        margin-left:0;
-        margin-top:0;
-      }
-      .img-square {
-        width:45%;
-        margin-left:0;
-        margin-top:20px;
-      }
-      .contact-form {
-        padding: 30px 20px;
-        max-width: 100%;
-      }
-      .contact-title { font-size: 2rem; padding: 12px 24px; text-align: center; display: block; }
-      .contact-desc { text-align: center; font-size: 1rem; }
-    }
-
-    @media(max-width:576px) {
-       .img-cinematic, .img-square { width: 48%; }
-       .contact-title { font-size: 1.6rem; }
-    }
-
-    .contact-info-section{
-      background:#c3b19f;
-      padding:60px 0;
-      margin-top:40px;
-    }
-
-    .info-title{
-      font-family:'Playfair Display', serif;
-      font-size:1.4rem;
-      margin-bottom:12px;
-      color:#2b2b2b;
-    }
-
-    .info-text{
-      font-size:0.95rem;
-      line-height:1.7;
-      color:#2b2b2b;
-    }
-  </style>
+/* ================= RESPONSIVE FIXES ================= */
+@media(max-width:992px){
+  .image-wrapper{ flex-direction:row; justify-content:center; gap: 10px; }
+  .img-cinematic, .img-square{ width:48%; margin-left:0; }
+  .contact-section{ padding: 60px 0; }
+}
+@media(max-width:768px){
+  .contact-title{ font-size:2.4rem; }
+  .contact-form{ padding:30px 20px; }
+  .img-cinematic, .img-square{ width:100%; } /* Stack images on small mobile */
+  .image-wrapper { flex-direction: column; align-items: center; }
+}
+</style>
 </head>
 
 <body>
 
 <section class="contact-section">
-  <div class="container">
-    <div class="row contact-row justify-content-between">
+<div class="container">
+<div class="row justify-content-between align-items-start">
 
-      <div class="col-lg-4 mb-5 mb-lg-0" data-aos="fade-right">
-        <div class="image-wrapper">
-          <img src="contact1.jpeg" class="img-cinematic">
-          <img src="contact2.jpeg" class="img-square">
-        </div>
-      </div>
-
-      <div class="col-lg-7" data-aos="fade-left">
-        <h1 class="contact-title">Get us to shoot you!</h1>
-        <p class="contact-desc">
-              Welcome to the first step in getting us on onboard. Fill this form and get one step closer to making the best decision of your life! Not kidding.<br><br>
-              We would love to schedule a call and know more about your wedding once we have all the details as mentioned below
-        </p>
-        
-        <div class="contact-form">
-          <form id="photographyForm">
-            <div class="row g-4">
-              <div class="col-md-6">
-                <label>First Name <span class="required">(required)</span></label>
-                <input type="text" id="fname" class="form-control" required>
-              </div>
-
-              <div class="col-md-6">
-                <label>Last Name <span class="required">(required)</span></label>
-                <input type="text" id="lname" class="form-control" required>
-              </div>
-
-              <div class="col-12">
-                <label>Email <span class="required">(required)</span></label>
-                <input type="email" id="email" class="form-control" required>
-              </div>
-
-              <div class="col-12">
-                <label>Phone <span class="required">(required)</span></label>
-                <input type="tel" id="phone" class="form-control" pattern="[0-9]{10}" maxlength="10" required>
-              </div>
-
-              <div class="col-md-6">
-                <label>Event Date <span class="required">(required)</span></label>
-                <input type="date" id="edate" class="form-control" required>
-              </div>
-
-              <div class="col-md-6">
-                <label>Event Style <span class="required">(required)</span></label>
-                <select id="estyle" class="form-select" required>
-                  <option selected disabled>Select event style</option>
-                  <option>Wedding</option>
-                  <option>Pre-Wedding</option>
-                  <option>Kids shoot</option>
-                  <option>Family shoot</option>
-                  <option>Content shoot</option>
-                  <option>Digital marketing</option>
-                </select>
-              </div>
-
-              <div class="col-12">
-                <label>Tell us more about your wedding <span class="required">(required)</span></label>
-                <span class="required" style="display:block; margin-bottom:10px;">All the dates, event flows, venues and any other specific details</span>
-                <textarea id="details" rows="4" class="form-control" required></textarea>
-              </div>
-
-              <div class="col-md-6">
-                <label>Venue City <span class="required">(required)</span></label>
-                <input type="text" id="city" class="form-control" required>
-              </div>
-
-              <div class="col-md-6">
-                <label>Guest Count <span class="required">(required)</span></label>
-                <input type="number" id="guests" class="form-control" required>
-              </div>
-
-              <div class="col-12">
-                <label>How did you find us? <span class="required">(required)</span></label>
-                <select id="source" class="form-select" required>
-                  <option selected disabled>Select an option</option>
-                  <option>Instagram</option>
-                  <option>Google</option>
-                  <option>Friend / Referral</option>
-                  <option>Wedding Planner</option>
-                </select>
-              </div>
-
-              <div class="col-12 text-center mt-3">
-                <button type="submit" class="btn-submit">Send details on WhatsApp </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
+<div class="col-lg-4 mb-5" data-aos="fade-right">
+  <div class="image-wrapper">
+    <img src="img/contact1.jpeg" class="img-cinematic">
+    <img src="img/contact2.jpeg" class="img-square">
   </div>
+</div>
+
+<div class="col-lg-7" data-aos="fade-left">
+<h1 class="contact-title">
+  Your story deserves <em>cinema</em>,<br>
+  not just coverage.
+</h1>
+
+<p class="contact-desc">
+  We don’t document weddings — we craft films that feel timeless,
+  intimate and emotionally cinematic.<br><br>
+  Share your vision with us and let’s create something unforgettable.
+</p>
+
+<div class="contact-form">
+<form id="whatsappForm">
+
+<div class="row g-4">
+<div class="col-md-6">
+<label>First Name <span class="required">(required)</span></label>
+<input type="text" id="fname" class="form-control" required>
+</div>
+
+<div class="col-md-6">
+<label>Last Name <span class="required">(required)</span></label>
+<input type="text" id="lname" class="form-control" required>
+</div>
+
+<div class="col-12">
+<label>Email <span class="required">(required)</span></label>
+<input type="email" id="email" class="form-control" required>
+</div>
+
+<div class="col-12">
+<label>Phone <span class="required">(required)</span></label>
+<input type="tel" id="phone" class="form-control" pattern="[0-9]{10}" maxlength="10" required>
+</div>
+
+<div class="col-md-6">
+<label>Event Date <span class="required">(required)</span></label>
+<input type="date" id="date" class="form-control" required>
+</div>
+
+<div class="col-md-6">
+<label>Event Style <span class="required">(required)</span></label>
+<select id="style" class="form-select" required>
+<option selected disabled value="">Select event style</option>
+<option>Wedding</option>
+<option>Pre-Wedding</option>
+<option>Kids shoot</option>
+<option>Family shoot</option>
+<option>Content shoot</option>
+<option>Digital marketing</option>
+</select>
+</div>
+
+<div class="col-12">
+<label>Tell us more about your wedding <span class="required">(required)</span></label><br>
+<span class="required">All dates, venues & flow details</span>
+<textarea id="message" rows="4" class="form-control" required></textarea>
+</div>
+
+<div class="col-md-6">
+<label>Venue City <span class="required">(required)</span></label>
+<input type="text" id="city" class="form-control" required>
+</div>
+
+<div class="col-md-6">
+<label>Guest Count <span class="required">(required)</span></label>
+<input type="number" id="guests" class="form-control" required>
+</div>
+
+<div class="col-12">
+<label>How did you find us? <span class="required">(required)</span></label>
+<select id="find_us" class="form-select" required>
+<option selected disabled value="">Select an option</option>
+<option>Instagram</option>
+<option>Google</option>
+<option>Friend / Referral</option>
+<option>Wedding Planner</option>
+</select>
+</div>
+
+<div class="col-12 text-center mt-3">
+<button type="submit" class="btn-submit">
+Send details on WhatsApp
+</button>
+</div>
+
+</div>
+</form>
+</div>
+
+</div>
+</div>
+</div>
 </section>
 
 <section class="contact-info-section">
-  <div class="container">
-    <div class="row gy-4">
-      <div class="col-md-6">
-        <h5 class="info-title">Head Office, Shirpur</h5>
-        <p class="info-text">
-          Sushant Rajput Production,<br>
-          95B, Vyankatesh Nagar, Mandal Shivar,<br>
-          Shirpur - 425405, Dist.Dhule, Maharashtra
-        </p>
-      </div>
-      <div class="col-md-6">
-        <h5 class="info-title">Get in touch</h5>
-        <p class="info-text">
-          Email: srphotography355@gmail.com<br>
-          Phone: +91-8208534860<br>
-          Working Hours: 11:00 AM – 7:00 PM (Mon–Sat)
-        </p>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<div class="row gy-4">
+
+<div class="col-md-6">
+<h5 class="info-title">Head Office, Shirpur</h5>
+<p class="info-text">
+Sushant Rajput Production,<br>
+95B, Vyankatesh Nagar, Mandal Shivar,<br>
+Shirpur - 425405, Dist. Dhule, Maharashtra<br>
+</p>
+</div>
+
+<div class="col-md-6">
+<h5 class="info-title">Get in touch</h5>
+<p class="info-text">
+<b>Email:</b> srphotography355@gmail.com<br>
+<b>Phone:</b> +91-8208534860<br>
+<b>Business Hours:</b> 11:00 am to 7:00 pm IST,
+(Mon - Sat)
+</p>
+</div>
+
+</div>
+</div>
 </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({duration:1200,once:true});</script>
-
 <script>
-document.getElementById('photographyForm').addEventListener('submit', function(e) {
+AOS.init({ duration:1400, once:true });
+
+// WhatsApp Setup Script
+document.getElementById('whatsappForm').addEventListener('submit', function(e) {
     e.preventDefault();
+    
+    // Yahan apna number daalein (Country code ke saath, bina '+')
+    const phoneNumber = "918999767208"; 
+    
     const fname = document.getElementById('fname').value;
     const lname = document.getElementById('lname').value;
     const email = document.getElementById('email').value;
     const phone = document.getElementById('phone').value;
-    const edate = document.getElementById('edate').value;
-    const estyle = document.getElementById('estyle').value;
-    const details = document.getElementById('details').value;
+    const date = document.getElementById('date').value;
+    const style = document.getElementById('style').value;
     const city = document.getElementById('city').value;
     const guests = document.getElementById('guests').value;
-    const source = document.getElementById('source').value;
+    const find_us = document.getElementById('find_us').value;
+    const message = document.getElementById('message').value;
 
-    // Number updated to 8999767208
-    const whatsappNumber = "918999767208";
-    const message = `*New Photography Inquiry*%0A` +
-                    `----------------------------%0A` +
-                    `*Name:* ${fname} ${lname}%0A` +
-                    `*Email:* ${email}%0A` +
-                    `*Phone:* ${phone}%0A` +
-                    `*Event Date:* ${edate}%0A` +
-                    `*Style:* ${estyle}%0A` +
-                    `*City:* ${city}%0A` +
-                    `*Guests:* ${guests}%0A` +
-                    `*Source:* ${source}%0A` +
-                    `*Details:* ${details}`;
+    const whatsappMessage = `*New Inquiry: Sushant Rajput Production*%0A%0A` +
+        `*Name:* ${fname} ${lname}%0A` +
+        `*Email:* ${email}%0A` +
+        `*Phone:* ${phone}%0A` +
+        `*Event Date:* ${date}%0A` +
+        `*Style:* ${style}%0A` +
+        `*City:* ${city}%0A` +
+        `*Guests:* ${guests}%0A` +
+        `*Found Via:* ${find_us}%0A` +
+        `*Details:* ${message}`;
 
-    const url = `https://wa.me/${whatsappNumber}?text=${message}`;
+    const url = `https://wa.me/${phoneNumber}?text=${whatsappMessage}`;
     window.open(url, '_blank');
 });
 </script>
