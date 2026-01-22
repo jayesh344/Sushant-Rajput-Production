@@ -17,10 +17,10 @@
       font-family:'Inter', sans-serif;
       background: linear-gradient(135deg, #9f56ad 0%, #ffffff 100%);
       color:#2b2b2b;
-      overflow-x: hidden;
+      overflow-x: hidden; /* Screen se bahar kuch nahi jayega */
     }
 
-    .contact-section{ padding:90px 0 120px; }
+    .contact-section{ padding:60px 0 100px; }
     .contact-row{ align-items:flex-start; column-gap: 60px; }
 
     /* IMAGE WRAPPER */
@@ -136,11 +136,15 @@
       padding:40px 48px;
       border-radius:28px;
       max-width:960px;
-      margin-right: -60px;
       overflow: hidden;
       border: 2px solid #d799f7;
       box-shadow: 0 20px 50px rgba(175,50,192,0.25), inset 0 0 0 1px rgba(215,153,247,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Desktop only margin */
+    @media(min-width: 993px) {
+      .contact-form { margin-right: -60px; }
     }
 
     .contact-form:hover{
@@ -180,19 +184,6 @@
       resize:none;
     }
 
-    .form-control:focus, .form-select:focus{
-      background:#fff;
-      box-shadow: 0 0 8px rgba(111,45,189,0.5);
-      outline:none;
-    }
-
-    .form-control:hover,
-    .form-select:hover,
-    textarea.form-control:hover{
-      border:2px solid #6f2dbd;
-      box-shadow:0 0 8px rgba(111,45,189,0.25);
-    }
-
     .btn-submit{
       background: linear-gradient(135deg, #d999f7, #c463eb);
       color: #fff;
@@ -205,31 +196,37 @@
       width: 100%;
     }
 
-    .btn-submit:hover{
-      transform: scale(1.05) translateY(-2px);
-      box-shadow: 0 15px 35px rgba(111,45,189,0.5);
-    }
-
+    /* --- RESPONSIVE FIXES --- */
     @media(max-width:992px){
+      .contact-section { padding: 40px 0; }
       .image-wrapper{
         flex-direction:row;
         justify-content:center;
-        gap:20px;
+        gap:15px;
         height:auto;
-        margin-bottom:40px;
+        margin-bottom:50px;
       }
-      .img-cinematic, .img-square{
+      .img-cinematic {
         width:45%;
-        height:auto;
         margin-left:0;
+        margin-top:0;
       }
-      .contact-form { margin-right: 0; }
+      .img-square {
+        width:45%;
+        margin-left:0;
+        margin-top:20px;
+      }
+      .contact-form {
+        padding: 30px 20px;
+        max-width: 100%;
+      }
+      .contact-title { font-size: 2rem; padding: 12px 24px; text-align: center; display: block; }
+      .contact-desc { text-align: center; font-size: 1rem; }
     }
 
-    @media(max-width:768px){
-      .contact-title{ font-size:2.3rem; }
-      .contact-form,
-      .contact-desc{ max-width:100%; }
+    @media(max-width:576px) {
+       .img-cinematic, .img-square { width: 48%; }
+       .contact-title { font-size: 1.6rem; }
     }
 
     .contact-info-section{
@@ -267,17 +264,15 @@
       </div>
 
       <div class="col-lg-7" data-aos="fade-left">
-
         <h1 class="contact-title">Get us to shoot you!</h1>
         <p class="contact-desc">
               Welcome to the first step in getting us on onboard. Fill this form and get one step closer to making the best decision of your life! Not kidding.<br><br>
               We would love to schedule a call and know more about your wedding once we have all the details as mentioned below
-        </p><br>
+        </p>
+        
         <div class="contact-form">
-
           <form id="photographyForm">
             <div class="row g-4">
-
               <div class="col-md-6">
                 <label>First Name <span class="required">(required)</span></label>
                 <input type="text" id="fname" class="form-control" required>
@@ -346,11 +341,9 @@
               <div class="col-12 text-center mt-3">
                 <button type="submit" class="btn-submit">Send details on WhatsApp </button>
               </div>
-
             </div>
           </form>
         </div>
-
       </div>
     </div>
   </div>
@@ -359,17 +352,14 @@
 <section class="contact-info-section">
   <div class="container">
     <div class="row gy-4">
-
       <div class="col-md-6">
         <h5 class="info-title">Head Office, Shirpur</h5>
         <p class="info-text">
           Sushant Rajput Production,<br>
           95B, Vyankatesh Nagar, Mandal Shivar,<br>
-          Shirpur - 425405, Dist.Dhule, Maharashtra<br>
-          Navi Mumbai – 400614
+          Shirpur - 425405, Dist.Dhule, Maharashtra
         </p>
       </div>
-
       <div class="col-md-6">
         <h5 class="info-title">Get in touch</h5>
         <p class="info-text">
@@ -378,7 +368,6 @@
           Working Hours: 11:00 AM – 7:00 PM (Mon–Sat)
         </p>
       </div>
-
     </div>
   </div>
 </section>
@@ -390,8 +379,6 @@
 <script>
 document.getElementById('photographyForm').addEventListener('submit', function(e) {
     e.preventDefault();
-
-    // Gathering data
     const fname = document.getElementById('fname').value;
     const lname = document.getElementById('lname').value;
     const email = document.getElementById('email').value;
@@ -403,10 +390,7 @@ document.getElementById('photographyForm').addEventListener('submit', function(e
     const guests = document.getElementById('guests').value;
     const source = document.getElementById('source').value;
 
-    // Your WhatsApp Number
     const whatsappNumber = "918208534860";
-
-    // Formatting the message
     const message = `*New Photography Inquiry*%0A` +
                     `----------------------------%0A` +
                     `*Name:* ${fname} ${lname}%0A` +
@@ -419,7 +403,6 @@ document.getElementById('photographyForm').addEventListener('submit', function(e
                     `*Source:* ${source}%0A` +
                     `*Details:* ${details}`;
 
-    // Opening WhatsApp
     const url = `https://wa.me/${whatsappNumber}?text=${message}`;
     window.open(url, '_blank');
 });
