@@ -49,16 +49,18 @@ body {
     padding-bottom: 60px; 
 }
 
-.story-gallery img { 
+/* Handle both Images and Videos in Gallery */
+.story-gallery img, .story-gallery video { 
     width: 100%; 
     margin-bottom: 60px; /* STEP 4: SPACING = STORY FLOW */
     border-radius: 0px; /* Sharp Cinema look */
     object-fit: cover; 
     box-shadow: 0 30px 60px rgba(0,0,0,0.5);
     transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+    display: block;
 }
 
-.story-gallery img:hover {
+.story-gallery img:hover, .story-gallery video:hover {
     transform: scale(1.02);
 }
 
@@ -91,7 +93,7 @@ body {
 /* Mobile Adjustments */
 @media (max-width: 768px) {
     .story-header { padding: 100px 20px 50px; }
-    .story-gallery img { margin-bottom: 30px; }
+    .story-gallery img, .story-gallery video { margin-bottom: 30px; }
 }
 </style>
 </head>
@@ -118,7 +120,9 @@ const weddings = {
     "Minakshi-Santosh": {
         title: "Minakshi & Santosh — Two Souls, One Story",
         desc: "A heartfelt wedding story where traditions met modern love.",
-        photos: ["second.webp", "second1.webp", "second2.webp", "second3.webp", "second4.webp", "second5.webp"]
+        photos: [
+            "second.webp", "second1.webp", "second2.webp", "second3.webp", "second4.webp", "second5.webp",
+        ]
     },
     "anjali-rohit": {
         title: "Anjali & Rohit — Forever Begins",
@@ -128,7 +132,7 @@ const weddings = {
     "Jayesh-Lavanya": {
         title: "Jayesh & Lavanya — A Grand Affair",
         desc: "A lavish destination wedding capturing elegance and emotions.",
-        photos: ["fourth.webp", "fourth7.webp", "fourth1.webp", "fourth3.webp", "fourth4.webp", "fourth5.webp", "fourth6.webp","fourth7.webp","fourth8.webp"]
+        photos: ["fourth.webp", "fourth7.webp", "fourth1.webp","fourthv.mp4", "fourth3.webp", "fourth4.webp", "fourth5.webp", "fourth6.webp","fourth7.webp","fourth8.webp"]
     },
     "Anand-Bhagyashree": {
         title: "Anand & Bhagyashree — Written in Stars",
@@ -159,7 +163,24 @@ const weddings = {
         title: "Radhika & Mohit — Happily Ever After",
         desc: "A joyful wedding celebration capturing pure love.",
         photos: ["assets/images/wedding10.jpg", "r2.jpg", "r3.jpg", "r4.jpg", "r5.jpg", "r6.jpg", "r7.jpg", "r8.jpg"]
-    }
+    },
+    "minakshi-santosh-haldi": {
+    title: "Minakshi & Santosh — Haldi Ceremony",
+    desc: "A vibrant haldi ceremony filled with laughter, turmeric hues and joyful rituals.",
+    photos: [
+        "haldi1.webp",
+        "haldi2.webp",
+        "haldi3.webp",
+        "haldi4.webp",
+        "haldi5.webp",
+        "haldi6.webp",
+        "haldi7.webp",
+        "haldi8.webp",
+        "haldi9.webp",
+        "haldi10.webp"
+    ]
+}
+
 };
 
 const params = new URLSearchParams(window.location.search);
@@ -168,9 +189,14 @@ const key = params.get("story");
 if(weddings[key]){
     document.getElementById("storyTitle").innerText = weddings[key].title;
     document.getElementById("storyDesc").innerText = weddings[key].desc;
+    
     let galleryHTML = "";
-    weddings[key].photos.forEach(img => {
-        galleryHTML += `<img src="${img}" alt="Wedding Photo">`;
+    weddings[key].photos.forEach(file => {
+        if (file.toLowerCase().endsWith(".mp4")) {
+            galleryHTML += `<video src="${file}" autoplay muted loop playsinline></video>`;
+        } else {
+            galleryHTML += `<img src="${file}" alt="Wedding Photo">`;
+        }
     });
     document.getElementById("gallery").innerHTML = galleryHTML;
 } else {
