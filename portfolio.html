@@ -2,308 +2,1206 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Stories | Sushant Rajput Production</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Zoomin Photography | Sushant Rajput Production</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 <style>
-/* Base Styles */
-body{font-family:'Poppins',sans-serif;background:#fff;color:#111;}
-
-.blog-header{padding:120px 20px 60px;text-align:center;}
-.blog-header h1{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;}
-.blog-header p{max-width:600px;margin:15px auto 0;color:#555;}
-
-/* STEP 1: Card Luxury Look (Shadow & Radius) */
-.blog-card{
-    margin-bottom:80px;
-    border-radius:16px;
-    transition:0.4s ease;
-    overflow: hidden; 
-}
-.blog-card:hover{
-    transform:translateY(-10px); 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
 
-/* STEP 2: Image Premium Feel & Cinematic Effect */
-.blog-img{
-    overflow:hidden;
-    border-radius:16px; 
-}
-.blog-img img{
-    width:100%;
-    height:520px;
-    object-fit:cover;
-    transition:0.6s ease;
-    border-radius:16px; 
-}
-.blog-card:hover img{
-    transform:scale(1.05);
+body{
+    background:#0f1915;
+    color:#fff;
+    overflow-x: hidden;
 }
 
-/* STEP 4: Heading Royal Style */
-.blog-content{padding-top:25px;}
-.blog-content small{text-transform:uppercase;letter-spacing:2px;font-size:12px;color:#888;}
-.blog-content h2{
-    font-family:'Playfair Display',serif;
-    font-size:34px; 
-    margin:10px 0;
-}
-.blog-content p{color:#555;max-width:700px;}
-
-/* STEP 3: Read More Button-style */
-.read-more{
-    display:inline-block;
-    margin-top:10px;
-    text-decoration:none;
-    color:#000;
-    font-weight:500;
-    padding-bottom:3px;
-    border-bottom:1px solid #000;
-    transition:0.3s;
-}
-.read-more:hover{
-    letter-spacing:1px;
-    color: #444; 
+/* ================= NAVBAR ================= */
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 25px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.footer{padding:60px 20px;text-align:center;font-size:14px;color:#777;}
+nav.scrolled {
+    padding: 15px 80px;
+    background: rgba(15, 25, 21, 0.85);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
 
-/* STEP 5: Mobile Responsive Fixes */
+.logo img { 
+    height: 50px; 
+    filter: drop-shadow(0 0 8px rgba(124, 108, 240, 0.3));
+    transition: 0.4s;
+}
+nav.scrolled .logo img { height: 42px; }
+
+nav ul {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+
+nav ul li a { 
+    text-decoration: none; 
+    color: rgba(255,255,255,0.7);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: 0.3s;
+    position: relative;
+    padding: 5px 0;
+}
+
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #7c6cf0, #a18cff);
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+nav ul li a:hover, 
+nav ul li a.active-link { 
+    color: #fff;
+    text-shadow: 0 0 15px rgba(124, 108, 240, 0.5);
+}
+
+nav ul li a:hover::after,
+nav ul li a.active-link::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+.hamburger div {
+    width: 28px;
+    height: 2px;
+    background: #fff;
+    transition: 0.4s;
+}
+
+/* ================= HERO SECTION ================= */
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,25,21,0.9) 0%, rgba(15,25,21,0.2) 50%, rgba(15,25,21,0.4) 100%);
+    z-index: 3;
+}
+
+.hero-right {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.hero-right img, .photo2 {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transform: scale(1.1);
+    transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1), transform 6s ease;
+}
+
+.hero-right .active, .photo2.active, .photo2.active img {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 2;
+}
+
+.photo2 .bg { filter: blur(25px); transform: scale(1.3); }
+.photo2 .fg { object-fit: contain; }
+
+.hero-left {
+    position: relative;
+    z-index: 10;
+    padding: 0 80px 80px 80px; 
+    max-width: 900px;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: heroFadeIn 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards 0.5s;
+}
+
+@keyframes heroFadeIn {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-left small {
+    display: block;
+    letter-spacing: 8px;
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: #7c6cf0;
+    font-weight: 600;
+}
+
+.hero-left h1 {
+    font-size: 4.8rem;
+    line-height: 1;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.hero-left h1 span { color: #7c6cf0; }
+
+.hero-left p {
+    max-width: 450px;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.8;
+    margin-bottom: 40px;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.hero-buttons a {
+    padding: 16px 42px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.btn-primary { background: #7c6cf0; color: #fff; }
+.btn-outline { border: 1px solid rgba(255,255,255,0.6); color: #fff; }
+
+.controls {
+    position: absolute;
+    bottom: 80px;
+    right: 80px;
+    z-index: 20;
+    display: flex;
+    gap: 15px;
+}
+
+.controls button {
+    background: transparent;
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.controls button:hover { background: #fff; color: #000; }
+
+.dots {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+}
+.dots span {
+    width: 25px;
+    height: 3px;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    transition: 0.4s;
+}
+.dots span.active { background: #7c6cf0; width: 50px; }
+
+/* ================= ABOUT SECTION ================= */
+.about {
+    padding: 120px 80px;
+    background: #ffffff; 
+    color: #1a1a1a;
+    position: relative;
+    overflow: hidden;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 80px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 1.2;
+    opacity: 0;
+    transform: translate3d(-50px, 0, 0);
+    transition: all 0.8s ease-out;
+}
+
+.about-img {
+    flex: 1;
+    position: relative;
+    opacity: 0;
+    transform: translate3d(50px, 0, 0);
+    transition: all 0.8s ease-out;
+}
+
+.about.reveal .about-text,
+.about.reveal .about-img {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.about-text h2 {
+    font-size: 3rem;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #0f1915;
+}
+
+.about-text h2 span { color: #7c6cf0; }
+
+.about-text p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 35px;
+}
+
+.about-details {
+    list-style: none;
+    margin-bottom: 45px;
+}
+
+.about-details li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 18px;
+    font-weight: 600;
+    font-size: 15px;
+    color: #333;
+}
+
+.about-details li::before {
+    content: "✔";
+    background: #7c6cf0;
+    color: white;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+.btn-about {
+    display: inline-block;
+    padding: 15px 45px;
+    background: #0f1915;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: 0.3s;
+    border: 2px solid #0f1915;
+}
+
+.btn-about:hover {
+    background: transparent;
+    color: #0f1915;
+}
+
+.about-img img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 30px 30px 0px #f4f4f4;
+}
+
+/* ================= SERVICES SECTION ================= */
+.services {
+    padding: 120px 60px;
+    background: #0f1915;
+}
+
+.services-header h2 {
+    font-size: 3rem;
+    margin-bottom: 60px;
+    text-align: center;
+}
+
+.services-header h2 span { color: #7c6cf0; }
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 40px;
+    max-width: 1200px; 
+    margin: 0 auto;
+}
+
+.service-card {
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    text-align: left;
+}
+
+.service-img {
+    width: 100%;
+    height: 550px; 
+    overflow: hidden;
+    position: relative;
+}
+
+.service-img img, .service-img video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.service-img::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to top, #0f1915 10%, transparent);
+}
+
+.service-content {
+    padding: 0 40px 40px 40px;
+    margin-top: -80px; 
+    position: relative;
+    z-index: 5;
+}
+
+.service-icon-badge {
+    width: 60px;
+    height: 60px;
+    background: #7c6cf0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(124, 108, 240, 0.3);
+    transition: 0.4s;
+}
+
+.service-icon-badge i { font-size: 24px; color: #fff; }
+
+.service-card h3 {
+    font-size: 28px;
+    margin-bottom: 12px;
+    color: #fff;
+    font-weight: 700;
+}
+
+.service-card p {
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+}
+
+.service-card:hover {
+    transform: translateY(-15px);
+    border-color: rgba(124, 108, 240, 0.4);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+.service-card:hover .service-img img,
+.service-card:hover .service-img video { transform: scale(1.1); }
+
+.prewedding-blur { position: relative; background: #000; }
+.prewedding-blur .bg {
+    position: absolute;
+    inset: 0; width: 100%; height: 100%;
+    object-fit: cover; filter: blur(20px);
+    transform: scale(1.2); opacity: 0.6;
+}
+.prewedding-blur .fg { position: relative; z-index: 2; width: 100%; height: 100%; object-fit: contain; }
+
+/* ================= WHY CHOOSE US & PROCESS ================= */
+.why-choose {
+    padding: 120px 80px;
+    background: #0f1915;
+    text-align: center;
+}
+
+.why-choose h2 {
+    font-size: 3rem;
+    margin-bottom: 60px;
+}
+
+.why-choose h2 span { color: #7c6cf0; }
+
+.why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.why-card {
+    background: rgba(255,255,255,0.03);
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: 0.4s;
+}
+
+.why-card:hover {
+    border-color: #7c6cf0;
+    transform: translateY(-10px);
+}
+
+.why-card i {
+    font-size: 40px;
+    color: #7c6cf0;
+    margin-bottom: 20px;
+}
+
+.why-card h3 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.why-card p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.6;
+}
+
+/* Process Styles */
+.our-process {
+    padding: 100px 80px;
+    background: #fff;
+    color: #0f1915;
+}
+
+.process-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.process-header h2 { font-size: 3rem; }
+.process-header h2 span { color: #7c6cf0; }
+
+.process-container {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.process-step {
+    flex: 1;
+    min-width: 250px;
+    text-align: center;
+    position: relative;
+}
+
+.step-num {
+    width: 60px;
+    height: 60px;
+    background: #7c6cf0;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 auto 20px;
+}
+
+.process-step h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.process-step p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* ================= FOOTER ADDRESS SECTION ================= */
+.footer-address {
+    padding: 60px 80px;
+    background: #b5a491; 
+    color: #2e2e2e;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-col h4 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-family: 'Playfair Display', serif; 
+    font-weight: 700;
+}
+
+.footer-col p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.footer-col .label {
+    font-weight: 700;
+}
+
+/* ================= MAIN BLACK FOOTER (UPGRADED) ================= */
+.main-footer {
+    background: radial-gradient(circle at top, rgba(124,108,240,0.12), transparent 40%), #0a0e0c;
+    padding: 80px 80px 30px 80px;
+    color: #fff;
+    position: relative;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 60px;
+}
+
+.footer-about img {
+    height: 60px;
+    margin-bottom: 25px;
+}
+
+.footer-about p {
+    color: rgba(255,255,255,0.6);
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 15px;
+}
+
+.footer-tagline {
+    font-style: italic;
+    color: #7c6cf0;
+    font-size: 15px;
+    margin-bottom: 25px;
+}
+
+.footer-cta {
+    display: inline-block;
+    padding: 12px 30px;
+    border: 1px solid #7c6cf0;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 30px;
+    transition: 0.4s;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.footer-cta:hover {
+    background: #7c6cf0;
+    box-shadow: 0 0 20px rgba(124, 108, 240, 0.4);
+}
+
+.footer-socials {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.footer-socials a {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.4s;
+    box-shadow: 0 0 0 rgba(124,108,240,0.0);
+}
+
+.footer-socials a:hover {
+    background: #7c6cf0;
+    transform: translateY(-5px);
+    box-shadow: 0 0 20px rgba(124,108,240,0.6);
+}
+
+.footer-links h4 {
+    font-size: 18px;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.footer-links h4::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 30px;
+    height: 2px;
+    background: #7c6cf0;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links ul li {
+    margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.footer-links ul li a:hover {
+    color: #fff;
+    padding-left: 8px;
+    letter-spacing: 0.5px;
+}
+
+.footer-copyright {
+    margin-top: 60px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    text-align: center;
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+}
+
+/* ================= GLOBAL RESPONSIVE FIX ================= */
+@media(max-width:1200px){
+    .hero-left h1{ font-size:3.6rem; }
+    .about-container{ gap:50px; }
+}
+/* ================= TABLET ================= */
+@media(max-width:992px){
+    /* Navbar spacing */
+    nav{ padding:15px 30px; }
+    /* Hero */
+    .hero-left{
+        padding:0 40px 80px 40px;
+        max-width:100%;
+    }
+    .hero-left h1{ font-size:3.2rem; }
+    /* Services */
+    .services{
+        padding:100px 40px;
+    }
+    .services-grid{
+        grid-template-columns:1fr;
+        gap:35px;
+    }
+    .service-img{
+        height:420px;
+    }
+    /* About */
+    .about{
+        padding:100px 40px;
+    }
+    .about-container{
+        flex-direction:column;
+        gap:50px;
+    }
+    .about-img img{
+        box-shadow:none;
+    }
+    /* Controls */
+    .controls{
+        bottom:40px;
+        right:40px;
+    }
+}
+/* ================= MOBILE ================= */
 @media(max-width:768px){
-    .blog-header{
-        padding:80px 15px 40px;
+    /* Navbar Toggle Fix */
+    nav ul {
+        position: fixed;
+        top: 0; right: -100%;
+        height: 100vh; width: 75%;
+        background: #0f1915;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+        z-index: 99;
     }
-    .blog-header h1{
-        font-size:32px;
+    nav ul.show { right: 0; }
+    .hamburger { display: flex; z-index: 1001; }
+
+    /* HERO */
+    .hero{
+        height:100svh;
+        align-items:flex-end;
     }
-    .blog-img img{
-        height:300px; 
+    .hero-left{
+        padding:0 25px 90px 25px;
     }
-    .blog-content h2{
-        font-size:24px;
+    .hero-left small{
+        font-size:10px;
+        letter-spacing:4px;
     }
-    .blog-card{
-        margin-bottom:50px; 
+    .hero-left h1{
+        font-size:2.4rem;
+        line-height:1.1;
+    }
+    .hero-left p{
+        font-size:14px;
+        max-width:100%;
+    }
+    .hero-buttons{
+        flex-direction:column;
+        gap:12px;
+    }
+    .hero-buttons a{
+        width:100%;
+        text-align:center;
+    }
+    /* SLIDER CONTROLS */
+    .controls{
+        bottom:25px;
+        right:25px;
+        gap:10px;
+    }
+    .controls button{
+        width:42px;
+        height:42px;
+    }
+    .dots{
+        left:25px;
+        bottom:25px;
+    }
+    /* SERVICES */
+    .services{
+        padding:80px 25px;
+    }
+    .service-img{
+        height:320px;
+    }
+    .service-content{
+        padding:0 25px 30px 25px;
+        margin-top:-60px;
+    }
+    .service-card h3{
+        font-size:22px;
+    }
+    .service-card p{
+        font-size:14px;
+    }
+    /* ABOUT */
+    .about{
+        padding:80px 25px;
+    }
+    .about-text h2{
+        font-size:2.2rem;
+    }
+    /* WHY CHOOSE */
+    .why-choose{
+        padding:80px 25px;
+    }
+    .why-choose h2{
+        font-size:2.4rem;
+    }
+    /* PROCESS */
+    .our-process{
+        padding:80px 25px;
+    }
+    .process-container{
+        gap:40px;
+    }
+    /* FOOTER ADDRESS */
+    .footer-address { padding: 40px 25px; }
+    .footer-col { min-width: 100%; }
+    .main-footer { padding: 60px 25px 20px 25px; }
+    .footer-container { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .footer-links h4::after { left: 50%; transform: translateX(-50%); }
+    .footer-socials { justify-content: center; }
+}
+/* ================= SMALL MOBILE ================= */
+@media(max-width:480px){
+    .hero-left h1{
+        font-size:2rem;
+    }
+    .service-img{
+        height:260px;
+    }
+    .services-header h2,
+    .about-text h2,
+    .why-choose h2,
+    .process-header h2{
+        font-size:2rem;
     }
 }
 </style>
 </head>
+
 <body>
 
-<div class="blog-header">
-    <h1>Wedding Stories</h1>
-    <p>Timeless wedding stories captured with emotion, elegance & cinematic storytelling.</p>
-</div>
+<nav id="navbar">
+    <div class="logo"><img src="logo.png" alt="Logo"></div>
+    <ul id="menu">
+        <li><a href="index.html" class="nav-link active-link">Home</a></li>
+        <li><a href="about.html" class="nav-link">About</a></li>
+        <li><a href="blog.html" class="nav-link">Blog</a></li>
+        <li><a href="#Packages" class="nav-link">Packages</a></li>
+        <li><a href="contact.html" class="nav-link">Contact</a></li>
+        <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()">
+        <div></div><div></div><div></div>
+    </div>
+</nav>
 
-<div class="container">
-    <div class="blog-card">
-        <div class="blog-img"><img src="photono1.webp"></div>
-        <div class="blog-content">
-            <small>Wedding Story</small>
-            <h2>Ankita & Ajinkya — A Royal Celebration</h2>
-            <p>An intimate wedding filled with love, emotions and timeless rituals.</p>
-            <a href="story.html?story=riya-aman" class="read-more">Read Story</a>
+<section class="hero" id="hero">
+    <div class="hero-right">
+        <img src="photono7.webp" class="active">
+        <div class="photo2">
+            <img src="photono2.webp" class="bg" loading="lazy">
+            <img src="photono2.webp" class="fg" loading="lazy">
+        </div>
+        <img src="photono3.webp" loading="lazy">
+        <img src="photono4.webp" loading="lazy">
+        <img src="photono5.webp" loading="lazy">
+        <div class="photo2">
+            <img src="photono6.webp" class="bg" loading="lazy">
+            <img src="photono6.webp" class="fg" loading="lazy">
         </div>
     </div>
 
-    <div class="blog-card">
-        <div class="blog-img"><img src="second.webp"></div>
-        <div class="blog-content">
-            <small>Wedding Story</small>
-            <h2>Minakshi & Santosh — Two Souls, One Story</h2>
-            <p>A heartfelt wedding story where traditions met modern love.</p>
-            <a href="story.html?story=Minakshi-Santosh" class="read-more">Read Story</a>
+    <div class="hero-left">
+        <small>EVERY FRAME TELLS A STORY</small>
+        <h1>Sushant<br><span>Rajput Production</span></h1>
+        <p>Moments that move hearts. Professional photography & cinematic marketing that moves brands.</p>
+        <div class="hero-buttons">
+            <a href="blog.html" class="btn-primary">Explore Work</a>
+            <a href="contact.html" class="btn-outline">Let’s Talk</a>
         </div>
     </div>
 
-    <div class="blog-card">
-        <div class="blog-img"><img src="third.webp"></div>
-        <div class="blog-content">
-            <small>Wedding Story</small>
-            <h2>Anjali & Rohit — Forever Begins</h2>
-            <p>A soulful wedding story filled with laughter and rituals.</p>
-            <a href="story.html?story=anjali-rohit" class="read-more">Read Story</a>
+    <div class="controls">
+        <button onclick="prevSlide()">❮</button>
+        <button onclick="nextSlide()">❯</button>
+    </div>
+    <div class="dots" id="dots"></div>
+</section>
+
+
+<section class="services" id="services">
+    <div class="services-header">
+        <h2>Our <span>Services</span></h2>
+    </div>
+    <a href="blog.html#wedding" style="text-decoration:none; color:inherit;">
+    <div class="service-card">
+        <div class="service-img">
+            <img src="wedding.jpg" alt="Wedding">
+        </div>
+        <div class="service-content">
+            <div class="service-icon-badge">
+                <i class="fa-solid fa-camera-retro"></i>
+            </div>
+            <h3>Wedding</h3>
+            <p>Capturing the magic of your special day with timeless cinematic frames and emotional storytelling.</p>
         </div>
     </div>
+</a>
 
-    <div class="blog-card">
-        <div class="blog-img"><img src="six4.webp"></div>
-        <div class="blog-content">
-            <small>Wedding Story</small>
-            <h2>Prem & Devyani — A Timeless Bond</h2>
-            <p>An elegant wedding celebration highlighting emotions.</p>
-            <a href="story.html?story=Prem-Devyani" class="read-more">Read Story</a>
+
+        <a href="blog.html#prewedding" style="text-decoration:none; color:inherit;">
+    <div class="service-card">
+        <div class="service-img prewedding-blur">
+            <img src="pre wedding.jpg" class="bg">
+            <img src="pre wedding.jpg" class="fg" alt="Pre-Wedding">
+        </div>
+        <div class="service-content">
+            <div class="service-icon-badge">
+                <i class="fa-solid fa-heart"></i>
+            </div>
+            <h3>Pre-Wedding</h3>
+            <p>Romantic stories told through beautiful locations and raw emotions before you say "I Do".</p>
         </div>
     </div>
+</a>
 
-    <div class="blog-card">
-        <div class="blog-img"><img src="seven2.webp"></div>
-        <div class="blog-content">
-            <small>Wedding Story</small>
-            <h2>Kirti & Dattaprasad — Two Hearts United</h2>
-            <p>A heartwarming wedding filled with vibrant traditions.</p>
-            <a href="story.html?story=Kirti-Dattaprasad" class="read-more">Read Story</a>
+
+        <a href="blog.html#kids" style="text-decoration:none; color:inherit;">
+    <div class="service-card">
+        <div class="service-img">
+            <img src="baby.jpg" alt="Kids">
+        </div>
+        <div class="service-content">
+            <div class="service-icon-badge">
+                <i class="fa-solid fa-baby"></i>
+            </div>
+            <h3>Kids</h3>
+            <p>Preserving the pure innocence and playful moments of your little ones in creative ways.</p>
         </div>
     </div>
+</a>
 
-    <div class="blog-card">
-    <div class="blog-img"><img src="eight3.webp"></div>
-    <div class="blog-content">
-        <small>Wedding Story</small>
-        <h2>Harshali & Nishchal — A Timeless Vow</h2>
-        <p>A powerful wedding tale woven with raw emotions, sacred rituals, and unforgettable cinematic moments.</p>
-        <a href="story.html?story=harshali-nishchal" class="read-more">Read Story</a>
-    </div>
-</div>
 
-    <div class="blog-card">
-        <div class="blog-img"><img src="p&s1.webp"></div>
-        <div class="blog-content">
-            <small>Wedding Story</small>
-            <h2>Pragati & Shubham — Happily Ever After</h2>
-            <p>A joyful wedding celebration capturing pure love.</p>
-            <a href="story.html?story=Pragati-Shubham" class="read-more">Read Story</a>
+        <div class="service-card">
+            <div class="service-img"><img src="family.jpg" alt="Family"></div>
+            <div class="service-content">
+                <div class="service-icon-badge"><i class="fa-solid fa-people-group"></i></div>
+                <h3>Family</h3>
+                <p>Timeless portraits that bring the whole family together in a single, perfect frame.</p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-img"><img src="concept.jpg" alt="Content Shoot"></div>
+            <div class="service-content">
+                <div class="service-icon-badge"><i class="fa-solid fa-clapperboard"></i></div>
+                <h3>Content Shoot</h3>
+                <p>High-quality professional content creation for influencers and creators to level up their social media.</p>
+            </div>
+        </div>
+
+        <div class="service-card">
+            <div class="service-img">
+                <video autoplay loop muted playsinline>
+                    <source src="digital_marketing.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="service-content">
+                <div class="service-icon-badge"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Digital Marketing</h3>
+                <p>Strategy-driven marketing to grow your online presence and reach the right audience effectively.</p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
-<div class="container">
-    <div class="blog-card">
-    <div class="blog-img"><img src="mehendi2.webp"></div>
-    <div class="blog-content">
-        <small>Mehendi Ceremony</small>
-        <h2>Anand & Bhagyashree — Shades of Love</h2>
-        <p>A vibrant mehendi celebration filled with laughter, intricate henna designs, and joyful pre-wedding moments.</p>
-        <a href="story.html?story=Anand-Bhagyashree-mehendi" class="read-more">Read Story</a>
-    </div>
-</div>
-
-<div class="blog-card">
-    <div class="blog-img"><img src="kirti4.webp"></div>
-    <div class="blog-content">
-        <small>Mehendi Ceremony</small>
-        <h2>Kirti — Shades of Mehendi</h2>
-        <p>A joyful mehendi celebration filled with vibrant colors, intricate henna art, laughter, and beautiful pre-wedding moments.</p>
-        <a href="story.html?story=kirti-mehendi" class="read-more">Read Story</a>
-    </div>
-</div>
-
-
-
-    <div class="blog-card">
-    <div class="blog-img"><img src="h&n1.webp"></div>
-    <div class="blog-content">
-        <small>Haldi Ceremony</small>
-        <h2>Harshali & Nishchal — Shades of Yellow</h2>
-        <p>A lively haldi celebration wrapped in love, laughter, and golden traditions.</p>
-        <a href="story.html?story=harshali-nishchal-haldi" class="read-more">Read Story</a>
-    </div>
-</div>
-
-
-    <div class="blog-card">
-        <div class="blog-img"><img src="haldi3.webp"></div>
-        <div class="blog-content">
-            <small>Haldi Ceremony</small>
-            <h2>Minakshi & Santosh — Shades of Yellow</h2>
-            <p>A vibrant Haldi ceremony filled with laughter, turmeric, and joyful moments.</p>
-           <a href="story.html?story=minakshi-santosh-haldi" class="read-more">Read Story</a>
-
+<section class="about" id="about">
+    <div class="about-container">
+        <div class="about-text">
+            <h2>Capturing the <span>Soul of the Moment</span></h2>
+            <p>I am Sushant Rajput, a professional photographer based in India. Photography for me is not just about clicking pictures; it's about telling a story.</p>
+            <ul class="about-details">
+                <li>8+ Years Professional Experience</li>
+                <li>Phone: +91 82085 34860</li>
+                <li>E-mail: srphotography355@gmail.com</li>
+            </ul>
+            <a href="about.html" class="btn-about">Discover More</a>
+        </div>
+        <div class="about-img">
+            <img src="about.jpg" alt="Sushant Rajput" loading="lazy">
         </div>
     </div>
-</div>
+</section>
 
-
-<div class="blog-header">
-    <h1>Pre-Wedding Stories</h1>
-    <p>Romantic pre-wedding moments captured with emotions, chemistry & cinematic storytelling.</p>
-</div>
-<div class="container">
-    <div class="blog-card">
-        <div class="blog-img"><img src="pre5.webp"></div>
-        <div class="blog-content">
-            <small>Pre-Wedding Shoot</small>
-            <h2>Lavanya & Jayesh — Before Forever</h2>
-            <p>A romantic pre-wedding journey filled with love, laughter, and candid emotions.</p>
-            <a href="story.html?story=Lavanya-Jayesh-prewedding" class="read-more">Read Story</a>
+<section class="why-choose">
+    <h2>Why <span>Choose Us</span></h2>
+    <div class="why-grid">
+        <div class="why-card">
+            <i class="fa-solid fa-clapperboard"></i>
+            <h3>Cinematic Storytelling</h3>
+            <p>We don't just click pictures; we weave your emotions into a cinematic visual story that lasts forever.</p>
+        </div>
+        <div class="why-card">
+            <i class="fa-solid fa-camera-retro"></i>
+            <h3>No Fake Poses</h3>
+            <p>We believe in raw, candid moments. No awkward posing—just you being yourself while we capture the magic.</p>
+        </div>
+        <div class="why-card">
+            <i class="fa-solid fa-gem"></i>
+            <h3>Premium Delivery</h3>
+            <p>High-end color grading and professional post-production to ensure your photos look like a million bucks.</p>
+        </div>
+        <div class="why-card">
+            <i class="fa-solid fa-crown"></i>
+            <h3>Limited Bookings</h3>
+            <p>We accept limited shoots to ensure that every project gets our 100% creative focus and luxury treatment.</p>
         </div>
     </div>
+</section>
 
-    <div class="blog-card">
-        <div class="blog-img"><img src="fourth2.webp" class="full-view-photo"></div>
-        <div class="blog-content">
-            <small>Wedding Story</small>
-            <h2>Jayesh & Lavanya — A Grand Affair</h2>
-            <p>A lavish destination wedding capturing royal celebrations.</p>
-            <a href="story.html?story=Jayesh-Lavanya" class="read-more">Read Story</a>
+<section class="our-process">
+    <div class="process-header">
+        <h2>Our <span>Process</span></h2>
+    </div>
+    <div class="process-container">
+        <div class="process-step">
+            <div class="step-num">1</div>
+            <h4>Understand Your Story</h4>
+            <p>We start with a detailed consultation to understand your vision, style, and event flow.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-num">2</div>
+            <h4>Planning & Concept</h4>
+            <p>From location scouting to lighting setup, we plan every detail to ensure a smooth shoot day.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-num">3</div>
+            <h4>The Shoot Day</h4>
+            <p>Our professional crew handles everything while you enjoy your moments with zero stress.</p>
+        </div>
+        <div class="process-step">
+            <div class="step-num">4</div>
+            <h4>Cinematic Delivery</h4>
+            <p>Meticulous editing and cinematic color grading to deliver your memories in premium quality.</p>
         </div>
     </div>
+</section>
 
-    <div class="blog-card">
-        <div class="blog-img"><img src="fifth.webp"></div>
-        <div class="blog-content">
-            <small>Wedding Story</small>
-            <h2>Anand & Bhagyashree — Written in Stars</h2>
-            <p>A beautiful union of two hearts surrounded by joy.</p>
-            <a href="story.html?story=Anand-Bhagyashree" class="read-more">Read Story</a>
+<footer class="footer-address">
+    <div class="footer-col">
+       <h4>Head Office, Shirpur</h4>
+       <p>Sushant Rajput Production,</p>
+       <p>95B, Vyankatesh Nagar, Mandal Shivar,</p>
+       <p>Shirpur - 425405, Dist. Dhule, Maharashtra</p>
+    </div>
+    
+    <div class="footer-col">
+        <p><span class="label">Email:</span> srphotography355@gmail.com</p>
+        <p><span class="label">Phone:</span> +91-8208534860</p>
+        <p><span class="label">Business Hours:</span> 11:00 am to 7:00 pm IST</p>
+        <p>(Mon - Sat)</p>
+    </div>
+</footer>
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-about">
+            <img src="logo.png" alt="Logo">
+            <p>Creating visual masterpieces through the lens of passion. We specialize in cinematic storytelling and premium production.</p>
+            <p class="footer-tagline">“Every frame is crafted with intention.”</p>
+            
+            <a href="contact.html" class="footer-cta">Book Your Shoot</a>
+            
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/sushant_rajput_production?igsh=MWZhMndqYWNjNWtubw==" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="#Packages">Packages</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="testimonials.html">Testimonials</a></li>
+            </ul>
         </div>
     </div>
-
-
-    <div class="blog-card">
-        <div class="blog-img"><img src="l&j2.webp"></div>
-        <div class="blog-content">
-            <small>Pre-Wedding Shoot</small>
-            <h2>Anand & Bhagyashree — Love in Frames</h2>
-            <p>An elegant pre-wedding shoot capturing chemistry, romance, and timeless moments.</p>
-            <a href="story.html?story=Anand-Bhagyashree-prewedding" class="read-more">Read Story</a>
-        </div>
+    <div class="footer-copyright">
+        <p>&copy; 2026 Sushant Rajput Production. All Rights Reserved.</p>
     </div>
-</div>
+</footer>
 
+<script>
+window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
 
-<div class="blog-header">
-    <h1>Engagement Stories</h1>
-    <p>Elegant engagement moments captured with grace, emotions & cinematic storytelling.</p>
-</div>
-<div class="container">
-    <div class="blog-card">
-        <div class="blog-img"><img src="eng1.webp"></div>
-        <div class="blog-content">
-            <small>Engagement Ceremony</small>
-            <h2>Chinmay & Monali — The Beginning</h2>
-            <p>A graceful engagement celebration marking the start of a beautiful forever.</p>
-            <a href="story.html?story=Chinmay-Monali-engagement" class="read-more">Read Story</a>
-        </div>
-    </div>
+const slides = document.querySelectorAll(".hero-right > img, .hero-right > .photo2");
+const dotsContainer = document.getElementById("dots");
+let index = 0;
+let interval;
 
-    <div class="blog-card">
-        <div class="blog-img"><img src="engp4.webp"></div>
-        <div class="blog-content">
-            <small>Engagement Ceremony</small>
-            <h2>Chaitali & Rohit — Rings & Promises</h2>
-            <p>An intimate engagement ceremony filled with love, smiles, and heartfelt promises.</p>
-            <a href="story.html?story=Chaitali-Rohit-engagement" class="read-more">Read Story</a>
-        </div>
-    </div>
-</div>
+slides.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.onclick = () => { stopAuto(); goToSlide(i); startAuto(); };
+    dotsContainer.appendChild(dot);
+});
+const dots = dotsContainer.querySelectorAll("span");
 
-<div class="blog-header">
-    <h1>Kids Stories</h1>
-    <p>Pure innocence and playful moments captured in timeless cinematic frames.</p>
-</div>
-<div class="container">
-    <div class="blog-card">
-        <div class="blog-img"><img src="kids1.webp"></div>
-        <div class="blog-content">
-            <small>Kids Photography</small>
-            <h2>Darsh & Daksh — A Royal Milestone</h2>
-            <p>Capturing the joy and wonder of a little prince's special day.</p>
-            <a href="story.html?story=Darsh-Daksh" class="read-more">Read Story</a>
-        </div>
-    </div>
-</div>
-<div class="footer">© 2026 Sushant Rajput Production</div>
+function showSlide(i) {
+    slides.forEach((slide, idx) => {
+        slide.classList.toggle("active", idx === i);
+        dots[idx].classList.toggle("active", idx === i);
+    });
+}
+
+function nextSlide() { index = (index + 1) % slides.length; showSlide(index); }
+function prevSlide() { index = (index - 1 + slides.length) % slides.length; showSlide(index); }
+function goToSlide(i) { index = i; showSlide(index); }
+
+function startAuto() { if(!interval) interval = setInterval(nextSlide, 5000); }
+function stopAuto() { clearInterval(interval); interval = null; }
+
+showSlide(index);
+startAuto();
+
+function toggleMenu() { document.getElementById("menu").classList.toggle("show"); }
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('reveal');
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.1 });
+document.querySelectorAll('.about, .why-choose, .our-process').forEach(el => observer.observe(el));
+</script>
+
 </body>
-</html>
+</html> 
